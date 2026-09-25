@@ -1,99 +1,360 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal do Aluno - LiraCode Aulas</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto LiraCode | Portal de Aulas & Cibersegurança</title>
+  
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar de Navegação -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="brand">
-                <span class="brand-icon">&lt;/&gt;</span>
-                <span>LiraCode Aulas</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">🏠 Início</a></li>
-                <li><a href="logica.html">💡 Aula 1: Lógica</a></li>
-                <li><a href="arquivos-seguranca.html">📁 Aula 2: Arquivos & Segurança</a></li>
-            </ul>
-        </div>
-    </nav>
 
+  <!-- Navbar / Cabeçalho Principal -->
+  <header class="header-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        
+        <!-- Logo / Escudo LiraCode -->
+        <a href="index.html" class="logo-escudo">
+          <div class="escudo-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="logo-text">
+            <h1>LIRACODE</h1>
+            <span>Aulas & Cibersegurança</span>
+          </div>
+        </a>
+
+        <!-- Menu de Navegação -->
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="#inicio" class="nav-link active">Início</a></li>
+            <li><a href="#trilha" class="nav-link">Trilha da Estrada</a></li>
+            <li><a href="#pais" class="nav-link">Área dos Pais</a></li>
+            <li>
+              <div class="nav-badge-live">
+                <span class="pulse-dot"></span>
+                Aulas aos Sábados
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <h1>Portal de Aprendizado & Aulas Práticas</h1>
-            <p class="subtitle">
-                Material de apoio didático preparado para auxiliar os alunos nos fundamentos de programação, algoritmos e segurança da informação.
-            </p>
-        </div>
-    </header>
-
-    <!-- Conteúdo Principal -->
-    <main class="container">
-        <!-- Boas-vindas -->
-        <section class="card">
-            <h2>👋 Bem-vindo(a) às nossas aulas!</h2>
-            <p>
-                Este portal foi desenvolvido como guia prático e interativo para acompanhar as nossas aulas. Aqui você encontra resumos conceituais objetivos, exemplos de códigos explicados passo a passo e modelos de arquivos reais para download e testes em seu próprio computador.
-            </p>
-        </section>
-
-        <!-- Trilha de Aulas / Módulos -->
-        <section class="card">
-            <h2>📚 Módulos e Aulas Disponíveis</h2>
-            <p>Escolha um dos módulos abaixo para iniciar ou revisar os conteúdos ministrados em aula:</p>
-
-            <div class="modules-grid">
-                <!-- Módulo 1 -->
-                <div class="module-card">
-                    <span class="module-badge">Módulo 01</span>
-                    <h3>Lógica de Programação & Algoritmos</h3>
-                    <p>
-                        Aprenda a estruturar o raciocínio lógico computacional: o conceito de algoritmo com exemplos do dia a dia, variáveis, estruturas condicionais (se/senão), laços de repetição e funções.
-                    </p>
-                    <a href="logica.html" class="btn-module">
-                        Acessar Aula 1 &rarr;
-                    </a>
-                </div>
-
-                <!-- Módulo 2 -->
-                <div class="module-card">
-                    <span class="module-badge">Módulo 02</span>
-                    <h3>Extensões de Arquivos & Níveis de Risco</h3>
-                    <p>
-                        Entenda o que são formatos de arquivo, as diferenças práticas entre <code>.txt</code>, <code>.json</code>, <code>.png</code> e <code>.exe</code>, baixe modelos didáticos para teste e compreenda os alertas de cibersegurança.
-                    </p>
-                    <a href="arquivos-seguranca.html" class="btn-module">
-                        Acessar Aula 2 &rarr;
-                    </a>
-                </div>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          
+          <div class="hero-text">
+            <div class="hero-tag">
+              <i class="fa-solid fa-microchip"></i>
+              Experiência de +30 anos (desde a era dos computadores 486)
             </div>
-        </section>
 
-        <!-- Metodologia e Dicas -->
-        <section class="card">
-            <h2>🎯 Como aproveitar ao máximo este conteúdo</h2>
-            <ul class="tips-list">
-                <li><strong>Estude no seu ritmo:</strong> Revise cada conceito até ter certeza de que compreendeu o fundamento antes de avançar.</li>
-                <li><strong>Baixe os arquivos de teste:</strong> Vá até a Aula 2, faça o download dos modelos e inspecione-os no seu próprio computador.</li>
-                <li><strong>Experimente e altere:</strong> Abra os arquivos em editores de código (como VS Code) e veja como pequenos ajustes afetam o resultado.</li>
-                <li><strong>Tire dúvidas em sala:</strong> Anote suas dúvidas para discutirmos juntos durante os encontros presenciais ou online.</li>
-            </ul>
-        </section>
-    </main>
+            <h2 class="hero-title">
+              Construindo <span class="highlight">criadores</span> de tecnologia, não apenas consumidores.
+            </h2>
 
-    <!-- Rodapé -->
-    <footer class="footer">
-        <div class="container">
-            <p>Portal de Aulas LiraCode &copy; 2026 - Material Didático de Apoio</p>
+            <p class="hero-subtitle">
+              Ensinando aos jovens como o computador e o sistema operacional realmente funcionam 
+              <strong>"por baixo do capô"</strong>: arquivos, extensões, cibersegurança e lógica prática.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#trilha" class="btn-primary">
+                <i class="fa-solid fa-route"></i> Ver a Trilha da Estrada
+              </a>
+              <a href="#pais" class="btn-outline">
+                <i class="fa-solid fa-user-shield"></i> Área dos Pais
+              </a>
+            </div>
+          </div>
+
+          <!-- Card Ilustrativo Hero -->
+          <div class="hero-card-side">
+            <div class="hero-card-inner">
+              <div class="hero-card-header">
+                <div class="dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-gold"></span>
+                  <span class="dot dot-blue"></span>
+                </div>
+                <span class="tag-badge">DOS 486 ➔ 2026</span>
+              </div>
+
+              <div style="font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #94a3b8; margin-bottom: 16px;">
+                <p style="color: var(--brand-gold); font-weight: bold; margin-bottom: 6px;">
+                  <i class="fa-solid fa-terminal"></i> Missão Pedagógica:
+                </p>
+                <p style="background: rgba(10, 15, 29, 0.8); padding: 12px; border-radius: 8px; border: 1px solid rgba(234, 179, 8, 0.2); line-height: 1.5;">
+                  Dar às crianças e jovens a base sólida e a clareza que não são ensinadas nas escolas tradicionais.
+                </p>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <div class="stat-val">10 a 16</div>
+                  <div class="stat-desc">Anos dos Alunos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-val">Sábados</div>
+                  <div class="stat-desc">Aulas Práticas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-    </footer>
+      </div>
+    </section>
+
+    <!-- Seção: A Trilha da Estrada com Pegadas/Pezinho 👣 -->
+    <section id="trilha" class="road-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag">Jornada de Aprendizado</span>
+          <h2 class="section-title">A Trilha da Estrada</h2>
+          <p class="section-desc">
+            Cada aula é um marco quilométrico na nossa estrada de tecnologia. Conforme as aulas vão acontecendo, novos marcos são destrancados!
+          </p>
+        </div>
+
+        <!-- A Estrada com os Marcos -->
+        <div class="road-track">
+
+          <!-- MARCO 01: AULA 01 (LIBERADA) -->
+          <div class="checkpoint-row">
+            <div class="checkpoint-card-wrapper">
+              <div class="checkpoint-card unlocked">
+                <div class="card-top">
+                  <span class="badge-status badge-done">
+                    <i class="fa-solid fa-circle-check"></i> Concluída
+                  </span>
+                  <span style="font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--brand-gold);">Marco 01</span>
+                </div>
+                <h3 class="card-title">Aula 01: Pastas e Arquivos no Windows</h3>
+                <p class="card-desc">
+                  Como o computador organiza informações. Conceito de "gavetas digitais", criação do primeiro arquivo .txt, salvar, editar e deletar com segurança.
+                </p>
+                <a href="aula01.html" class="btn-card btn-card-unlocked">
+                  Acessar Aula 01 <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="checkpoint-center">
+              <div class="milestone-sign" style="border-color: #10b981; color: #10b981;">
+                01
+              </div>
+            </div>
+
+            <div class="checkpoint-space"></div>
+          </div>
+
+          <!-- MARCO 02: AULA 02 (LIBERADA & ATUAL - ONDE O PEZINHO ESTÁ 👣) -->
+          <div class="checkpoint-row left">
+            <div class="checkpoint-card-wrapper">
+              <div class="checkpoint-card current">
+                <div class="card-top">
+                  <span class="badge-status badge-current">
+                    <i class="fa-solid fa-location-dot"></i> Aula Atual de Amanhã
+                  </span>
+                  <span style="font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--brand-gold);">Marco 02</span>
+                </div>
+                <h3 class="card-title">Aula 02: O Crachá dos Arquivos & Cibersegurança</h3>
+                <p class="card-desc">
+                  Quem é quem no PC? Entenda extensões (.txt, .png, .json, .exe), simule o golpe do arquivo oculto e baixe modelos reais de teste no Laboratório.
+                </p>
+                <a href="aula02.html" class="btn-card btn-card-current">
+                  <i class="fa-solid fa-flask"></i> Entrar na Aula 02 & Laboratório
+                </a>
+              </div>
+            </div>
+
+            <div class="checkpoint-center">
+              <!-- O Pezinho caminhando e a tag indicadora -->
+              <span class="walking-tag">Você está aqui!</span>
+              <div class="walking-feet">👣</div>
+
+              <div class="milestone-sign" style="border-color: var(--brand-gold); color: var(--brand-gold); background: #1e3a8a;">
+                02
+              </div>
+            </div>
+
+            <div class="checkpoint-space"></div>
+          </div>
+
+          <!-- MARCO 03: AULA 03 (BLOQUEADA / EM BREVE) -->
+          <div class="checkpoint-row">
+            <div class="checkpoint-card-wrapper">
+              <div class="checkpoint-card locked">
+                <div class="card-top">
+                  <span class="badge-status badge-locked">
+                    <i class="fa-solid fa-lock"></i> Bloqueada
+                  </span>
+                  <span style="font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--text-dim);">Marco 03</span>
+                </div>
+                <h3 class="card-title" style="color: #94a3b8;">Aula 03: Primeiras Linhas de Lógica</h3>
+                <p class="card-desc">
+                  Comandos condicionais simples ("Se acontecer X, faça Y"). Como os computadores tomam decisões inteligentes através de algoritmos.
+                </p>
+                <span class="btn-card btn-card-locked">
+                  <i class="fa-solid fa-lock"></i> Em Breve (Próximo Sábado)
+                </span>
+              </div>
+            </div>
+
+            <div class="checkpoint-center">
+              <div class="milestone-sign" style="border-color: #334155; color: #64748b; background: #0f172a;">
+                <i class="fa-solid fa-lock" style="font-size: 1rem;"></i>
+              </div>
+            </div>
+
+            <div class="checkpoint-space"></div>
+          </div>
+
+          <!-- MARCO 04: AULA 04 (BLOQUEADA / EM BREVE) -->
+          <div class="checkpoint-row left">
+            <div class="checkpoint-card-wrapper">
+              <div class="checkpoint-card locked">
+                <div class="card-top">
+                  <span class="badge-status badge-locked">
+                    <i class="fa-solid fa-lock"></i> Bloqueada
+                  </span>
+                  <span style="font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--text-dim);">Marco 04</span>
+                </div>
+                <h3 class="card-title" style="color: #94a3b8;">Aula 04: Criando sua Primeira Página Web</h3>
+                <p class="card-desc">
+                  Como juntar códigos HTML e cores CSS para criar o seu próprio site na internet do zero.
+                </p>
+                <span class="btn-card btn-card-locked">
+                  <i class="fa-solid fa-lock"></i> Em Breve
+                </span>
+              </div>
+            </div>
+
+            <div class="checkpoint-center">
+              <div class="milestone-sign" style="border-color: #334155; color: #64748b; background: #0f172a;">
+                <i class="fa-solid fa-lock" style="font-size: 1rem;"></i>
+              </div>
+            </div>
+
+            <div class="checkpoint-space"></div>
+          </div>
+
+          <!-- MARCO 05: AULA 05 (BLOQUEADA / EM BREVE) -->
+          <div class="checkpoint-row">
+            <div class="checkpoint-card-wrapper">
+              <div class="checkpoint-card locked">
+                <div class="card-top">
+                  <span class="badge-status badge-locked">
+                    <i class="fa-solid fa-lock"></i> Bloqueada
+                  </span>
+                  <span style="font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--text-dim);">Marco 05</span>
+                </div>
+                <h3 class="card-title" style="color: #94a3b8;">Aula 05: Python & Automação Prática</h3>
+                <p class="card-desc">
+                  Scripts no terminal, pequenos jogos interativos e criação de automações lógicas reais.
+                </p>
+                <span class="btn-card btn-card-locked">
+                  <i class="fa-solid fa-lock"></i> Em Breve
+                </span>
+              </div>
+            </div>
+
+            <div class="checkpoint-center">
+              <div class="milestone-sign" style="border-color: #334155; color: #64748b; background: #0f172a;">
+                <i class="fa-solid fa-lock" style="font-size: 1rem;"></i>
+              </div>
+            </div>
+
+            <div class="checkpoint-space"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Área dos Pais: Transparência & Valor Pedagógico -->
+    <section id="pais" class="parents-section">
+      <div class="container">
+        
+        <div class="parents-card">
+          <div class="parents-header">
+            <div class="parents-icon">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div>
+              <span style="color: var(--brand-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">Transparência & Compromisso</span>
+              <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 2rem; color: #fff; margin-top: 4px;">Uma Palavra Especial aos Pais</h3>
+            </div>
+          </div>
+
+          <div class="parents-grid">
+            <div class="parents-box">
+              <h4><i class="fa-solid fa-laptop-code"></i> Por que essa iniciativa começou?</h4>
+              <p style="margin-bottom: 12px;">
+                Trabalho na área de tecnologia da informação há décadas, desde a época dos computadores 486, telas pretas e comandos digitados manualmente.
+              </p>
+              <p>
+                Hoje, as crianças e jovens nascem tocando em telas sensíveis — eles aprendem rápido a consumir vídeos e jogos, mas raramente sabem o que acontece por baixo da carcaça do aparelho. O objetivo das nossas manhãs de sábado é abrir essa "caixa preta", ensinando a pensar com lógica estruturada e postura crítica.
+              </p>
+            </div>
+
+            <div class="parents-box">
+              <h4><i class="fa-solid fa-shield-halved"></i> O que os alunos estão aprendendo:</h4>
+              <ul>
+                <li><strong>Cibersegurança Real:</strong> Como identificar golpes, links falsos e arquivos perigosos que fingem ser fotos ou jogos.</li>
+                <li><strong>Resolução de Problemas:</strong> Na tecnologia, errar é normal. Eles aprendem a investigar a causa de uma falha em vez de desistir.</li>
+                <li><strong>Autonomia Digital:</strong> Saber organizar arquivos, caminhos e pastas sem depender de ninguém para achar o que precisam.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; padding: 18px 24px; background: rgba(15, 23, 42, 0.9); border-radius: 14px; border: 1px solid rgba(234, 179, 8, 0.3); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div style="font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: center; gap: 12px;">
+              <i class="fa-solid fa-comments text-2xl" style="color: var(--brand-gold); font-size: 1.5rem;"></i>
+              <span>Fiquem à vontade para perguntar a eles todo sábado o que aprenderam. O diálogo em casa reforça o aprendizado!</span>
+            </div>
+            <a href="aula02.html" class="btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">
+              Ver Aula 02 de Amanhã
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-logo">PROJETO LIRACODE</div>
+          <div class="footer-text">Educação Tecnológica, Lógica & Cibersegurança &copy; 2026</div>
+        </div>
+        <div class="footer-text">
+          Construindo as bases sólidas dos futuros profissionais de tecnologia.
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

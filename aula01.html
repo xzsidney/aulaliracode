@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 01: Dominando Arquivos e Pastas no Windows | Projeto LiraCode</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo-escudo">
+          <div class="escudo-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="logo-text">
+            <h1>LIRACODE</h1>
+            <span>Aulas & Cibersegurança</span>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="index.html#trilha" class="nav-link">Trilha da Estrada</a></li>
+            <li><a href="aula02.html" class="nav-link">Aula 02</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho da Aula -->
+  <section class="lesson-page-header">
+    <div class="container">
+      <div class="breadcrumb-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <span>/</span>
+        <a href="index.html#trilha">Trilha da Estrada</a>
+        <span>/</span>
+        <span style="color: var(--brand-gold);">Marco 01</span>
+      </div>
+
+      <div style="display: inline-block; background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase;">
+        <i class="fa-solid fa-circle-check"></i> Aula Concluída no Sábado Passado
+      </div>
+
+      <h1 class="lesson-page-title">Aula 01: Dominando Arquivos e Pastas no Windows</h1>
+      <p class="lesson-page-subtitle">
+        Como o computador armazena informações e como organizar as suas gavetas digitais com autonomia.
+      </p>
+    </div>
+  </section>
+
+  <!-- Conteúdo da Aula 01 -->
+  <main class="lesson-body container">
+
+    <!-- Card 1: Conceito de Pastas -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-folder-open" style="color: var(--brand-gold);"></i> 1. O que são Pastas no Sistema Operacional?</h2>
+      <p>
+        Imagine o seu quarto com roupas e cadernos espalhados pelo chão. Fica difícil achar qualquer coisa, certo? No computador é a mesma coisa: sem organização, seus arquivos somem na imensidão do disco.
+      </p>
+      <p>
+        As <strong>pastas</strong> (ou diretórios) são como <em>gavetas com etiquetas</em>. Dentro de uma pasta podemos guardar arquivos ou até mesmo outras pastas menores (chamadas de subpastas).
+      </p>
+
+      <div style="background: rgba(15, 23, 42, 0.9); border-left: 4px solid var(--brand-gold); padding: 18px 24px; border-radius: 8px; margin-top: 20px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 10px; font-family: 'Chakra Petch', sans-serif;">
+          <i class="fa-solid fa-sitemap" style="color: var(--brand-gold);"></i> O Caminho do Arquivo (Path):
+        </h4>
+        <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 8px;">
+          Todo arquivo tem um endereço físico dentro do Windows. Por exemplo:
+        </p>
+        <code style="display: block; background: #090e1a; color: var(--brand-gold-light); padding: 10px 14px; border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 0.88rem;">
+          C:\Usuarios\Aluno\Documentos\Aulas_LiraCode\minha_anotacao.txt
+        </code>
+      </div>
+    </article>
+
+    <!-- Card 2: Bloco de Notas e Primeiro Arquivo -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-file-lines" style="color: #38bdf8;"></i> 2. Criando o Primeiro Arquivo de Texto Puro (.txt)</h2>
+      <p>
+        O <strong>Bloco de Notas</strong> é o editor mais leve e clássico do Windows. Diferente de programas pesados, ele guarda texto puro (sem formatação, sem negrito, sem imagens ocultas).
+      </p>
+      <p>
+        Em aula, cada aluno praticou:
+      </p>
+      <ul style="margin-left: 20px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
+        <li>Abrir o Bloco de Notas através do menu Iniciar;</li>
+        <li>Escrever uma mensagem curta de apresentação;</li>
+        <li>Salvar o arquivo dentro da sua própria pasta de treino;</li>
+        <li>Fechar o programa e reabri-lo dando duplo clique no arquivo salvo.</li>
+      </ul>
+    </article>
+
+    <!-- Card 3: Teclas de Atalho Essenciais -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-keyboard" style="color: var(--brand-accent);"></i> 3. Teclas de Atalho que Todo Futuro Dev Precisa Saber</h2>
+      <p>
+        Quem domina o teclado trabalha muito mais rápido do que quem depende só do mouse. Memorizamos estes quatro atalhos fundamentais:
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 18px;">
+        <div style="background: #0f172a; border: 1px solid var(--surface-border); padding: 16px; border-radius: 12px; text-align: center;">
+          <kbd style="background: #1e293b; color: var(--brand-gold); border: 1px solid var(--brand-gold); padding: 4px 10px; border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 1rem; font-weight: bold;">Ctrl + S</kbd>
+          <div style="color: #fff; font-weight: bold; margin-top: 8px;">Salvar Arquivo</div>
+          <div style="font-size: 0.78rem; color: var(--text-dim);">Nunca perca seu progresso!</div>
+        </div>
+
+        <div style="background: #0f172a; border: 1px solid var(--surface-border); padding: 16px; border-radius: 12px; text-align: center;">
+          <kbd style="background: #1e293b; color: var(--brand-gold); border: 1px solid var(--brand-gold); padding: 4px 10px; border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 1rem; font-weight: bold;">F2</kbd>
+          <div style="color: #fff; font-weight: bold; margin-top: 8px;">Renomear</div>
+          <div style="font-size: 0.78rem; color: var(--text-dim);">Mude o nome do arquivo rápido.</div>
+        </div>
+
+        <div style="background: #0f172a; border: 1px solid var(--surface-border); padding: 16px; border-radius: 12px; text-align: center;">
+          <kbd style="background: #1e293b; color: var(--brand-gold); border: 1px solid var(--brand-gold); padding: 4px 10px; border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 1rem; font-weight: bold;">Delete</kbd>
+          <div style="color: #fff; font-weight: bold; margin-top: 8px;">Apagar</div>
+          <div style="font-size: 0.78rem; color: var(--text-dim);">Envia para a Lixeira.</div>
+        </div>
+
+        <div style="background: #0f172a; border: 1px solid var(--surface-border); padding: 16px; border-radius: 12px; text-align: center;">
+          <kbd style="background: #1e293b; color: var(--brand-gold); border: 1px solid var(--brand-gold); padding: 4px 10px; border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 1rem; font-weight: bold;">Ctrl + Z</kbd>
+          <div style="color: #fff; font-weight: bold; margin-top: 8px;">Desfazer</div>
+          <div style="font-size: 0.78rem; color: var(--text-dim);">O "botão de volta no tempo".</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4: Próximo Passo -->
+    <div style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(185, 28, 28, 0.3) 100%); border: 2px solid var(--brand-gold); border-radius: 18px; padding: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <span style="color: var(--brand-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">Pronto para o próximo marco?</span>
+        <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 1.5rem; color: #fff; margin-top: 4px;">Marco 02: O Crachá dos Arquivos & Cibersegurança</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Aprenda sobre extensões de arquivos, faça simulações de armadilhas e baixe modelos no Laboratório.</p>
+      </div>
+      <a href="aula02.html" class="btn-primary">
+        Avançar para Aula 02 <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-logo">PROJETO LIRACODE</div>
+          <div class="footer-text">Educação Tecnológica, Lógica & Cibersegurança &copy; 2026</div>
+        </div>
+        <div class="footer-text">
+          <a href="index.html#trilha" style="color: var(--brand-gold); text-decoration: none;">&larr; Voltar para a Trilha da Estrada</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

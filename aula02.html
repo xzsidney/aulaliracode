@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 02: O Crachá dos Arquivos & Cibersegurança | Projeto LiraCode</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo-escudo">
+          <div class="escudo-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="logo-text">
+            <h1>LIRACODE</h1>
+            <span>Aulas & Cibersegurança</span>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="index.html#trilha" class="nav-link">Trilha da Estrada</a></li>
+            <li><a href="aula01.html" class="nav-link">Aula 01</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho da Aula 02 -->
+  <section class="lesson-page-header">
+    <div class="container">
+      <div class="breadcrumb-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <span>/</span>
+        <a href="index.html#trilha">Trilha da Estrada</a>
+        <span>/</span>
+        <span style="color: var(--brand-gold);">Marco 02</span>
+      </div>
+
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(234, 179, 8, 0.2); color: var(--brand-gold-light); border: 1px solid var(--brand-gold); padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase;">
+        <span class="pulse-dot"></span> Marco Atual da Estrada (Aula de Amanhã)
+      </div>
+
+      <h1 class="lesson-page-title">Aula 02: O Crachá dos Arquivos & Cibersegurança</h1>
+      <p class="lesson-page-subtitle">
+        Quem é quem no computador? Identifique formatos, meça os riscos reais e experimente nosso Laboratório Interativo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Corpo Principal da Aula 02 -->
+  <main class="lesson-body container">
+
+    <!-- Card 1: O que é Extensão -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-id-badge" style="color: var(--brand-gold);"></i> 1. O que é uma Extensão de Arquivo?</h2>
+      <p>
+        Todo arquivo tem um <strong>"sobrenome"</strong> após o último ponto do seu nome. Por exemplo: em <code>trabalho.txt</code>, o sobrenome é <code>.txt</code>.
+      </p>
+      <p>
+        Esse sobrenome é como um crachá de identificação. Ele diz para o Windows qual aplicativo tem a capacidade de abrir aquele conteúdo. Arquivos passivos guardam apenas texto ou imagens, enquanto arquivos executáveis contêm ordens diretas para o processador do computador.
+      </p>
+    </article>
+
+    <!-- Card 2: Os 4 Formatos e Medidores de Risco com Download Blob -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-flask-vial" style="color: #38bdf8;"></i> 2. Laboratório: Extensões & Medidores de Risco</h2>
+      <p>
+        Clique nos botões de cada modelo abaixo para baixar um arquivo real e testar no seu computador durante a aula:
+      </p>
+
+      <div class="ext-grid">
+        
+        <!-- .TXT -->
+        <div class="ext-card safe">
+          <div>
+            <div class="ext-top">
+              <span class="ext-name">.txt</span>
+              <span class="ext-badge badge-risk-low"><i class="fa-solid fa-shield-check"></i> Seguro</span>
+            </div>
+            <h4>Texto Puro</h4>
+            <p>Contém apenas caracteres normais. Não executa ordens nem roda comandos.</p>
+          </div>
+          <div>
+            <div class="meter-wrapper">
+              <div class="meter-label">
+                <span>Nível de Risco:</span>
+                <span style="color: var(--color-safe); font-weight: bold;">1 / 10 (Quase Zero)</span>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill fill-safe"></div>
+              </div>
+            </div>
+            <button onclick="baixarModelo('txt')" class="btn-download-blob btn-blob-safe">
+              <i class="fa-solid fa-download"></i> Baixar Exemplo (.txt)
+            </button>
+          </div>
+        </div>
+
+        <!-- .PNG -->
+        <div class="ext-card safe">
+          <div>
+            <div class="ext-top">
+              <span class="ext-name">.png</span>
+              <span class="ext-badge badge-risk-low"><i class="fa-solid fa-image"></i> Seguro</span>
+            </div>
+            <h4>Imagem Digital</h4>
+            <p>Guarda pixels de cores e transparência. Seguro para abrir em visualizadores.</p>
+          </div>
+          <div>
+            <div class="meter-wrapper">
+              <div class="meter-label">
+                <span>Nível de Risco:</span>
+                <span style="color: var(--color-safe); font-weight: bold;">2 / 10 (Muito Baixo)</span>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill fill-safe" style="width: 20%;"></div>
+              </div>
+            </div>
+            <button onclick="baixarModelo('png')" class="btn-download-blob btn-blob-safe">
+              <i class="fa-solid fa-download"></i> Baixar Imagem (.png)
+            </button>
+          </div>
+        </div>
+
+        <!-- .JSON -->
+        <div class="ext-card moderate">
+          <div>
+            <div class="ext-top">
+              <span class="ext-name">.json</span>
+              <span class="ext-badge badge-risk-med"><i class="fa-solid fa-code"></i> Dados</span>
+            </div>
+            <h4>Ficha de Game / Dados</h4>
+            <p>Formato de dados estruturados. Muito usado para salvar inventário e vidas em jogos.</p>
+          </div>
+          <div>
+            <div class="meter-wrapper">
+              <div class="meter-label">
+                <span>Nível de Risco:</span>
+                <span style="color: var(--color-warning); font-weight: bold;">2 / 10 (Dados Passivos)</span>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill fill-med"></div>
+              </div>
+            </div>
+            <button onclick="baixarModelo('json')" class="btn-download-blob btn-blob-med">
+              <i class="fa-solid fa-download"></i> Baixar Ficha RPG (.json)
+            </button>
+          </div>
+        </div>
+
+        <!-- .EXE / .BAT -->
+        <div class="ext-card danger">
+          <div>
+            <div class="ext-top">
+              <span class="ext-name">.exe / .bat</span>
+              <span class="ext-badge badge-risk-high"><i class="fa-solid fa-triangle-exclamation"></i> Alerta</span>
+            </div>
+            <h4 style="color: #fca5a5;">Executável / Script</h4>
+            <p>Instruções diretas para a máquina. Pode instalar programas ou apagar arquivos do sistema.</p>
+          </div>
+          <div>
+            <div class="meter-wrapper">
+              <div class="meter-label">
+                <span>Nível de Risco:</span>
+                <span style="color: var(--color-danger); font-weight: bold;">10 / 10 (Atenção Máxima!)</span>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill fill-danger"></div>
+              </div>
+            </div>
+            <button onclick="baixarModelo('bat')" class="btn-download-blob btn-blob-danger">
+              <i class="fa-solid fa-shield-virus"></i> Baixar Teste Seguro (.bat)
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Card 3: Simulador do Golpe do Arquivo Oculto -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-user-ninja" style="color: var(--brand-red-light);"></i> 3. Simulador Interativo: O Golpe do Arquivo Oculto</h2>
+      <p>
+        Por padrão, o Windows esconde a extensão dos arquivos conhecidos. Criminosos na internet se aproveitam disso para enviar vírus com nomes como <code>foto_da_viagem.png.exe</code>.
+      </p>
+      <p>
+        Use o interruptor abaixo para simular como a vítima é enganada quando as extensões estão ocultas:
+      </p>
+
+      <div class="simulator-box">
+        <div class="sim-controls">
+          <div>
+            <span style="font-family: 'Fira Code', monospace; color: var(--brand-gold); font-size: 0.78rem; text-transform: uppercase;">Experimento Prático de Aula</span>
+            <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 1.3rem; color: #fff;">Configuração do Windows Explorer</h3>
+          </div>
+
+          <label class="switch-label">
+            <span>Ocultar extensões conhecidas no Windows:</span>
+            <input type="checkbox" id="toggleOcultar" style="display: none;" onchange="atualizarSimulador()">
+            <div class="switch-toggle"></div>
+          </label>
+        </div>
+
+        <div class="sim-display">
+          
+          <div class="sim-file-view">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;">Como o arquivo aparece na pasta:</div>
+            <div id="simIcon" class="file-icon-large" style="color: #38bdf8;">
+              <i class="fa-solid fa-image"></i>
+            </div>
+            <div id="simNome" class="file-name-styled">foto_da_viagem.png.exe</div>
+            <div id="simTipo" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">Tipo real: Aplicativo Executável (.exe)</div>
+          </div>
+
+          <div id="simDiagnostico" class="sim-result-box">
+            <!-- Injetado dinamicamente -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Dica de Proteção -->
+      <div style="margin-top: 24px; background: rgba(30, 58, 138, 0.25); border: 1px solid var(--brand-gold); padding: 18px 22px; border-radius: 12px; display: flex; align-items: flex-start; gap: 14px;">
+        <i class="fa-solid fa-shield-halved" style="color: var(--brand-gold); font-size: 1.5rem; margin-top: 2px;"></i>
+        <div>
+          <strong style="color: var(--brand-gold-light); font-size: 0.95rem;">Como se proteger no seu computador:</strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">
+            No Explorador de Arquivos do Windows, vá no menu superior <strong>Exibir</strong> &rarr; <strong>Mostrar</strong> e marque a opção <strong>"Extensões de nomes de arquivos"</strong>. Dessa forma, você sempre verá a verdadeira extensão de qualquer arquivo!
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4: Próximas Aulas na Estrada -->
+    <div style="background: rgba(15, 23, 42, 0.8); border: 2px solid var(--surface-border); border-radius: 18px; padding: 26px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <span style="color: var(--text-dim); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Próxima parada na estrada:</span>
+        <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 1.3rem; color: #fff; margin-top: 4px;">Marco 03: Primeiras Linhas de Lógica</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Condicionais, decisões lógicas e como o computador pensa. Bloqueada até o próximo sábado!</p>
+      </div>
+      <a href="index.html#trilha" class="btn-outline">
+        <i class="fa-solid fa-route"></i> Ver a Trilha da Estrada
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Modal Customizado (Substitui alert) -->
+  <div id="modalAviso" class="custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <i id="modalIcone" class="fa-solid fa-circle-check modal-icon"></i>
+        <h4 id="modalTitulo" class="modal-title">Download Iniciado</h4>
+      </div>
+      <p id="modalMensagem" class="modal-body">Arquivo baixado com sucesso.</p>
+      <div style="text-align: right;">
+        <button onclick="fecharModal()" class="btn-primary" style="padding: 8px 18px; font-size: 0.85rem;">
+          Entendido!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-logo">PROJETO LIRACODE</div>
+          <div class="footer-text">Educação Tecnológica, Lógica & Cibersegurança &copy; 2026</div>
+        </div>
+        <div class="footer-text">
+          <a href="index.html#trilha" style="color: var(--brand-gold); text-decoration: none;">&larr; Voltar para a Trilha da Estrada</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts Vanilla do Laboratório -->
+  <script>
+    // Sistema de Modal
+    function abrirModal(titulo, mensagem, tipo = 'sucesso') {
+      const modal = document.getElementById('modalAviso');
+      const tituloEl = document.getElementById('modalTitulo');
+      const msgEl = document.getElementById('modalMensagem');
+      const iconeEl = document.getElementById('modalIcone');
+
+      tituloEl.innerText = titulo;
+      msgEl.innerText = mensagem;
+
+      if (tipo === 'alerta') {
+        iconeEl.className = 'fa-solid fa-triangle-exclamation modal-icon';
+        iconeEl.style.color = 'var(--brand-red-light)';
+      } else {
+        iconeEl.className = 'fa-solid fa-circle-check modal-icon';
+        iconeEl.style.color = '#34d399';
+      }
+
+      modal.classList.add('active');
+    }
+
+    function fecharModal() {
+      document.getElementById('modalAviso').classList.remove('active');
+    }
+
+    // Fechar ao clicar fora
+    document.getElementById('modalAviso').addEventListener('click', (e) => {
+      if (e.target.id === 'modalAviso') fecharModal();
+    });
+
+    // Gerador de Downloads Reais via JavaScript Blob
+    function baixarModelo(tipo) {
+      let conteudo = '';
+      let nomeArquivo = '';
+      let mimeType = 'text/plain';
+
+      if (tipo === 'txt') {
+        nomeArquivo = 'minha_anotacao.txt';
+        conteudo = "=================================================\n" +
+                   "PROJETO LIRACODE - AULA 01 E 02\n" +
+                   "=================================================\n\n" +
+                   "Parabéns! Você abriu um arquivo de texto puro (.txt).\n\n" +
+                   "Arquivos .txt guardam caracteres sem nenhuma instrução oculta.\n" +
+                   "Eles são ideais para anotações rápidas e são 100% seguros para abrir!\n";
+      } 
+      else if (tipo === 'json') {
+        nomeArquivo = 'personagem_game.json';
+        mimeType = 'application/json';
+        conteudo = JSON.stringify({
+          "projeto": "LiraCode RPG",
+          "personagem": "Guerreiro 486",
+          "classe": "Explorador da Computação",
+          "nivel": 15,
+          "vida_hp": 100,
+          "moedas_ouro": 350,
+          "inventario": [
+            "Espada de Madeira",
+            "Poção de Cura Rápida",
+            "Escudo de Bronze LiraCode"
+          ],
+          "habilidades": {
+            "logica_programacao": 85,
+            "ciberseguranca": 99,
+            "velocidade_teclado": 70
+          }
+        }, null, 2);
+      } 
+      else if (tipo === 'bat') {
+        nomeArquivo = 'teste_seguro.bat';
+        conteudo = "@echo off\r\n" +
+                   "cls\r\n" +
+                   "color 0A\r\n" +
+                   "echo ====================================================\r\n" +
+                   "echo         PROJETO LIRACODE - TESTE SEGURO\r\n" +
+                   "echo ====================================================\r\n" +
+                   "echo.\r\n" +
+                   "echo Voce acabou de executar um script em lote (.bat)!\r\n" +
+                   "echo Repare como o computador executou estas ordens automaticamente.\r\n" +
+                   "echo Por isso, NUNCA abra arquivos executaveis de fontes suspeitas!\r\n" +
+                   "echo.\r\n" +
+                   "echo ====================================================\r\n" +
+                   "pause\r\n";
+      } 
+      else if (tipo === 'png') {
+        // Gera um PNG no Canvas com o Escudo LiraCode
+        const canvas = document.createElement('canvas');
+        canvas.width = 300;
+        canvas.height = 300;
+        const ctx = canvas.getContext('2d');
+
+        // Fundo Azul
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, 300, 300);
+
+        // Círculo Vermelho
+        ctx.fillStyle = '#b91c1c';
+        ctx.beginPath();
+        ctx.arc(150, 150, 110, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Borda Dourada
+        ctx.lineWidth = 8;
+        ctx.strokeStyle = '#eab308';
+        ctx.stroke();
+
+        // Texto Dourado
+        ctx.fillStyle = '#eab308';
+        ctx.font = 'bold 38px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('LIRACODE', 150, 160);
+
+        canvas.toBlob((blob) => {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'escudo_liracode.png';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          abrirModal("Download Concluído", "A imagem 'escudo_liracode.png' foi gerada e salva com sucesso!");
+        });
+        return;
+      }
+
+      // Download de Blob para TXT, JSON e BAT
+      const blob = new Blob([conteudo], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = nomeArquivo;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      abrirModal("Download Concluído", `O modelo didático '${nomeArquivo}' foi baixado com sucesso na sua máquina!`);
+    }
+
+    // Simulador do Golpe do Arquivo Oculto
+    function atualizarSimulador() {
+      const oculta = document.getElementById('toggleOcultar').checked;
+      const nomeEl = document.getElementById('simNome');
+      const tipoEl = document.getElementById('simTipo');
+      const iconEl = document.getElementById('simIcon');
+      const diagEl = document.getElementById('simDiagnostico');
+
+      if (oculta) {
+        // Armadilha armada: o .exe desaparece aos olhos do usuário!
+        nomeEl.innerHTML = `<span style="color: #fff;">foto_da_viagem.png</span> <span style="font-size: 0.75rem; color: #f87171;">(.exe escondido!)</span>`;
+        tipoEl.innerHTML = `<span style="color: var(--brand-red-light); font-weight: bold;">⚠️ Atenção: O Windows acha que é foto, mas o arquivo é um PROGRAMA!</span>`;
+        iconEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color: var(--brand-red-light); animation: pulse 1.5s infinite;"></i>`;
+
+        diagEl.innerHTML = `
+          <div style="background: rgba(185, 28, 28, 0.25); border: 1px solid var(--brand-red-light); padding: 16px; border-radius: 10px;">
+            <div style="color: var(--brand-gold-light); font-weight: bold; font-size: 0.95rem; margin-bottom: 6px;">
+              <i class="fa-solid fa-skull-crossbones"></i> ARMADILHA ARMADA!
+            </div>
+            <p style="font-size: 0.85rem; color: #fecaca; margin: 0; line-height: 1.5;">
+              Como as extensões estão <strong>ocultas</strong>, a vítima acha que está abrindo uma foto inofensiva (<code>foto_da_viagem.png</code>). Ao dar dois cliques, o computador executa o <code>.exe</code> secreto, que pode infectar o sistema!
+            </p>
+          </div>
+        `;
+      } else {
+        // Seguro: a extensão real é visível!
+        nomeEl.innerHTML = `<span style="color: #fff;">foto_da_viagem.png</span><span style="color: var(--brand-gold); font-weight: bold;">.exe</span>`;
+        tipoEl.innerHTML = `<span style="color: #34d399; font-weight: bold;">Extensão real revelada (.exe no final)</span>`;
+        iconEl.innerHTML = `<i class="fa-solid fa-shield-halved" style="color: #34d399;"></i>`;
+
+        diagEl.innerHTML = `
+          <div style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; padding: 16px; border-radius: 10px;">
+            <div style="color: #34d399; font-weight: bold; font-size: 0.95rem; margin-bottom: 6px;">
+              <i class="fa-solid fa-circle-check"></i> GOLPE DESMASCARADO!
+            </div>
+            <p style="font-size: 0.85rem; color: #d1fae5; margin: 0; line-height: 1.5;">
+              Com as extensões ativadas no Windows, você bate o olho e vê imediatamente o <strong>.exe</strong> no final do nome. Você não é enganado e evita cair no golpe!
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    // Inicialização ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      atualizarSimulador();
+    });
+  </script>
+
+</body>
+</html>

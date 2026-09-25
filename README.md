@@ -1,39 +1,49 @@
-# 🎓 Portal de Aulas - LiraCode
+# 🛡️ Projeto LiraCode - Portal de Aulas & Cibersegurança
 
-Projeto didático estruturado com template responsivo, menu de navegação e páginas dedicadas para apoiar os alunos nas aulas de programação e computação.
+Portal web educativo com Design System inspirado em uniformes esportivos (Vermelho Carmesim `#b91c1c`, Azul Marinho `#0f172a`/`#1e3a8a` e Dourado `#eab308`). 
 
----
-
-## 🧭 Estrutura de Páginas do Portal
-
-- **[index.html](index.html) - Página Inicial (Home):**
-  - Boas-vindas aos estudantes.
-  - Painel de módulos disponíveis com atalhos de navegação.
-  - Dicas e metodologia de estudo.
-- **[logica.html](logica.html) - Aula 01: Lógica de Programação:**
-  - O que é lógica de programação.
-  - Conceito de algoritmos com exemplos do cotidiano.
-  - Pilares fundamentais (Variáveis, Condicionais, Loops e Funções).
-  - Dicas práticas.
-- **[arquivos-seguranca.html](arquivos-seguranca.html) - Aula 02: Extensões de Arquivos & Segurança:**
-  - Explicação sobre extensões e formatos de arquivos.
-  - Cartões com níveis de risco de cada formato (.txt, .json, .png, .exe).
-  - Botões para download dos arquivos de exemplo para os alunos testarem em sala de aula.
-  - Alerta de cibersegurança: O golpe da extensão dupla e como exibir extensões no Windows.
-- **[style.css](style.css):**
-  - Estilização unificada, menu de navegação responsivo (desktop e mobile), cards com badges de status e paleta moderna.
+O projeto é voltado para jovens de 10 a 16 anos, ensinando a **controlar o computador e a tecnologia por baixo do capô**, e não apenas ser um usuário passivo de telas de celular.
 
 ---
 
-## 📁 Arquivos de Exemplo para Download (pasta `exemplos/`)
-- `exemplo-texto.txt`: Arquivo de texto puro (.txt) - *Risco Muito Baixo*
-- `exemplo-dados.json`: Arquivo de dados estruturados (.json) - *Risco Baixo*
-- `exemplo-imagem.png`: Imagem raster com transparência (.png) - *Risco Baixo / Atenção*
-- `exemplo-programa.exe`: Executável de teste seguro compilado em C# (.exe) - *Risco Alto* (exibe janela didática de alerta)
-- `ExemploApp.cs`: Código-fonte aberto do executável de exemplo.
+## 🛣️ A Trilha da Estrada (Roadmap de Aulas)
+
+A página inicial ([index.html](index.html)) conta com a **Trilha da Estrada Interativa**, onde cada aula é um marco quilométrico e pegadas (**👣**) indicam a localização do progresso atual da turma:
+
+- 🟢 **Marco 01 (Aula 01):** [Dominando Arquivos e Pastas no Windows](aula01.html) — *Concluída*
+- 🟡 **Marco 02 (Aula 02):** [O Crachá dos Arquivos: Extensões e Cibersegurança](aula02.html) — *Aula Atual (Onde o pezinho 👣 está!)*
+- 🔒 **Marco 03 (Aula 03):** Primeiras Linhas de Lógica — *Bloqueada / Em Breve*
+- 🔒 **Marco 04 (Aula 04):** Criando sua Primeira Página Web — *Bloqueada / Em Breve*
+- 🔒 **Marco 05 (Aula 05):** Python e Automação Prática — *Bloqueada / Em Breve*
+
+> Conforme as novas aulas forem ministradas aos sábados, basta criar o arquivo `aula03.html`, `aula04.html`, etc. e alterar a classe do card no `index.html` de `locked` para `unlocked`!
 
 ---
 
-## 🌐 Como Rodar / Publicar
-1. **Localmente:** Basta dar um duplo clique em `index.html` no seu computador.
-2. **Online (GitHub Pages):** Ative o **GitHub Pages** nas configurações do repositório (`Settings > Pages > Branch main / root`) para disponibilizar o site em um link público gratuito para todos os alunos acessarem diretamente do navegador ou celular!
+## 🧪 Laboratório Interativo da Aula 02
+
+A página [aula02.html](aula02.html) inclui componentes interativos em JavaScript nativo:
+1. **Cards Dinâmicos de Extensões:** Análise detalhada de `.txt`, `.png`, `.json` e `.exe/.bat` com medidores visuais de risco.
+2. **Gerador de Downloads Reais via `Blob`:** Botões que criam e baixam arquivos reais diretamente no navegador do aluno:
+   - `minha_anotacao.txt` (texto puro)
+   - `personagem_game.json` (ficha RPG completa com atributos e inventário)
+   - `escudo_liracode.png` (imagem gerada nativamente via HTML5 Canvas)
+   - `teste_seguro.bat` (script demonstrativo inofensivo)
+3. **Simulador do Golpe do Arquivo Oculto:** Interruptor interativo que demonstra como golpistas disfarçam executáveis (ex: `foto.png.exe`) quando a opção de ocultar extensões está ativa no Windows.
+
+---
+
+## 👨‍👩‍👧‍👦 Área dos Pais (Transparência e Parceria)
+Seção especial no portal explicando aos pais:
+- A bagagem de mais de 30 anos na área de TI (desde os computadores 486).
+- Por que ensinar segurança, raciocínio lógico e resolução de problemas aos sábados.
+
+---
+
+## 🌐 Como Visualizar e Hospedar
+
+1. **Localmente:** Basta dar um duplo clique em [index.html](index.html) para abrir no navegador.
+2. **Online no GitHub Pages:**
+   - Acesse seu repositório no GitHub: `Settings` &rarr; `Pages`.
+   - Em *Source*, selecione a branch `main` e a pasta `/(root)`.
+   - Clique em **Save**. O portal ficará online gratuitamente para todos os alunos acessarem em seus computadores ou celulares!
