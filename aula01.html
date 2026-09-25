@@ -76,7 +76,45 @@ body {
 .footer { background: #090e1a; border-top: 2px solid var(--brand-gold); padding: 40px 0; margin-top: auto; }
 .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
 .footer-logo { font-family: 'Chakra Petch', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--brand-gold); }
-.footer-text { font-size: 0.85rem; color: var(--text-dim); }
+.mobile-toggle {
+  display: none;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid var(--brand-gold);
+  color: var(--brand-gold);
+  font-size: 1.3rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.mobile-toggle:hover {
+  background: var(--brand-gold);
+  color: #0f172a;
+}
+
+@media (max-width: 860px) {
+  .mobile-toggle { display: flex; }
+  .nav-menu {
+    display: none; position: absolute; top: 76px; left: 0; right: 0;
+    background: rgba(9, 14, 26, 0.98); backdrop-filter: blur(16px);
+    border-bottom: 2px solid var(--brand-gold); flex-direction: column;
+    padding: 20px; gap: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+  .nav-menu.active { display: flex; animation: slideDownNav 0.25s ease-out; }
+  .nav-link { width: 100%; text-align: center; padding: 12px 16px; font-size: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); }
+  .logo-text h1 { font-size: 1.25rem; }
+  .logo-text span { font-size: 0.62rem; }
+  .escudo-badge { width: 40px; height: 40px; font-size: 1.2rem; }
+  .lesson-page-title { font-size: 2rem; }
+}
+
+@keyframes slideDownNav {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   </style>
 </head>
 <body>
@@ -95,8 +133,13 @@ body {
           </div>
         </a>
 
+        <!-- Botão Hambúrguer Mobile -->
+        <button id="mobileMenuBtn" class="mobile-toggle" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
         <nav>
-          <ul class="nav-menu">
+          <ul id="navMenu" class="nav-menu">
             <li><a href="index.html" class="nav-link">Início</a></li>
             <li><a href="index.html#trilha" class="nav-link">Trilha da Estrada</a></li>
             <li><a href="aula02.html" class="nav-link">Aula 02</a></li>
@@ -232,7 +275,27 @@ body {
         </div>
       </div>
     </div>
-  </footer>
-
+  <script>
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    if (mobileBtn && navMenu) {
+      mobileBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = mobileBtn.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+          icon.className = 'fa-solid fa-xmark';
+        } else {
+          icon.className = 'fa-solid fa-bars';
+        }
+      });
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          const icon = mobileBtn.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-bars';
+        });
+      });
+    }
+  </script>
 </body>
 </html>
