@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introdução à Lógica de Programação</title>
+    <title>Lógica de Programação & Extensões de Arquivos</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <h1>Lógica de Programação</h1>
-            <p class="subtitle">O primeiro passo essencial para se tornar um desenvolvedor de software.</p>
+            <h1>Lógica de Programação & Segurança</h1>
+            <p class="subtitle">Guia fundamental de conceitos e materiais de apoio para as aulas.</p>
         </div>
     </header>
 
@@ -77,6 +77,124 @@
             </div>
         </section>
 
+        <!-- Seção Didática: Extensões de Arquivo & Níveis de Risco -->
+        <section class="card">
+            <h2>📁 Extensões de Arquivos, Modelos & Níveis de Risco</h2>
+            <p>
+                Em computação, a <strong>extensão de um arquivo</strong> (os caracteres após o último ponto, ex: <code>.txt</code>, <code>.png</code>) 
+                indica ao sistema operacional qual é o formato dos dados e qual programa deve abri-lo. 
+                Compreender o tipo de arquivo é essencial tanto para o desenvolvimento de software quanto para a <strong>segurança da informação</strong>.
+            </p>
+
+            <div class="files-grid">
+                <!-- .txt -->
+                <div class="file-card safe">
+                    <div class="file-header">
+                        <span class="file-ext">.TXT</span>
+                        <span class="badge badge-safe">Risco: Muito Baixo</span>
+                    </div>
+                    <h3>Arquivo de Texto Simples</h3>
+                    <p class="file-desc">
+                        Contém apenas caracteres de texto puro (ASCII ou UTF-8). Não possui formatação visual, não carrega scripts ocultos e não se autoexecuta.
+                    </p>
+                    <div class="risk-info">
+                        <strong>🛡️ Análise de Risco:</strong>
+                        <p>Totalmente inofensivo ao abrir com editores como Bloco de Notas ou VS Code. O único cuidado é verificar se o arquivo não tem extensão dupla (como <code>nota.txt.exe</code>).</p>
+                    </div>
+                    <div class="download-action">
+                        <a href="exemplos/exemplo-texto.txt" download class="btn-download">
+                            ⬇️ Baixar exemplo (.txt)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- .json -->
+                <div class="file-card safe">
+                    <div class="file-header">
+                        <span class="file-ext">.JSON</span>
+                        <span class="badge badge-safe">Risco: Baixo</span>
+                    </div>
+                    <h3>JavaScript Object Notation</h3>
+                    <p class="file-desc">
+                        Formato padrão da web para troca e armazenamento de dados estruturados em pares de chave e valor. É legível tanto por humanos quanto por máquinas.
+                    </p>
+                    <div class="risk-info">
+                        <strong>🛡️ Análise de Risco:</strong>
+                        <p>O arquivo JSON em si é apenas dado passivo, não executa código. O risco só existe caso um sistema mal programado interprete os dados sem validação (falhas de injeção).</p>
+                    </div>
+                    <div class="download-action">
+                        <a href="exemplos/exemplo-dados.json" download class="btn-download">
+                            ⬇️ Baixar exemplo (.json)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- .png -->
+                <div class="file-card moderate">
+                    <div class="file-header">
+                        <span class="file-ext">.PNG</span>
+                        <span class="badge badge-moderate">Risco: Baixo / Atenção</span>
+                    </div>
+                    <h3>Portable Network Graphics (Imagem)</h3>
+                    <p class="file-desc">
+                        Formato popular de imagem com suporte a canal alfa (fundo transparente) e compressão sem perda de qualidade.
+                    </p>
+                    <div class="risk-info">
+                        <strong>🛡️ Análise de Risco:</strong>
+                        <p>Imagens PNG são arquivos de mídia seguros. Contudo, cibercriminosos costumam disfarçar executáveis trocando o ícone para o de uma foto e usando nomes falsos (ex: <code>foto.png.exe</code>).</p>
+                    </div>
+                    <div class="download-action">
+                        <a href="exemplos/exemplo-imagem.png" download class="btn-download">
+                            ⬇️ Baixar exemplo (.png)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- .exe -->
+                <div class="file-card dangerous">
+                    <div class="file-header">
+                        <span class="file-ext">.EXE</span>
+                        <span class="badge badge-danger">Risco: Muito Alto</span>
+                    </div>
+                    <h3>Arquivo Executável (Windows)</h3>
+                    <p class="file-desc">
+                        Contém instruções diretas em código de máquina para o processador e o sistema operacional. Executa comandos diretamente no computador.
+                    </p>
+                    <div class="risk-info">
+                        <strong>⚠️ Análise de Risco:</strong>
+                        <p>Extremamente crítico! Pode ler, alterar ou apagar arquivos, conectar-se a servidores remotos e instalar vírus ou malwares. <strong>Nunca execute</strong> arquivos .exe de fontes desconhecidas!</p>
+                    </div>
+                    <div class="download-action">
+                        <a href="exemplos/exemplo-programa.exe" download class="btn-download btn-warning-download">
+                            ⬇️ Baixar executável seguro de teste (.exe)
+                        </a>
+                    </div>
+                    <span class="exe-note">* Nosso .exe é 100% inofensivo e exibe apenas um popup didático criado para esta aula.</span>
+                </div>
+            </div>
+
+            <!-- Dica de Cibersegurança: Extensões Duplas e Windows Explorer -->
+            <div class="security-banner">
+                <h3>🔍 Dica Importante para a Aula: O Golpe da Extensão Dupla</h3>
+                <p>
+                    Por padrão, o Windows oculta a extensão dos arquivos conhecidos. Isso permite que golpistas enviem arquivos com nomes como:
+                </p>
+                <div class="fake-ext-demo">
+                    <div class="fake-box">
+                        <span class="fake-label">Como a vítima vê:</span>
+                        <code>contrato_aluguel.pdf</code> (com ícone de PDF)
+                    </div>
+                    <div class="fake-box">
+                        <span class="fake-label">O nome real do arquivo:</span>
+                        <code class="danger-code">contrato_aluguel.pdf.exe</code>
+                    </div>
+                </div>
+                <p>
+                    <strong>Como se proteger:</strong> No Explorador de Arquivos do Windows, acesse a aba <em>Exibir</em> e marque a opção <strong>"Extensões de nomes de arquivos"</strong>. Dessa forma, você sempre verá a verdadeira extensão de qualquer arquivo!
+                </p>
+            </div>
+        </section>
+
         <!-- Dicas de Aprendizado -->
         <section class="card">
             <h2>🚀 Dicas para Praticar</h2>
@@ -91,7 +209,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>Projeto de Introdução à Lógica de Programação &copy; 2026</p>
+            <p>Projeto de Introdução à Lógica de Programação &copy; 2026 - Material de Apoio Didático</p>
         </div>
     </footer>
 </body>

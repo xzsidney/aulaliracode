@@ -1,0 +1,19 @@
+====================================================
+ARQUIVO DE EXEMPLO: .TXT (Texto Puro / Plain Text)
+====================================================
+
+O que é:
+Arquivos com a extensão .txt contêm apenas texto não formatado
+(caracteres ASCII ou UTF-8). Não possuem estilos (negrito, itálico),
+não executam códigos e não possuem recursos ocultos.
+
+Para que serve:
+Anotações rápidas, logs de sistema, documentação simples e leitura humana direta.
+
+Nível de Risco: MUITO BAIXO / SEGURO
+Por não ser um formato executável, abrir um arquivo .txt nativo em um
+editor como Bloco de Notas ou VS Code é extremamente seguro.
+
+Atenção didática:
+Fique sempre atento a extensões duplas maliciosas como "texto.txt.exe",
+onde o arquivo na verdade é um executável disfarçado de texto!

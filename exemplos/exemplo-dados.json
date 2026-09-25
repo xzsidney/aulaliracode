@@ -1,0 +1,18 @@
+{
+  "nome_aula": "Lógica de Programação e Segurança de Arquivos",
+  "extensao": ".json",
+  "significado": "JavaScript Object Notation",
+  "descricao": "Formato leve e universal para armazenamento e troca de dados estruturados.",
+  "nivel_risco": "Baixo",
+  "explicacao_risco": "Arquivos JSON contêm apenas dados (chaves e valores) e não possuem código executável por si mesmos. O risco só existe caso o programa que lê o JSON execute o conteúdo sem validação (vulnerabilidade de injeção).",
+  "aluno_exemplo": {
+    "id": 101,
+    "nome": "Sidney",
+    "ativo": true,
+    "habilidades": [
+      "Lógica de Programação",
+      "Git & GitHub",
+      "HTML5 & CSS3"
+    ]
+  }
+}
