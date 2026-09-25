@@ -3,213 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lógica de Programação & Extensões de Arquivos</title>
+    <title>Portal do Aluno - LiraCode Aulas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
+    <!-- Navbar de Navegação -->
+    <nav class="navbar">
         <div class="container">
-            <h1>Lógica de Programação & Segurança</h1>
-            <p class="subtitle">Guia fundamental de conceitos e materiais de apoio para as aulas.</p>
+            <a href="index.html" class="brand">
+                <span class="brand-icon">&lt;/&gt;</span>
+                <span>LiraCode Aulas</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">🏠 Início</a></li>
+                <li><a href="logica.html">💡 Aula 1: Lógica</a></li>
+                <li><a href="arquivos-seguranca.html">📁 Aula 2: Arquivos & Segurança</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Portal de Aprendizado & Aulas Práticas</h1>
+            <p class="subtitle">
+                Material de apoio didático preparado para auxiliar os alunos nos fundamentos de programação, algoritmos e segurança da informação.
+            </p>
         </div>
     </header>
 
+    <!-- Conteúdo Principal -->
     <main class="container">
-        <!-- O que é -->
+        <!-- Boas-vindas -->
         <section class="card">
-            <h2>💡 O que é Lógica de Programação?</h2>
+            <h2>👋 Bem-vindo(a) às nossas aulas!</h2>
             <p>
-                Lógica de programação é a forma de organizar pensamentos e instruções em uma sequência 
-                coerente e lógica para que um computador possa executar uma tarefa e resolver um problema.
-            </p>
-            <p>
-                Antes de aprender qualquer linguagem específica (como Python, JavaScript, Java ou C#), 
-                é a lógica que nos ensina a raciocinar sobre passos, decisões e repetições.
+                Este portal foi desenvolvido como guia prático e interativo para acompanhar as nossas aulas. Aqui você encontra resumos conceituais objetivos, exemplos de códigos explicados passo a passo e modelos de arquivos reais para download e testes em seu próprio computador.
             </p>
         </section>
 
-        <!-- Algoritmos -->
+        <!-- Trilha de Aulas / Módulos -->
         <section class="card">
-            <h2>📋 O Conceito de Algoritmo</h2>
-            <p>
-                Um <strong>algoritmo</strong> nada mais é do que uma receita passo a passo para atingir um objetivo. 
-                Pense em uma receita de bolo ou em instruções para trocar uma lâmpada:
-            </p>
-            <div class="example-box">
-                <h4>Exemplo da vida real: Fazer um café</h4>
-                <ol>
-                    <li>Ferver a água.</li>
-                    <li>Colocar o filtro no suporte.</li>
-                    <li>Adicionar o pó de café no filtro.</li>
-                    <li>Despejar a água quente sobre o pó.</li>
-                    <li>Adoçar a gosto e servir.</li>
-                </ol>
-            </div>
-        </section>
+            <h2>📚 Módulos e Aulas Disponíveis</h2>
+            <p>Escolha um dos módulos abaixo para iniciar ou revisar os conteúdos ministrados em aula:</p>
 
-        <!-- Pilares Fundamentais -->
-        <section class="card">
-            <h2>🧱 Pilares Fundamentais</h2>
-            <div class="grid">
-                <div class="grid-item">
-                    <h3>1. Variáveis e Tipos</h3>
-                    <p>Espaços de memória para guardar dados (números, textos, datas, valores verdadeiro/falso).</p>
-                    <code>nome = "Maria"<br>idade = 25</code>
+            <div class="modules-grid">
+                <!-- Módulo 1 -->
+                <div class="module-card">
+                    <span class="module-badge">Módulo 01</span>
+                    <h3>Lógica de Programação & Algoritmos</h3>
+                    <p>
+                        Aprenda a estruturar o raciocínio lógico computacional: o conceito de algoritmo com exemplos do dia a dia, variáveis, estruturas condicionais (se/senão), laços de repetição e funções.
+                    </p>
+                    <a href="logica.html" class="btn-module">
+                        Acessar Aula 1 &rarr;
+                    </a>
                 </div>
-                <div class="grid-item">
-                    <h3>2. Condicionais (Se / Senão)</h3>
-                    <p>Tomada de decisões com base em condições lógicas.</p>
-                    <code>se (idade >= 18):<br>&nbsp;&nbsp;liberar_acesso()<br>senao:<br>&nbsp;&nbsp;bloquear_acesso()</code>
-                </div>
-                <div class="grid-item">
-                    <h3>3. Laços de Repetição (Loops)</h3>
-                    <p>Repetir um bloco de comandos várias vezes enquanto uma condição for atendida.</p>
-                    <code>enquanto (tem_itens):<br>&nbsp;&nbsp;processar_item()</code>
-                </div>
-                <div class="grid-item">
-                    <h3>4. Funções</h3>
-                    <p>Blocos de código reutilizáveis que realizam tarefas específicas quando chamados.</p>
-                    <code>funcao somar(a, b):<br>&nbsp;&nbsp;retornar a + b</code>
+
+                <!-- Módulo 2 -->
+                <div class="module-card">
+                    <span class="module-badge">Módulo 02</span>
+                    <h3>Extensões de Arquivos & Níveis de Risco</h3>
+                    <p>
+                        Entenda o que são formatos de arquivo, as diferenças práticas entre <code>.txt</code>, <code>.json</code>, <code>.png</code> e <code>.exe</code>, baixe modelos didáticos para teste e compreenda os alertas de cibersegurança.
+                    </p>
+                    <a href="arquivos-seguranca.html" class="btn-module">
+                        Acessar Aula 2 &rarr;
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Seção Didática: Extensões de Arquivo & Níveis de Risco -->
+        <!-- Metodologia e Dicas -->
         <section class="card">
-            <h2>📁 Extensões de Arquivos, Modelos & Níveis de Risco</h2>
-            <p>
-                Em computação, a <strong>extensão de um arquivo</strong> (os caracteres após o último ponto, ex: <code>.txt</code>, <code>.png</code>) 
-                indica ao sistema operacional qual é o formato dos dados e qual programa deve abri-lo. 
-                Compreender o tipo de arquivo é essencial tanto para o desenvolvimento de software quanto para a <strong>segurança da informação</strong>.
-            </p>
-
-            <div class="files-grid">
-                <!-- .txt -->
-                <div class="file-card safe">
-                    <div class="file-header">
-                        <span class="file-ext">.TXT</span>
-                        <span class="badge badge-safe">Risco: Muito Baixo</span>
-                    </div>
-                    <h3>Arquivo de Texto Simples</h3>
-                    <p class="file-desc">
-                        Contém apenas caracteres de texto puro (ASCII ou UTF-8). Não possui formatação visual, não carrega scripts ocultos e não se autoexecuta.
-                    </p>
-                    <div class="risk-info">
-                        <strong>🛡️ Análise de Risco:</strong>
-                        <p>Totalmente inofensivo ao abrir com editores como Bloco de Notas ou VS Code. O único cuidado é verificar se o arquivo não tem extensão dupla (como <code>nota.txt.exe</code>).</p>
-                    </div>
-                    <div class="download-action">
-                        <a href="exemplos/exemplo-texto.txt" download class="btn-download">
-                            ⬇️ Baixar exemplo (.txt)
-                        </a>
-                    </div>
-                </div>
-
-                <!-- .json -->
-                <div class="file-card safe">
-                    <div class="file-header">
-                        <span class="file-ext">.JSON</span>
-                        <span class="badge badge-safe">Risco: Baixo</span>
-                    </div>
-                    <h3>JavaScript Object Notation</h3>
-                    <p class="file-desc">
-                        Formato padrão da web para troca e armazenamento de dados estruturados em pares de chave e valor. É legível tanto por humanos quanto por máquinas.
-                    </p>
-                    <div class="risk-info">
-                        <strong>🛡️ Análise de Risco:</strong>
-                        <p>O arquivo JSON em si é apenas dado passivo, não executa código. O risco só existe caso um sistema mal programado interprete os dados sem validação (falhas de injeção).</p>
-                    </div>
-                    <div class="download-action">
-                        <a href="exemplos/exemplo-dados.json" download class="btn-download">
-                            ⬇️ Baixar exemplo (.json)
-                        </a>
-                    </div>
-                </div>
-
-                <!-- .png -->
-                <div class="file-card moderate">
-                    <div class="file-header">
-                        <span class="file-ext">.PNG</span>
-                        <span class="badge badge-moderate">Risco: Baixo / Atenção</span>
-                    </div>
-                    <h3>Portable Network Graphics (Imagem)</h3>
-                    <p class="file-desc">
-                        Formato popular de imagem com suporte a canal alfa (fundo transparente) e compressão sem perda de qualidade.
-                    </p>
-                    <div class="risk-info">
-                        <strong>🛡️ Análise de Risco:</strong>
-                        <p>Imagens PNG são arquivos de mídia seguros. Contudo, cibercriminosos costumam disfarçar executáveis trocando o ícone para o de uma foto e usando nomes falsos (ex: <code>foto.png.exe</code>).</p>
-                    </div>
-                    <div class="download-action">
-                        <a href="exemplos/exemplo-imagem.png" download class="btn-download">
-                            ⬇️ Baixar exemplo (.png)
-                        </a>
-                    </div>
-                </div>
-
-                <!-- .exe -->
-                <div class="file-card dangerous">
-                    <div class="file-header">
-                        <span class="file-ext">.EXE</span>
-                        <span class="badge badge-danger">Risco: Muito Alto</span>
-                    </div>
-                    <h3>Arquivo Executável (Windows)</h3>
-                    <p class="file-desc">
-                        Contém instruções diretas em código de máquina para o processador e o sistema operacional. Executa comandos diretamente no computador.
-                    </p>
-                    <div class="risk-info">
-                        <strong>⚠️ Análise de Risco:</strong>
-                        <p>Extremamente crítico! Pode ler, alterar ou apagar arquivos, conectar-se a servidores remotos e instalar vírus ou malwares. <strong>Nunca execute</strong> arquivos .exe de fontes desconhecidas!</p>
-                    </div>
-                    <div class="download-action">
-                        <a href="exemplos/exemplo-programa.exe" download class="btn-download btn-warning-download">
-                            ⬇️ Baixar executável seguro de teste (.exe)
-                        </a>
-                    </div>
-                    <span class="exe-note">* Nosso .exe é 100% inofensivo e exibe apenas um popup didático criado para esta aula.</span>
-                </div>
-            </div>
-
-            <!-- Dica de Cibersegurança: Extensões Duplas e Windows Explorer -->
-            <div class="security-banner">
-                <h3>🔍 Dica Importante para a Aula: O Golpe da Extensão Dupla</h3>
-                <p>
-                    Por padrão, o Windows oculta a extensão dos arquivos conhecidos. Isso permite que golpistas enviem arquivos com nomes como:
-                </p>
-                <div class="fake-ext-demo">
-                    <div class="fake-box">
-                        <span class="fake-label">Como a vítima vê:</span>
-                        <code>contrato_aluguel.pdf</code> (com ícone de PDF)
-                    </div>
-                    <div class="fake-box">
-                        <span class="fake-label">O nome real do arquivo:</span>
-                        <code class="danger-code">contrato_aluguel.pdf.exe</code>
-                    </div>
-                </div>
-                <p>
-                    <strong>Como se proteger:</strong> No Explorador de Arquivos do Windows, acesse a aba <em>Exibir</em> e marque a opção <strong>"Extensões de nomes de arquivos"</strong>. Dessa forma, você sempre verá a verdadeira extensão de qualquer arquivo!
-                </p>
-            </div>
-        </section>
-
-        <!-- Dicas de Aprendizado -->
-        <section class="card">
-            <h2>🚀 Dicas para Praticar</h2>
+            <h2>🎯 Como aproveitar ao máximo este conteúdo</h2>
             <ul class="tips-list">
-                <li><strong>Divida para conquistar:</strong> quebre grandes problemas em pequenos passos fáceis de resolver.</li>
-                <li><strong>Treine com pseudocódigo:</strong> escreva o que o programa deve fazer em português antes de codificar.</li>
-                <li><strong>Pratique diariamente:</strong> resolva pequenos desafios lógicos com frequência.</li>
-                <li><strong>Não decore, entenda:</strong> compreenda o "porquê" de cada estrutura antes de memorizar sintaxe.</li>
+                <li><strong>Estude no seu ritmo:</strong> Revise cada conceito até ter certeza de que compreendeu o fundamento antes de avançar.</li>
+                <li><strong>Baixe os arquivos de teste:</strong> Vá até a Aula 2, faça o download dos modelos e inspecione-os no seu próprio computador.</li>
+                <li><strong>Experimente e altere:</strong> Abra os arquivos em editores de código (como VS Code) e veja como pequenos ajustes afetam o resultado.</li>
+                <li><strong>Tire dúvidas em sala:</strong> Anote suas dúvidas para discutirmos juntos durante os encontros presenciais ou online.</li>
             </ul>
         </section>
     </main>
 
+    <!-- Rodapé -->
     <footer class="footer">
         <div class="container">
-            <p>Projeto de Introdução à Lógica de Programação &copy; 2026 - Material de Apoio Didático</p>
+            <p>Portal de Aulas LiraCode &copy; 2026 - Material Didático de Apoio</p>
         </div>
     </footer>
 </body>
