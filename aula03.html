@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 03: A Mágica do HTML Puro (A Ficha Vira Web) | Projeto LiraCode</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <style>
+/* CSS Embutido LiraCode Oficial */
+:root {
+  --brand-red: #b91c1c; --brand-red-dark: #881337; --brand-red-light: #ef4444;
+  --brand-blue: #1e3a8a; --brand-darkblue: #0f172a; --brand-navy: #090e1a;
+  --brand-gold: #eab308; --brand-gold-light: #fde047; --brand-gold-dark: #ca8a04;
+  --brand-accent: #f59e0b; --surface-card: #131d31; --surface-border: #1e293b;
+  --text-main: #f8fafc; --text-muted: #94a3b8; --text-dim: #64748b;
+  --color-safe: #10b981; --color-warning: #f59e0b; --color-danger: #ef4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--brand-darkblue);
+  background-image: radial-gradient(rgba(234, 179, 8, 0.12) 1.2px, transparent 0);
+  background-size: 26px 26px;
+  color: var(--text-main); line-height: 1.6; min-height: 100vh;
+  display: flex; flex-direction: column; overflow-x: hidden;
+}
+.container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* Navbar */
+.header-nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(10, 15, 29, 0.94); backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--brand-gold); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+.logo-escudo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.escudo-badge {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 50%, var(--brand-blue) 100%);
+  border: 2px solid var(--brand-gold); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.4); color: var(--brand-gold); font-size: 1.5rem;
+}
+.logo-text h1 {
+  font-family: 'Chakra Petch', sans-serif; font-size: 1.6rem; font-weight: 800; letter-spacing: 1.5px;
+  background: linear-gradient(to right, var(--brand-gold), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.logo-text span { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--brand-gold-light); display: block; }
+.nav-menu { display: flex; list-style: none; gap: 8px; align-items: center; }
+.nav-link { text-decoration: none; color: var(--text-main); font-size: 0.92rem; font-weight: 600; padding: 8px 16px; border-radius: 8px; transition: all 0.2s ease; }
+.nav-link:hover, .nav-link.active { color: var(--brand-gold); background: rgba(234, 179, 8, 0.12); border: 1px solid rgba(234, 179, 8, 0.3); }
+
+.pulse-dot {
+  width: 9px; height: 9px; background: #10b981; border-radius: 50%;
+  box-shadow: 0 0 10px #10b981; animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+/* Header da Página */
+.lesson-page-header { padding: 50px 0 40px 0; background: linear-gradient(180deg, #090e1a 0%, var(--brand-darkblue) 100%); border-bottom: 2px solid var(--brand-gold); }
+.breadcrumb-nav { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 0.88rem; }
+.breadcrumb-nav a { color: var(--brand-gold); text-decoration: none; font-weight: 600; }
+.breadcrumb-nav span { color: var(--text-dim); }
+.lesson-page-title { font-family: 'Chakra Petch', sans-serif; font-size: 2.6rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+.lesson-page-subtitle { font-size: 1.1rem; color: var(--text-muted); }
+
+/* Corpo da Aula */
+.lesson-body { padding: 50px 0 80px 0; }
+.content-card {
+  background: var(--surface-card); border: 1px solid var(--surface-border);
+  border-radius: 18px; padding: 32px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.content-card h2 { font-family: 'Chakra Petch', sans-serif; font-size: 1.6rem; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.content-card p { color: var(--text-muted); font-size: 1rem; margin-bottom: 14px; }
+
+/* Comparativo Visual Interativo */
+.compare-container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px;
+}
+.window-mockup {
+  border-radius: 14px; overflow: hidden; border: 2px solid var(--surface-border);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); display: flex; flex-direction: column;
+}
+.window-notepad {
+  background: #0f172a; border-color: #334155;
+}
+.window-browser {
+  background: #090e1a; border-color: var(--brand-gold);
+}
+.window-topbar {
+  padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.window-topbar.notepad-bar { background: #1e293b; color: #cbd5e1; }
+.window-topbar.browser-bar { background: #1e3a8a; color: #fde047; }
+.window-title { font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.window-controls { display: flex; gap: 6px; }
+.win-btn { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.win-red { background: #ef4444; }
+.win-yellow { background: #f59e0b; }
+.win-green { background: #10b981; }
+
+.notepad-menu {
+  background: #111827; padding: 4px 12px; font-size: 0.75rem; color: #94a3b8;
+  display: flex; gap: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.notepad-body {
+  padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.88rem;
+  color: #e2e8f0; line-height: 1.7; background: #0b1120; min-height: 280px; white-space: pre-wrap;
+}
+
+.browser-url-bar {
+  background: #0f172a; padding: 6px 14px; display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.78rem; font-family: 'Fira Code', monospace; color: #38bdf8;
+}
+.browser-body {
+  padding: 24px; background: #020617; min-height: 280px; display: flex; flex-direction: column; justify-content: center;
+}
+.web-rendered {
+  background: #0f172a; border: 2px solid var(--brand-gold); border-radius: 12px; padding: 20px;
+}
+.web-rendered h3 {
+  color: var(--brand-gold); font-size: 1.3rem; margin-bottom: 10px; border-bottom: 2px solid var(--brand-red); padding-bottom: 6px;
+}
+.web-rendered p {
+  color: #f1f5f9; font-size: 0.95rem; margin-bottom: 10px; line-height: 1.5;
+}
+.web-rendered strong { color: var(--brand-gold-light); }
+.web-rendered ul { margin-left: 20px; margin-bottom: 12px; color: #cbd5e1; font-size: 0.9rem; }
+.web-rendered em { color: #94a3b8; font-size: 0.82rem; }
+
+/* Bloco de Código Modelo */
+.code-box-header {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #090e1a; padding: 12px 18px; border-radius: 12px 12px 0 0;
+  border: 1px solid var(--surface-border); border-bottom: none;
+}
+.code-box-title {
+  font-family: 'Fira Code', monospace; font-size: 0.82rem; font-weight: 700; color: var(--brand-gold);
+  display: flex; align-items: center; gap: 8px;
+}
+.btn-copy {
+  background: rgba(234, 179, 8, 0.15); border: 1px solid var(--brand-gold); color: var(--brand-gold);
+  padding: 5px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer;
+  transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-copy:hover { background: var(--brand-gold); color: #0f172a; }
+.code-pre {
+  background: #020617; border: 1px solid var(--surface-border); border-radius: 0 0 12px 12px;
+  padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.9rem; color: #e2e8f0;
+  overflow-x: auto; line-height: 1.6;
+}
+.tag-html { color: #f87171; }
+.tag-attr { color: #fbbf24; }
+.tag-val { color: #34d399; }
+.tag-comment { color: #64748b; font-style: italic; }
+
+/* Grid de Anatomia das Tags */
+.tags-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px;
+}
+.tag-card {
+  background: #0f172a; border-radius: 12px; padding: 18px; border-left: 4px solid var(--brand-gold);
+  border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.tag-card h4 { font-family: 'Fira Code', monospace; color: var(--brand-gold-light); font-size: 1.05rem; margin-bottom: 6px; }
+.tag-card p { font-size: 0.86rem !important; color: var(--text-muted); margin-bottom: 0 !important; }
+
+/* Botões */
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-accent) 100%);
+  color: #0f172a; font-weight: 700; padding: 12px 24px; border-radius: 10px;
+  text-decoration: none; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer;
+  transition: all 0.2s; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(234, 179, 8, 0.5); }
+.btn-outline {
+  background: rgba(19, 29, 49, 0.7); color: var(--text-main); border: 1px solid var(--brand-gold);
+  font-weight: 600; padding: 12px 22px; border-radius: 10px; text-decoration: none; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover { background: rgba(234, 179, 8, 0.15); border-color: var(--brand-gold-light); transform: translateY(-2px); }
+
+/* Modal */
+.custom-modal {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 20px;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+}
+.custom-modal.active { opacity: 1; pointer-events: auto; }
+.modal-content { background: #0f172a; border: 2px solid var(--brand-gold); border-radius: 18px; padding: 28px; max-width: 480px; width: 100%; box-shadow: 0 0 30px rgba(234, 179, 8, 0.3); }
+.modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.modal-icon { font-size: 1.6rem; color: var(--brand-gold); }
+.modal-title { font-family: 'Chakra Petch', sans-serif; font-size: 1.3rem; color: #fff; }
+.modal-body { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
+
+/* Footer */
+.footer { background: #090e1a; border-top: 2px solid var(--brand-gold); padding: 40px 0; margin-top: auto; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: 'Chakra Petch', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--brand-gold); }
+.footer-text { font-size: 0.85rem; color: var(--text-dim); }
+
+.mobile-toggle {
+  display: none; background: rgba(234, 179, 8, 0.15); border: 1px solid var(--brand-gold);
+  color: var(--brand-gold); font-size: 1.3rem; width: 44px; height: 44px; border-radius: 10px;
+  cursor: pointer; align-items: center; justify-content: center; transition: all 0.2s ease;
+}
+.mobile-toggle:hover { background: var(--brand-gold); color: #0f172a; }
+
+@media (max-width: 860px) {
+  .mobile-toggle { display: flex; }
+  .nav-menu {
+    display: none; position: absolute; top: 76px; left: 0; right: 0;
+    background: rgba(9, 14, 26, 0.98); backdrop-filter: blur(16px);
+    border-bottom: 2px solid var(--brand-gold); flex-direction: column;
+    padding: 20px; gap: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+  .nav-menu.active { display: flex; animation: slideDownNav 0.25s ease-out; }
+  .nav-link { width: 100%; text-align: center; padding: 12px 16px; font-size: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); }
+  .logo-text h1 { font-size: 1.25rem; }
+  .logo-text span { font-size: 0.62rem; }
+  .escudo-badge { width: 40px; height: 40px; font-size: 1.2rem; }
+  .lesson-page-title { font-size: 2rem; }
+  .compare-container { grid-template-columns: 1fr; }
+}
+
+@keyframes slideDownNav {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Oficial -->
+  <header class="header-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo-escudo">
+          <div class="escudo-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="logo-text">
+            <h1>LIRACODE</h1>
+            <span>Aulas & Cibersegurança</span>
+          </div>
+        </a>
+
+        <!-- Botão Mobile -->
+        <button id="mobileMenuBtn" class="mobile-toggle" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav>
+          <ul id="navMenu" class="nav-menu">
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="index.html#trilha" class="nav-link">Trilha da Estrada</a></li>
+            <li><a href="aula01.html" class="nav-link">Aula 01</a></li>
+            <li><a href="aula02.html" class="nav-link">Aula 02</a></li>
+            <li><a href="aula03.html" class="nav-link active">Aula 03</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho da Aula 03 -->
+  <section class="lesson-page-header">
+    <div class="container">
+      <div class="breadcrumb-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <span>/</span>
+        <a href="index.html#trilha">Trilha da Estrada</a>
+        <span>/</span>
+        <span style="color: var(--brand-gold);">Marco 03</span>
+      </div>
+
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(234, 179, 8, 0.2); color: var(--brand-gold-light); border: 1px solid var(--brand-gold); padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase;">
+        <span class="pulse-dot"></span> Marco Atual da Estrada (Aula da Semana)
+      </div>
+
+      <h1 class="lesson-page-title">Aula 03 • A Mágica do HTML Puro (A Ficha Vira Web)</h1>
+      <p class="lesson-page-subtitle">
+        A grande transição: pegamos o texto digitado no Bloco de Notas e ensinamos a falar a linguagem da internet, criando a sua primeira página web!
+      </p>
+    </div>
+  </section>
+
+  <!-- Corpo Principal da Aula 03 -->
+  <main class="lesson-body container">
+
+    <!-- Card 1: A Grande Virada -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--brand-gold);"></i> 1. A Grande Virada: Do .txt ao .html</h2>
+      <p>
+        Na Aula 01, criamos a nossa ficha pessoal em um arquivo de texto simples (<code>minha_ficha.txt</code>). Mas no arquivo <code>.txt</code>, o computador enxerga apenas letras soltas. Ele não sabe o que é título, o que é parágrafo nem o que deve ser destacado.
+      </p>
+      <p>
+        Para fazer o texto virar um site de verdade, nós usamos a linguagem <strong>HTML</strong> (<em>HyperText Markup Language</em>). O HTML usa <strong>etiquetas especiais (chamadas de tags)</strong> para dar instruções ao navegador, dizendo: <em>"Ei, navegador! Isto aqui é um TÍTULO GRANDE! Isto aqui é um PARÁGRAFO! E esta palavra aqui deve ficar em NEGRITO!"</em>.
+      </p>
+    </article>
+
+    <!-- Card 2: Comparativo Visual Interativo: Antes e Depois -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-code-compare" style="color: #38bdf8;"></i> 2. Comparativo Visual: O Texto vs. A Página Web</h2>
+      <p>
+        Veja com seus próprios olhos a diferença entre o que você digita no Bloco de Notas e a mágica visual que acontece quando você abre o mesmo arquivo no navegador:
+      </p>
+
+      <div class="compare-container">
+        
+        <!-- Lado Esquerdo: Bloco de Notas (.txt) -->
+        <div class="window-mockup window-notepad">
+          <div class="window-topbar notepad-bar">
+            <div class="window-title">
+              <i class="fa-regular fa-file-lines text-slate-400"></i>
+              <span>minha_ficha.txt - Bloco de Notas</span>
+            </div>
+            <div class="window-controls">
+              <span class="win-btn win-yellow"></span>
+              <span class="win-btn win-green"></span>
+              <span class="win-btn win-red"></span>
+            </div>
+          </div>
+          <div class="notepad-menu">
+            <span>Arquivo</span>
+            <span>Editar</span>
+            <span>Formatar</span>
+            <span>Exibir</span>
+            <span>Ajuda</span>
+          </div>
+          <div class="notepad-body">Ola, eu sou o Enzo!
+Tenho 12 anos e sou aluno do Projeto LiraCode.
+
+Estou aprendendo como os computadores realmente funcionam por baixo do capo!
+
+Meus Interesses Tecnologicos:
+- Jogos e Programacao
+- Ciberseguranca e Protecao de Dados
+- Criar meus proprios sites e projetos
+
+Pagina criada no Bloco de Notas!</div>
+        </div>
+
+        <!-- Lado Direito: Navegador Web (.html) -->
+        <div class="window-mockup window-browser">
+          <div class="window-topbar browser-bar">
+            <div class="window-title">
+              <i class="fa-solid fa-globe text-brand-gold"></i>
+              <span>Minha Primeira Ficha Web • LiraCode</span>
+            </div>
+            <div class="window-controls">
+              <span class="win-btn win-yellow"></span>
+              <span class="win-btn win-green"></span>
+              <span class="win-btn win-red"></span>
+            </div>
+          </div>
+          <div class="browser-url-bar">
+            <i class="fa-solid fa-lock text-emerald-400"></i>
+            <span>https://aula.liracode.com.br/minha_ficha.html</span>
+          </div>
+          <div class="browser-body">
+            <div class="web-rendered">
+              <h3>Olá, eu sou o Enzo! 🌟</h3>
+              <p>Tenho <strong>12 anos</strong> e sou aluno do <strong>Projeto LiraCode</strong>.</p>
+              <p>Estou aprendendo como os computadores realmente funcionam por baixo do capô!</p>
+              
+              <h4 style="color: #38bdf8; font-size: 1rem; margin-top: 14px; margin-bottom: 6px;">Meus Interesses Tecnológicos:</h4>
+              <ul>
+                <li>Jogos e Programação</li>
+                <li>Cibersegurança e Proteção de Dados</li>
+                <li>Criar meus próprios sites e projetos</li>
+              </ul>
+              
+              <em>🚀 Página criada no Bloco de Notas e publicada na Hostinger!</em>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Card 3: Anatomia do HTML & O Código Modelo dos Alunos -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-laptop-code" style="color: var(--brand-gold);"></i> 3. O Código Modelo dos Alunos (Anatomia do HTML)</h2>
+      <p>
+        Este é o código padrão limpo que cada aluno vai digitar no Bloco de Notas do Windows. Ele possui os 4 elementos essenciais de qualquer página da internet:
+      </p>
+
+      <!-- Anatomia das Tags -->
+      <div class="tags-grid">
+        <div class="tag-card">
+          <h4>&lt;!DOCTYPE html&gt;</h4>
+          <p>A certidão de nascimento da página: avisa ao navegador que estamos usando a versão mais moderna do HTML.</p>
+        </div>
+        <div class="tag-card">
+          <h4>&lt;html&gt; ... &lt;/html&gt;</h4>
+          <p>A grande casa de tudo: envolve todo o conteúdo do site, da primeira à última linha.</p>
+        </div>
+        <div class="tag-card">
+          <h4>&lt;head&gt; ... &lt;/head&gt;</h4>
+          <p>A cabeça: contém informações invisíveis na página, como o título que aparece na aba do navegador (&lt;title&gt;).</p>
+        </div>
+        <div class="tag-card">
+          <h4>&lt;body&gt; ... &lt;/body&gt;</h4>
+          <p>O corpo: tudo o que os olhos humanos enxergam na tela (títulos &lt;h1&gt;, parágrafos &lt;p&gt; e negritos &lt;strong&gt;).</p>
+        </div>
+      </div>
+
+      <!-- Caixa de Código com Botão Copiar -->
+      <div style="margin-top: 26px;">
+        <div class="code-box-header">
+          <div class="code-box-title">
+            <i class="fa-solid fa-file-code"></i>
+            <span>minha-ficha.html (Código Modelo Oficial)</span>
+          </div>
+          <button onclick="copiarCodigoModelo()" class="btn-copy" id="btnCopiar">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copiar Código</span>
+          </button>
+        </div>
+        <pre class="code-pre" id="codigoModelo"><code><span class="tag-comment">&lt;!-- MINHA PRIMEIRA FICHA WEB - PROJETO LIRACODE --&gt;</span>
+<span class="tag-html">&lt;!DOCTYPE html&gt;</span>
+<span class="tag-html">&lt;html</span> <span class="tag-attr">lang</span>=<span class="tag-val">"pt-BR"</span><span class="tag-html">&gt;</span>
+<span class="tag-html">&lt;head&gt;</span>
+  <span class="tag-html">&lt;meta</span> <span class="tag-attr">charset</span>=<span class="tag-val">"UTF-8"</span><span class="tag-html">&gt;</span>
+  <span class="tag-html">&lt;title&gt;</span>Minha Primeira Ficha Web - LiraCode<span class="tag-html">&lt;/title&gt;</span>
+<span class="tag-html">&lt;/head&gt;</span>
+<span class="tag-html">&lt;body&gt;</span>
+
+  <span class="tag-html">&lt;h1&gt;</span>Olá, eu sou o(a) [Seu Nome Aqui]!<span class="tag-html">&lt;/h1&gt;</span>
+  
+  <span class="tag-html">&lt;p&gt;</span>
+    Tenho <span class="tag-html">&lt;strong&gt;</span>[Sua Idade]<span class="tag-html">&lt;/strong&gt;</span> anos e sou aluno(a) do 
+    <span class="tag-html">&lt;strong&gt;</span>Projeto LiraCode<span class="tag-html">&lt;/strong&gt;</span>.
+  <span class="tag-html">&lt;/p&gt;</span>
+  
+  <span class="tag-html">&lt;p&gt;</span>
+    Estou aprendendo como os computadores realmente funcionam por baixo do capô!
+  <span class="tag-html">&lt;/p&gt;</span>
+
+  <span class="tag-html">&lt;h2&gt;</span>Meus Interesses Tecnológicos:<span class="tag-html">&lt;/h2&gt;</span>
+  <span class="tag-html">&lt;p&gt;</span>• Jogos e Programação<span class="tag-html">&lt;/p&gt;</span>
+  <span class="tag-html">&lt;p&gt;</span>• Cibersegurança e Proteção de Dados<span class="tag-html">&lt;/p&gt;</span>
+  <span class="tag-html">&lt;p&gt;</span>• Criar meus próprios sites e projetos<span class="tag-html">&lt;/p&gt;</span>
+
+  <span class="tag-html">&lt;p&gt;&lt;em&gt;</span>Página criada no Bloco de Notas e publicada na Hostinger! 🚀<span class="tag-html">&lt;/em&gt;&lt;/p&gt;</span>
+
+<span class="tag-html">&lt;/body&gt;</span>
+<span class="tag-html">&lt;/html&gt;</span></code></pre>
+      </div>
+
+    </article>
+
+    <!-- Card 4: Laboratório de Prática & Download do Modelo -->
+    <article class="content-card">
+      <h2><i class="fa-solid fa-download" style="color: #34d399;"></i> 4. Laboratório de Prática: Baixe o Modelo no seu Computador</h2>
+      <p>
+        Você pode baixar o arquivo modelo pronto para abrir no seu Bloco de Notas, editar com o seu nome e testar abrindo no navegador:
+      </p>
+
+      <div style="background: #090e1a; border: 2px solid var(--brand-gold); border-radius: 16px; padding: 26px; margin-top: 18px; display: flex; flex-direction: column; md:flex-row; justify-content: space-between; align-items: center; gap: 20px;">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(234, 179, 8, 0.2); border: 2px solid var(--brand-gold); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--brand-gold);">
+            <i class="fa-brands fa-html5"></i>
+          </div>
+          <div>
+            <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 1.25rem; color: #fff;">template-minha-ficha.html</h3>
+            <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 0;">
+              Arquivo HTML puro pré-estruturado para praticar no Bloco de Notas do Windows.
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button onclick="baixarTemplateFicha()" class="btn-primary">
+            <i class="fa-solid fa-file-arrow-down"></i> Baixar template-minha-ficha.html
+          </button>
+        </div>
+      </div>
+
+      <!-- 3 Passos de Ouro -->
+      <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+        <div style="background: #0f172a; border-radius: 12px; padding: 18px; border: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="color: var(--brand-gold); font-weight: bold; font-size: 0.9rem; margin-bottom: 6px;">
+            1️⃣ No Bloco de Notas
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+            Abra o arquivo baixado ou crie um novo. Edite colocando seu nome, sua idade e seus interesses.
+          </p>
+        </div>
+        <div style="background: #0f172a; border-radius: 12px; padding: 18px; border: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="color: #38bdf8; font-weight: bold; font-size: 0.9rem; margin-bottom: 6px;">
+            2️⃣ Salvar com o Crachá Certo
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+            Vá em <strong>Salvar Como</strong>, escolha <strong>Tipo: Todos os arquivos (*.*)</strong> e digite o nome com <strong>.html</strong> no final!
+          </p>
+        </div>
+        <div style="background: #0f172a; border-radius: 12px; padding: 18px; border: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="color: #34d399; font-weight: bold; font-size: 0.9rem; margin-bottom: 6px;">
+            3️⃣ A Mágica no Navegador
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+            Dê dois cliques no arquivo <code>.html</code> salvo. Ele vai abrir no Google Chrome ou Edge mostrando seu primeiro site!
+          </p>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- Próxima Parada na Estrada -->
+    <div style="background: rgba(15, 23, 42, 0.8); border: 2px solid var(--surface-border); border-radius: 18px; padding: 26px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <span style="color: var(--text-dim); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Próxima parada na estrada:</span>
+        <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 1.3rem; color: #fff; margin-top: 4px;">Marco 04: Estilizando com Cores e CSS</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Como transformar o visual da página aplicando cores, bordas e alinhamentos. Bloqueada até o próximo sábado!</p>
+      </div>
+      <a href="index.html#trilha" class="btn-outline">
+        <i class="fa-solid fa-route"></i> Ver a Trilha da Estrada
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Modal Customizado -->
+  <div id="modalAviso" class="custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <i id="modalIcone" class="fa-solid fa-circle-check modal-icon"></i>
+        <h4 id="modalTitulo" class="modal-title">Operação Realizada</h4>
+      </div>
+      <p id="modalMensagem" class="modal-body">Mensagem do sistema.</p>
+      <div style="text-align: right;">
+        <button onclick="fecharModal()" class="btn-primary" style="padding: 8px 18px; font-size: 0.85rem;">
+          Excelente!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-logo">PROJETO LIRACODE</div>
+          <div class="footer-text">Educação Tecnológica, Lógica & Cibersegurança &copy; 2026</div>
+        </div>
+        <div class="footer-text">
+          <a href="index.html#trilha" style="color: var(--brand-gold); text-decoration: none;">&larr; Voltar para a Trilha da Estrada</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts Interativos Vanilla -->
+  <script>
+    // Sistema de Modal
+    function abrirModal(titulo, mensagem, tipo = 'sucesso') {
+      const modal = document.getElementById('modalAviso');
+      const tituloEl = document.getElementById('modalTitulo');
+      const msgEl = document.getElementById('modalMensagem');
+      const iconeEl = document.getElementById('modalIcone');
+
+      tituloEl.innerText = titulo;
+      msgEl.innerText = mensagem;
+
+      if (tipo === 'alerta') {
+        iconeEl.className = 'fa-solid fa-triangle-exclamation modal-icon';
+        iconeEl.style.color = 'var(--brand-red-light)';
+      } else {
+        iconeEl.className = 'fa-solid fa-circle-check modal-icon';
+        iconeEl.style.color = '#34d399';
+      }
+
+      modal.classList.add('active');
+    }
+
+    function fecharModal() {
+      document.getElementById('modalAviso').classList.remove('active');
+    }
+
+    document.getElementById('modalAviso').addEventListener('click', (e) => {
+      if (e.target.id === 'modalAviso') fecharModal();
+    });
+
+    // Copiar Código Modelo
+    function copiarCodigoModelo() {
+      const codigoLimpo = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Minha Primeira Ficha Web - LiraCode</title>
+</head>
+<body>
+
+  <h1>Olá, eu sou o(a) [Seu Nome Aqui]!</h1>
+  
+  <p>
+    Tenho <strong>[Sua Idade]</strong> anos e sou aluno(a) do 
+    <strong>Projeto LiraCode</strong>.
+  </p>
+  
+  <p>
+    Estou aprendendo como os computadores realmente funcionam por baixo do capô!
+  </p>
+
+  <h2>Meus Interesses Tecnológicos:</h2>
+  <p>• Jogos e Programação</p>
+  <p>• Cibersegurança e Proteção de Dados</p>
+  <p>• Criar meus próprios sites e projetos</p>
+
+  <p><em>Página criada no Bloco de Notas e publicada na Hostinger! 🚀</em></p>
+
+</body>
+</html>`;
+
+      navigator.clipboard.writeText(codigoLimpo).then(() => {
+        const btn = document.getElementById('btnCopiar');
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> <span>Copiado!</span>`;
+        btn.style.background = '#10b981';
+        btn.style.color = '#fff';
+        setTimeout(() => {
+          btn.innerHTML = `<i class="fa-regular fa-copy"></i> <span>Copiar Código</span>`;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2500);
+
+        abrirModal("Código Copiado!", "O código HTML modelo foi copiado para a sua área de transferência. Agora basta colar no seu Bloco de Notas!");
+      }).catch(() => {
+        abrirModal("Atenção", "Selecione o código na caixa e use Ctrl+C para copiar.", "alerta");
+      });
+    }
+
+    // Gerador de Download de Template HTML via Blob
+    function baixarTemplateFicha() {
+      const conteudo = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Minha Primeira Ficha Web • Projeto LiraCode</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      border: 3px solid #eab308;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      color: #eab308;
+      border-bottom: 2px solid #b91c1c;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #38bdf8;
+      margin-top: 25px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .destaque {
+      color: #fde047;
+      font-weight: bold;
+    }
+    .rodape-ficha {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #94a3b8;
+      border-top: 1px solid #334155;
+      padding-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Olá, eu sou o(a) [Seu Nome Aqui]! 🌟</h1>
+  
+  <p>
+    Tenho <span class="destaque">[Sua Idade] anos</span> e sou aluno(a) do 
+    <span class="destaque">Projeto LiraCode</span>.
+  </p>
+  
+  <p>
+    Aqui eu aprendo a controlar o computador por baixo do capô, entendendo arquivos,
+    cibersegurança e programação real!
+  </p>
+
+  <h2>🎯 Meus Interesses Tecnológicos:</h2>
+  <p>• Jogos, Algoritmos e Programação</p>
+  <p>• Cibersegurança e Defesa contra Golpes Digitais</p>
+  <p>• Construir meus próprios sites e robôs na internet</p>
+
+  <h2>💡 Dica de Ouro que Aprendi:</h2>
+  <p>
+    Sempre mostre as extensões de arquivos no Windows! Nunca clique em arquivos suspeitos
+    como foto.png.exe.
+  </p>
+
+  <div class="rodape-ficha">
+    🚀 <em>Página HTML criada no Bloco de Notas e publicada na Hostinger pelo Projeto LiraCode &copy; 2026</em>
+  </div>
+
+</body>
+</html>`;
+
+      const blob = new Blob([conteudo], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'template-minha-ficha.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      abrirModal("Download Iniciado!", "O arquivo 'template-minha-ficha.html' foi baixado com sucesso. Abra-o no Bloco de Notas para personalizar!");
+    }
+
+    // Menu Mobile
+    window.addEventListener('DOMContentLoaded', () => {
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const navMenu = document.getElementById('navMenu');
+      if (mobileBtn && navMenu) {
+        mobileBtn.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          const icon = mobileBtn.querySelector('i');
+          if (navMenu.classList.contains('active')) {
+            icon.className = 'fa-solid fa-xmark';
+          } else {
+            icon.className = 'fa-solid fa-bars';
+          }
+        });
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            const icon = mobileBtn.querySelector('i');
+            if (icon) icon.className = 'fa-solid fa-bars';
+          });
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
