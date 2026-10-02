@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Criações do Paulo Henrique | LiraCode</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --brand-red: #b91c1c;
+      --brand-red-dark: #881337;
+      --brand-blue: #1e3a8a;
+      --brand-darkblue: #0f172a;
+      --brand-gold: #eab308;
+      --brand-gold-light: #fde047;
+      --surface-card: #131d31;
+      --surface-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--brand-darkblue);
+      background-image: radial-gradient(rgba(234, 179, 8, 0.12) 1.2px, transparent 0);
+      background-size: 26px 26px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .header-nav {
+      background: rgba(10, 15, 29, 0.95);
+      border-bottom: 2px solid var(--brand-gold);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
+    .logo-container img { width: 44px; height: 44px; object-fit: contain; }
+    .logo-text h1 { font-family: 'Chakra Petch', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--brand-gold); }
+    .logo-text span { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
+      background: rgba(234, 179, 8, 0.1); border: 1px solid var(--brand-gold);
+      border-radius: 8px; color: var(--brand-gold-light); text-decoration: none;
+      font-size: 0.85rem; font-weight: 600; transition: all 0.2s ease;
+    }
+    .btn-back:hover { background: var(--brand-gold); color: #0a0f1d; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 40px 20px; width: 100%; flex-grow: 1; }
+    .student-hero {
+      background: linear-gradient(135deg, rgba(136, 19, 55, 0.3) 0%, rgba(30, 58, 138, 0.3) 100%);
+      border: 2px solid var(--brand-gold); border-radius: 24px; padding: 36px;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); margin-bottom: 40px;
+    }
+    @media (min-width: 768px) { .student-hero { flex-direction: row; text-align: left; } }
+    .avatar-wrapper { position: relative; width: 130px; height: 130px; flex-shrink: 0; }
+    .avatar-img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+      border: 3px solid var(--brand-gold); box-shadow: 0 0 25px rgba(234, 179, 8, 0.4); background: #090e1a;
+    }
+    .student-info h2 { font-family: 'Chakra Petch', sans-serif; font-size: 2.2rem; font-weight: 800; color: white; }
+    .student-badge {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(234, 179, 8, 0.15);
+      border: 1px solid var(--brand-gold); color: var(--brand-gold-light); padding: 4px 14px;
+      border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin: 8px 0 14px 0;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .student-desc { color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; max-width: 650px; }
+    .section-title {
+      font-family: 'Chakra Petch', sans-serif; font-size: 1.5rem; font-weight: 700; color: white;
+      margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid var(--surface-border); padding-bottom: 12px;
+    }
+    .section-title i { color: var(--brand-gold); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .project-card {
+      background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 16px;
+      padding: 24px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;
+    }
+    .project-card:hover { transform: translateY(-5px); border-color: var(--brand-gold); box-shadow: 0 10px 25px rgba(234, 179, 8, 0.2); }
+    .project-card.active-card { border-color: rgba(234, 179, 8, 0.6); background: linear-gradient(180deg, #162238 0%, #10192b 100%); }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .project-icon {
+      width: 48px; height: 48px; border-radius: 12px; background: rgba(234, 179, 8, 0.15);
+      border: 1px solid var(--brand-gold); display: flex; align-items: center; justify-content: center;
+      color: var(--brand-gold); font-size: 1.4rem;
+    }
+    .project-tag {
+      font-size: 0.72rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3); padding: 4px 10px; border-radius: 12px; text-transform: uppercase;
+    }
+    .project-title { font-family: 'Chakra Petch', sans-serif; font-size: 1.25rem; font-weight: 700; color: white; margin-bottom: 8px; }
+    .project-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px; }
+    .btn-view {
+      display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px;
+      background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
+      color: white; text-decoration: none; font-weight: 700; font-size: 0.9rem; border-radius: 10px;
+      border: 1px solid rgba(234, 179, 8, 0.4); transition: all 0.2s ease;
+    }
+    .btn-view:hover {
+      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      border-color: var(--brand-gold); box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+    }
+    .card-placeholder { border: 1px dashed #334155; background: rgba(15, 23, 42, 0.5); opacity: 0.6; }
+    .footer {
+      border-top: 1px solid var(--surface-border); padding: 24px; text-align: center;
+      font-size: 0.85rem; color: var(--text-muted); background: #090e1a; margin-top: 40px;
+    }
+    .footer a { color: var(--brand-gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header class="header-nav">
+    <a href="../index.html" class="logo-container">
+      <img src="../brasao-liracode.png" alt="Brasão LiraCode">
+      <div class="logo-text">
+        <h1>LIRACODE</h1>
+        <span>Vitrine dos Alunos</span>
+      </div>
+    </a>
+    <a href="../index.html" class="btn-back">
+      <i class="fa-solid fa-arrow-left"></i> Voltar ao Laboratório
+    </a>
+  </header>
+
+  <div class="container">
+    
+    <div class="student-hero">
+      <div class="avatar-wrapper">
+        <img src="../avatares/paulo-avatar.png" alt="Avatar do Paulo Henrique" class="avatar-img">
+      </div>
+      <div class="student-info">
+        <h2>Paulo Henrique</h2>
+        <div class="student-badge">
+          <i class="fa-solid fa-code"></i> Estrategista de Código • Turma Pioneira
+        </div>
+        <p class="student-desc">
+          Bem-vindo à minha galeria oficial no LiraCode! Aqui você pode acompanhar todas as páginas web, 
+          scripts e projetos práticos que estou desenvolvendo nas aulas aos sábados.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="section-title">
+      <i class="fa-solid fa-code"></i> Minhas Páginas & Projetos Web
+    </h3>
+
+    <div class="projects-grid">
+      
+      <div class="project-card active-card">
+        <div>
+          <div class="project-header">
+            <div class="project-icon"><i class="fa-brands fa-html5"></i></div>
+            <span class="project-tag">Aula 01 & 03</span>
+          </div>
+          <h4 class="project-title">Minha Primeira Ficha Web</h4>
+          <p class="project-desc">
+            A minha primeira página em HTML puro criada a partir da ficha do Bloco de Notas, com estrutura semântica básica.
+          </p>
+        </div>
+        <a href="ficha.html" class="btn-view">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Minha Página
+        </a>
+      </div>
+
+      <div class="project-card card-placeholder">
+        <div>
+          <div class="project-header">
+            <div class="project-icon"><i class="fa-solid fa-lock"></i></div>
+            <span class="project-tag">Próxima Aula</span>
+          </div>
+          <h4 class="project-title">Estilização & Cores (CSS)</h4>
+          <p class="project-desc">Em breve: personalização da página com cores próprias, bordas e identidade visual única.</p>
+        </div>
+        <span style="font-size: 0.8rem; color: #64748b; text-align: center; padding: 10px;">Em construção nas aulas de sábado</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>Projeto <strong>LiraCode</strong> • Formação de Jovens Criadores de Tecnologia</p>
+    <p style="margin-top: 6px; font-size: 0.78rem;">
+      <a href="https://liracode.com.br" target="_blank">Portal dos Pais</a> | 
+      <a href="../index.html">Laboratório Geral</a>
+    </p>
+  </footer>
+
+</body>
+</html>
