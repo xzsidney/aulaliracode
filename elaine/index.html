@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria de Criações do Enzo | LiraCode</title>
+  <title>Galeria de Criações da Elaine | LiraCode</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,7 +82,7 @@
     .container { max-width: 1080px; margin: 0 auto; padding: 40px 20px; width: 100%; flex-grow: 1; }
     
     .student-hero {
-      background: linear-gradient(135deg, rgba(136, 19, 55, 0.3) 0%, rgba(30, 58, 138, 0.3) 100%);
+      background: linear-gradient(135deg, rgba(136, 19, 55, 0.35) 0%, rgba(30, 58, 138, 0.35) 100%);
       border: 2px solid var(--brand-gold);
       border-radius: 24px;
       padding: 36px;
@@ -102,15 +102,19 @@
       width: 130px;
       height: 130px;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .avatar-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 50%;
       border: 3px solid var(--brand-gold);
-      box-shadow: 0 0 25px rgba(234, 179, 8, 0.4);
+      box-shadow: 0 0 25px rgba(234, 179, 8, 0.45);
       background: #090e1a;
+      padding: 10px;
     }
     .student-info h2 {
       font-family: 'Chakra Petch', sans-serif;
@@ -137,7 +141,7 @@
       color: #cbd5e1;
       font-size: 0.95rem;
       line-height: 1.6;
-      max-width: 650px;
+      max-width: 680px;
     }
 
     .section-title {
@@ -286,42 +290,42 @@
 
   <div class="container">
     
-    <!-- Hero do Aluno -->
+    <!-- Hero da Elaine -->
     <div class="student-hero">
       <div class="avatar-wrapper">
-        <img src="../avatares/enzo-avatar.png" alt="Avatar do Enzo" class="avatar-img">
+        <img src="../brasao-liracode.png" alt="Brasão LiraCode - Aluna de Honra" class="avatar-img">
       </div>
       <div class="student-info">
-        <h2>Enzo</h2>
+        <h2>Elaine</h2>
         <div class="student-badge">
-          <i class="fa-solid fa-shield-halved"></i> Guardião da Cibersegurança • Turma Pioneira
+          <i class="fa-solid fa-crown"></i> Elaine • Família Conectada (Aluna de Honra)
         </div>
         <p class="student-desc">
-          Bem-vindo à minha galeria oficial no LiraCode! Aqui você pode acompanhar todas as páginas web, 
-          scripts e projetos práticos que estou desenvolvendo nas aulas aos sábados.
+          Mãe da Jennifer e do Paulo Henrique, aluna de honra que participou ativamente da Aula 03! 
+          Demonstrando na prática que a tecnologia conecta gerações e que a família que aprende e programa junta constrói um futuro brilhante.
         </p>
       </div>
     </div>
 
-    <!-- Lista de Páginas do Aluno -->
+    <!-- Lista de Páginas da Elaine -->
     <h3 class="section-title">
       <i class="fa-solid fa-code"></i> Minhas Páginas & Projetos Web
     </h3>
 
     <div class="projects-grid">
       
-      <!-- Projeto 01: Meu Primeiro Site Completo -->
+      <!-- Projeto 01: Meu Primeiro Romance -->
       <div class="project-card active-card">
         <div>
           <div class="project-header">
             <div class="project-icon">
               <i class="fa-solid fa-code"></i>
             </div>
-            <span class="project-tag">Aula 03</span>
+            <span class="project-tag">Aula 03 • Família</span>
           </div>
-          <h4 class="project-title">Meu Primeiro Site Completo</h4>
+          <h4 class="project-title">Meu Primeiro Romance</h4>
           <p class="project-desc">
-            A estrutura completa com &lt;head&gt; e &lt;body&gt;, contando a história do meu primeiro romance.
+            A estrutura semântica completa em HTML contando com emoção e carinho a história de como conheceu o Sidney e a caminhada de 5 anos juntos.
           </p>
         </div>
         <a href="completo.html" class="btn-view">
@@ -329,7 +333,7 @@
         </a>
       </div>
 
-      <!-- Projeto 02: Página para os Meus Pais -->
+      <!-- Projeto 02: Homenagem aos Meus Pais -->
       <div class="project-card active-card">
         <div>
           <div class="project-header">
@@ -338,9 +342,9 @@
             </div>
             <span class="project-tag">Aula 03 • Família</span>
           </div>
-          <h4 class="project-title">Página para os Meus Pais</h4>
+          <h4 class="project-title">Homenagem aos Meus Pais</h4>
           <p class="project-desc">
-            Uma página especial criada com tags &lt;p&gt; com dedicatória cheia de carinho para a família.
+            Página construída com parágrafos &lt;p&gt; dedicados com imenso amor e gratidão a João Pereira Neto e Joana Oliveira Santos.
           </p>
         </div>
         <a href="pais.html" class="btn-view">
@@ -348,7 +352,7 @@
         </a>
       </div>
 
-      <!-- Projeto 03: Testando Tags de Títulos -->
+      <!-- Projeto 03: Hierarquia de Títulos (h1 ao h5) -->
       <div class="project-card active-card">
         <div>
           <div class="project-header">
@@ -357,17 +361,17 @@
             </div>
             <span class="project-tag">Aula 03</span>
           </div>
-          <h4 class="project-title">Testando Tags de Títulos</h4>
+          <h4 class="project-title">Hierarquia de Títulos (h1 ao h5)</h4>
           <p class="project-desc">
-            Explorando na prática a hierarquia visual do HTML usando as tags de cabeçalho do &lt;h1&gt; ao &lt;h5&gt;.
+            Exercício prático explorando os níveis e tamanhos das tags de cabeçalho do HTML puro no Bloco de Notas.
           </p>
         </div>
-        <a href="meu-primeiro-titulo.html" class="btn-view">
+        <a href="titulo.html" class="btn-view">
           <i class="fa-solid fa-rocket"></i> Abrir Minha Página
         </a>
       </div>
 
-      <!-- Projeto 04: Meu Primeiro Texto em HTML -->
+      <!-- Projeto 04: Meu Primeiro Texto Web -->
       <div class="project-card active-card">
         <div>
           <div class="project-header">
@@ -376,12 +380,12 @@
             </div>
             <span class="project-tag">Aula 03</span>
           </div>
-          <h4 class="project-title">Meu Primeiro Texto em HTML</h4>
+          <h4 class="project-title">Meu Primeiro Texto Web</h4>
           <p class="project-desc">
-            O primeiro arquivo escrito com a tag &lt;body&gt; declarando meu nome e dando os primeiros passos na web.
+            Apresentação pessoal no corpo &lt;body&gt; da página web, marcando o início da jornada no código.
           </p>
         </div>
-        <a href="enzo.HTML" class="btn-view">
+        <a href="elaine.html" class="btn-view">
           <i class="fa-solid fa-rocket"></i> Abrir Minha Página
         </a>
       </div>
@@ -397,29 +401,10 @@
           </div>
           <h4 class="project-title">Primeiro Teste no Bloco de Notas</h4>
           <p class="project-desc">
-            A estrutura embrionária do HTML digitada diretamente no Bloco de Notas abrindo no navegador.
+            A estrutura fundamental do HTML com abertura e fechamento de tags construída no início da aula prática.
           </p>
         </div>
         <a href="aula3.html" class="btn-view">
-          <i class="fa-solid fa-rocket"></i> Abrir Minha Página
-        </a>
-      </div>
-
-      <!-- Projeto 06: Minha Ficha Pessoal em HTML -->
-      <div class="project-card active-card">
-        <div>
-          <div class="project-header">
-            <div class="project-icon">
-              <i class="fa-brands fa-html5"></i>
-            </div>
-            <span class="project-tag">Aula 01 & 03</span>
-          </div>
-          <h4 class="project-title">Minha Ficha Pessoal</h4>
-          <p class="project-desc">
-            A minha primeira página em HTML puro criada a partir da ficha do Bloco de Notas, com estrutura semântica básica.
-          </p>
-        </div>
-        <a href="ficha.html" class="btn-view">
           <i class="fa-solid fa-rocket"></i> Abrir Minha Página
         </a>
       </div>
@@ -435,7 +420,7 @@
           </div>
           <h4 class="project-title">Estilização & Cores (CSS)</h4>
           <p class="project-desc">
-            Em breve: personalização da página com cores próprias, bordas e identidade visual única.
+            Em breve: personalização com folhas de estilo, aplicando cores e bordas elegantes junto com os filhos nas aulas de sábado.
           </p>
         </div>
         <span style="font-size: 0.8rem; color: #64748b; text-align: center; padding: 10px;">
