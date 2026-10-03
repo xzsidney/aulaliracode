@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Digital do Aluno • O Arsenal do Aluno | Projeto LiraCode</title>
+  
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <style>
+/* CSS Embutido para Garantia de Carregamento na Hostinger */
+:root {
+  --brand-red: #b91c1c;
+  --brand-red-dark: #881337;
+  --brand-red-light: #ef4444;
+  --brand-blue: #1e3a8a;
+  --brand-darkblue: #0f172a;
+  --brand-navy: #090e1a;
+  --brand-gold: #eab308;
+  --brand-gold-light: #fde047;
+  --brand-gold-dark: #ca8a04;
+  --brand-accent: #f59e0b;
+  --surface-card: #131d31;
+  --surface-border: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --color-safe: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--brand-darkblue);
+  background-image: radial-gradient(rgba(234, 179, 8, 0.12) 1.2px, transparent 0);
+  background-size: 26px 26px;
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--brand-darkblue); }
+::-webkit-scrollbar-thumb { background: var(--brand-red); border-radius: 5px; border: 2px solid var(--brand-gold); }
+
+.container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* Header / Navbar */
+.header-nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(10, 15, 29, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--brand-gold);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+.logo-escudo { display: flex; align-items: center; gap: 14px; text-decoration: none; transition: transform 0.2s ease; }
+.logo-escudo:hover { transform: scale(1.02); }
+.logo-text h1 {
+  font-family: 'Chakra Petch', sans-serif; font-size: 1.6rem; font-weight: 800; letter-spacing: 1.5px; line-height: 1.1;
+  background: linear-gradient(to right, var(--brand-gold), #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.logo-text span {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--brand-gold-light); display: block;
+}
+
+/* Menu Nobre - Estilo Pílulas */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 6px;
+  align-items: center;
+}
+.nav-item {
+  position: relative;
+  list-style: none;
+}
+.nav-link {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(234, 179, 8, 0.22);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+.nav-link:hover {
+  color: var(--brand-gold-light);
+  background: rgba(234, 179, 8, 0.12);
+  border-color: var(--brand-gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15);
+}
+.nav-link.active {
+  color: #0f172a;
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  border-color: var(--brand-gold);
+  font-weight: 700;
+  box-shadow: 0 0 14px rgba(234, 179, 8, 0.35);
+}
+.nav-link.active i {
+  color: #0f172a !important;
+}
+
+/* Dropdown Suspenso Nobre */
+.nav-dropdown {
+  position: relative;
+}
+.nav-dropdown-toggle {
+  cursor: pointer;
+}
+.dropdown-caret {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+.nav-dropdown:hover .dropdown-caret,
+.nav-dropdown.open .dropdown-caret {
+  transform: rotate(180deg);
+}
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 280px;
+  background: rgba(10, 15, 29, 0.96);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--brand-gold);
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65), 0 0 15px rgba(234, 179, 8, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1050;
+  list-style: none;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  color: #e2e8f0;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
+}
+.dropdown-item:hover {
+  background: rgba(234, 179, 8, 0.1);
+  color: var(--brand-gold-light);
+  border-color: rgba(234, 179, 8, 0.3);
+  transform: translateX(3px);
+}
+.dropdown-item-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.dropdown-item-text {
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-item-title {
+  font-weight: 700;
+  font-size: 0.86rem;
+  line-height: 1.2;
+}
+.dropdown-item-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.nav-badge-live {
+  background: linear-gradient(90deg, var(--brand-blue), #1e293b);
+  border: 1px solid rgba(234, 179, 8, 0.5);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--brand-gold-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.pulse-dot {
+  width: 9px; height: 9px; background: #10b981; border-radius: 50%;
+  box-shadow: 0 0 10px #10b981; animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid var(--brand-gold);
+  color: var(--brand-gold);
+  font-size: 1.3rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.mobile-toggle:hover {
+  background: var(--brand-gold);
+  color: #0f172a;
+}
+
+/* Hero da Biblioteca */
+.biblio-hero {
+  position: relative;
+  padding: 65px 0 55px 0;
+  background: linear-gradient(180deg, #090e1a 0%, var(--brand-darkblue) 100%);
+  border-bottom: 2px solid rgba(234, 179, 8, 0.25);
+  text-align: center;
+}
+.biblio-tag {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 30px;
+  background: rgba(185, 28, 28, 0.3); border: 1px solid var(--brand-gold);
+  color: var(--brand-gold-light); font-size: 0.82rem; font-weight: 700; margin-bottom: 18px;
+}
+.biblio-title {
+  font-family: 'Chakra Petch', sans-serif; font-size: 2.8rem; font-weight: 800; line-height: 1.2;
+  margin-bottom: 16px; letter-spacing: -0.5px;
+}
+.biblio-title .highlight {
+  background: linear-gradient(90deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.biblio-subtitle {
+  font-size: 1.15rem; color: var(--text-muted); margin: 0 auto; max-width: 760px; line-height: 1.6;
+}
+
+/* Grid de Materiais Didáticos */
+.biblio-content {
+  padding: 60px 0 90px 0;
+  flex: 1;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 26px;
+  margin-top: 20px;
+}
+
+.material-card {
+  background: var(--surface-card);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+  border-radius: 22px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.28s ease;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.material-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--brand-red), var(--brand-gold));
+  opacity: 0.8;
+}
+.material-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--brand-gold);
+  box-shadow: 0 14px 35px rgba(234, 179, 8, 0.22);
+}
+
+.card-badge-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.badge-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.badge-featured {
+  background: rgba(185, 28, 28, 0.25);
+  color: #f87171;
+  border: 1px solid rgba(185, 28, 28, 0.5);
+}
+.badge-code {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.5);
+}
+.badge-sec {
+  background: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.5);
+}
+.badge-system {
+  background: rgba(30, 58, 138, 0.4);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.5);
+}
+
+.card-icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border: 2px solid rgba(234, 179, 8, 0.35);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+.icon-box-red {
+  background: linear-gradient(135deg, rgba(185, 28, 28, 0.8) 0%, rgba(136, 19, 55, 0.9) 100%);
+  color: #fde047;
+}
+.icon-box-orange {
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%);
+  color: #fff;
+}
+.icon-box-green {
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+  color: #34d399;
+}
+.icon-box-yellow {
+  background: linear-gradient(135deg, #854d0e 0%, #a16207 100%);
+  color: #fde047;
+}
+
+.material-title {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.material-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.btn-card-action {
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.22s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-accent) 100%);
+  color: #0f172a;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(234, 179, 8, 0.45);
+  color: #090e1a;
+}
+.btn-outline-gold {
+  background: rgba(19, 29, 49, 0.8);
+  color: var(--brand-gold-light);
+  border: 1px solid var(--brand-gold);
+}
+.btn-outline-gold:hover {
+  background: rgba(234, 179, 8, 0.15);
+  border-color: var(--brand-gold-light);
+  transform: translateY(-2px);
+}
+
+/* Modal de Sucesso */
+.custom-modal {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 20px;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+}
+.custom-modal.active { opacity: 1; pointer-events: auto; }
+.modal-content { background: #0f172a; border: 2px solid var(--brand-gold); border-radius: 18px; padding: 28px; max-width: 480px; width: 100%; box-shadow: 0 0 30px rgba(234, 179, 8, 0.3); }
+.modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.modal-icon { font-size: 1.6rem; color: var(--brand-gold); }
+.modal-title { font-family: 'Chakra Petch', sans-serif; font-size: 1.3rem; color: #fff; }
+.modal-body { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
+
+/* Rodapé */
+.footer {
+  background: #090e1a;
+  border-top: 2px solid var(--brand-gold);
+  padding: 40px 0;
+  margin-top: auto;
+}
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: 'Chakra Petch', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--brand-gold); }
+.footer-text { font-size: 0.85rem; color: var(--text-dim); }
+
+/* Responsividade */
+@media (max-width: 990px) {
+  .mobile-toggle { display: flex; }
+  .nav-menu {
+    display: none; position: absolute; top: 76px; left: 0; right: 0;
+    background: rgba(9, 14, 26, 0.98); backdrop-filter: blur(16px);
+    border-bottom: 2px solid var(--brand-gold); flex-direction: column;
+    padding: 20px; gap: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    max-height: calc(100vh - 80px); overflow-y: auto;
+  }
+  .nav-menu.active { display: flex; animation: slideDownNav 0.25s ease-out; }
+  .nav-item { width: 100%; }
+  .nav-link { width: 100%; justify-content: center; padding: 12px 16px; font-size: 0.95rem; border-radius: 12px; }
+  .nav-dropdown { width: 100%; }
+  .nav-dropdown .dropdown-menu {
+    position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none;
+    background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(234, 179, 8, 0.3);
+    margin-top: 8px; width: 100%; display: none;
+  }
+  .nav-dropdown.open .dropdown-menu,
+  .nav-dropdown:hover .dropdown-menu { display: block; }
+  .dropdown-item { padding: 12px 14px; }
+  .nav-badge-live { width: 100%; justify-content: center; padding: 10px; border-radius: 12px; }
+  .biblio-title { font-size: 2.1rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
+
+@keyframes slideDownNav {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Oficial Padronizada -->
+  <header class="header-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        
+        <!-- Logo / Brasão Oficial LiraCode -->
+        <a href="index.html" class="logo-escudo">
+          <img src="brasao-liracode.png" alt="Brasão Oficial LiraCode" style="width: 46px; height: 46px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.45));">
+          <div class="logo-text">
+            <h1>LIRACODE</h1>
+            <span>AULAS & CIBERSEGURANÇA</span>
+          </div>
+        </a>
+
+        <!-- Botão Hambúrguer Mobile -->
+        <button id="mobileMenuBtn" class="mobile-toggle" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Menu de Navegação Nobre em Pílulas -->
+        <nav>
+          <ul id="navMenu" class="nav-menu">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Início
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#trilha" class="nav-link">
+                <i class="fa-solid fa-shoe-prints"></i> Trilha da Estrada
+              </a>
+            </li>
+            <li class="nav-item nav-dropdown" id="aulasDropdown">
+              <a href="javascript:void(0)" class="nav-link nav-dropdown-toggle" id="aulasDropdownBtn">
+                <i class="fa-solid fa-book-open"></i> Aulas <i class="fa-solid fa-chevron-down dropdown-caret"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="aula01.html" class="dropdown-item">
+                    <span class="dropdown-item-badge" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">🟢</span>
+                    <span class="dropdown-item-text">
+                      <span class="dropdown-item-title">Aula 01: Dominando Pastas</span>
+                      <span class="dropdown-item-sub">Arquivos, caminhos e ciclo CRUD</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="aula02.html" class="dropdown-item">
+                    <span class="dropdown-item-badge" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">🟡</span>
+                    <span class="dropdown-item-text">
+                      <span class="dropdown-item-title">Aula 02: O Crachá dos Arquivos</span>
+                      <span class="dropdown-item-sub">Extensões ocultas e cibersegurança</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="aula03.html" class="dropdown-item">
+                    <span class="dropdown-item-badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8;">🚀</span>
+                    <span class="dropdown-item-text">
+                      <span class="dropdown-item-title">Aula 03: A Ficha Vira Web</span>
+                      <span class="dropdown-item-sub">HTML Puro no Bloco de Notas</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#alunos" class="nav-link">
+                <i class="fa-solid fa-graduation-cap"></i> Vitrine dos Alunos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="biblioteca.html" class="nav-link active">
+                <i class="fa-solid fa-book-bookmark"></i> Biblioteca
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://liracode.com.br" target="_blank" rel="noopener noreferrer" class="nav-link">
+                <i class="fa-solid fa-people-roof"></i> Portal dos Pais <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem; opacity: 0.8;"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="nav-badge-live">
+                <span class="pulse-dot"></span>
+                Aulas aos Sábados
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero da Biblioteca -->
+  <section class="biblio-hero">
+    <div class="container">
+      <div class="biblio-tag">
+        <i class="fa-solid fa-shield-halved"></i>
+        Acervo Didático Oficial • LiraCode 2026
+      </div>
+
+      <h1 class="biblio-title">
+        📚 Biblioteca Digital LiraCode: <span class="highlight">O Arsenal do Aluno</span>
+      </h1>
+
+      <p class="biblio-subtitle">
+        Seu acervo oficial de estudos! Acesse guias rápidos em PDF, modelos de código e manuais práticos para consultar a qualquer momento.
+      </p>
+    </div>
+  </section>
+
+  <!-- Conteúdo Principal / Grid de Materiais -->
+  <main class="biblio-content">
+    <div class="container">
+      
+      <div class="cards-grid">
+        
+        <!-- CARD 1: DESTAQUE AULA 03 (PDF OFICIAL) -->
+        <article class="material-card">
+          <div>
+            <div class="card-badge-top">
+              <span class="badge-category badge-featured">
+                <i class="fa-solid fa-star"></i> Destaque da Semana
+              </span>
+              <span style="font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--brand-gold);">PDF Oficial</span>
+            </div>
+
+            <div class="card-icon-box icon-box-red">
+              <i class="fa-solid fa-file-pdf"></i>
+            </div>
+
+            <h2 class="material-title">Guia de Aula: Desvendando o HTML (O Esqueleto da Web)</h2>
+            <p class="material-desc">
+              O guia visual de 2 páginas com a Regra do Sanduíche de Tags, a estrutura de cabeça/corpo e o mini-desafio do Bloco de Notas.
+            </p>
+          </div>
+
+          <a href="downloads/Guia-de-Aula-Desvendando-o-HTML.pdf" target="_blank" download="Guia-de-Aula-Desvendando-o-HTML.pdf" class="btn-card-action btn-gold">
+            <i class="fa-solid fa-file-arrow-down"></i> Baixar / Visualizar PDF
+          </a>
+        </article>
+
+        <!-- CARD 2: TEMPLATE DE CÓDIGO HTML -->
+        <article class="material-card">
+          <div>
+            <div class="card-badge-top">
+              <span class="badge-category badge-code">
+                <i class="fa-solid fa-code"></i> Modelo Pronto
+              </span>
+              <span style="font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--brand-gold);">.html</span>
+            </div>
+
+            <div class="card-icon-box icon-box-orange">
+              <i class="fa-brands fa-html5"></i>
+            </div>
+
+            <h2 class="material-title">Modelo de Código: Minha Primeira Página (.html)</h2>
+            <p class="material-desc">
+              Estrutura limpa e padrão para criar sua primeira ficha web no Bloco de Notas sem complicação.
+            </p>
+          </div>
+
+          <a href="template-minha-ficha.html" download="template-minha-ficha.html" class="btn-card-action btn-outline-gold">
+            <i class="fa-solid fa-download"></i> Baixar Template
+          </a>
+        </article>
+
+        <!-- CARD 3: AULA 02 - CIBERSEGURANÇA -->
+        <article class="material-card">
+          <div>
+            <div class="card-badge-top">
+              <span class="badge-category badge-sec">
+                <i class="fa-solid fa-user-shield"></i> Ciberdefesa
+              </span>
+              <span style="font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--brand-gold);">Aula 02</span>
+            </div>
+
+            <div class="card-icon-box icon-box-green">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <h2 class="material-title">Laboratório de Extensões & Arquivos de Treino</h2>
+            <p class="material-desc">
+              Arquivos de teste didáticos (.json, .png, .bat) e o simulador contra malwares disfarçados.
+            </p>
+          </div>
+
+          <a href="aula02.html" class="btn-card-action btn-outline-gold">
+            <i class="fa-solid fa-magnifying-glass"></i> Explorar Arquivos
+          </a>
+        </article>
+
+        <!-- CARD 4: AULA 01 - SISTEMA OPERACIONAL -->
+        <article class="material-card">
+          <div>
+            <div class="card-badge-top">
+              <span class="badge-category badge-system">
+                <i class="fa-solid fa-folder-open"></i> Fundamentos
+              </span>
+              <span style="font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--brand-gold);">Aula 01</span>
+            </div>
+
+            <div class="card-icon-box icon-box-yellow">
+              <i class="fa-solid fa-folder-tree"></i>
+            </div>
+
+            <h2 class="material-title">Manual das Gavetas Digitais & Ciclo CRUD</h2>
+            <p class="material-desc">
+              Como o Windows organiza caminhos e arquivos e como praticar criar, ler, editar e deletar com segurança.
+            </p>
+          </div>
+
+          <a href="aula01.html" class="btn-card-action btn-outline-gold">
+            <i class="fa-solid fa-book-open-reader"></i> Rever Aula 01
+          </a>
+        </article>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Rodapé Nobre -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-logo">PROJETO LIRACODE</div>
+          <div class="footer-text">Educação Tecnológica, Lógica & Cibersegurança &copy; 2026</div>
+        </div>
+        <div class="footer-text">
+          Construindo as bases sólidas dos futuros profissionais de tecnologia.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script do Menu Mobile e Dropdown -->
+  <script>
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    const aulasDropdown = document.getElementById('aulasDropdown');
+    const aulasDropdownBtn = document.getElementById('aulasDropdownBtn');
+
+    if (mobileBtn && navMenu) {
+      mobileBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = mobileBtn.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+          icon.className = 'fa-solid fa-xmark';
+        } else {
+          icon.className = 'fa-solid fa-bars';
+          if (aulasDropdown) aulasDropdown.classList.remove('open');
+        }
+      });
+    }
+
+    if (aulasDropdownBtn && aulasDropdown) {
+      aulasDropdownBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        aulasDropdown.classList.toggle('open');
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (aulasDropdown && !aulasDropdown.contains(e.target)) {
+        aulasDropdown.classList.remove('open');
+      }
+    });
+
+    if (navMenu) {
+      navMenu.querySelectorAll('a').forEach(link => {
+        if (link.id !== 'aulasDropdownBtn') {
+          link.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+              navMenu.classList.remove('active');
+              const icon = mobileBtn ? mobileBtn.querySelector('i') : null;
+              if (icon) icon.className = 'fa-solid fa-bars';
+              if (aulasDropdown) aulasDropdown.classList.remove('open');
+            }
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
