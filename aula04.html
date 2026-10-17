@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 04: Dominando Tags de Texto no HTML & W3Schools | Projeto LiraCode</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <style>
+/* CSS Embutido LiraCode Oficial - Design System Nobre */
+:root {
+  --brand-red: #b91c1c; --brand-red-dark: #881337; --brand-red-light: #ef4444;
+  --brand-blue: #1e3a8a; --brand-darkblue: #0f172a; --brand-navy: #090e1a;
+  --brand-gold: #eab308; --brand-gold-light: #fde047; --brand-gold-dark: #ca8a04;
+  --brand-accent: #f59e0b; --surface-card: #131d31; --surface-border: #1e293b;
+  --text-main: #f8fafc; --text-muted: #94a3b8; --text-dim: #64748b;
+  --color-safe: #10b981; --color-warning: #f59e0b; --color-danger: #ef4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--brand-darkblue);
+  background-image: radial-gradient(rgba(234, 179, 8, 0.12) 1.2px, transparent 0);
+  background-size: 26px 26px;
+  color: var(--text-main); line-height: 1.6; min-height: 100vh;
+  display: flex; flex-direction: column; overflow-x: hidden;
+}
+.container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* Navbar */
+.header-nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(10, 15, 29, 0.94); backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--brand-gold); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+.logo-escudo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.escudo-badge {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 50%, var(--brand-blue) 100%);
+  border: 2px solid var(--brand-gold); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.4); color: var(--brand-gold); font-size: 1.5rem;
+}
+.logo-text h1 {
+  font-family: 'Chakra Petch', sans-serif; font-size: 1.6rem; font-weight: 800; letter-spacing: 1.5px;
+  background: linear-gradient(to right, var(--brand-gold), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.logo-text span { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--brand-gold-light); display: block; }
+
+/* Menu Nobre - Estilo Pílulas */
+.nav-menu {
+  display: flex; list-style: none; gap: 6px; align-items: center;
+}
+.nav-item { position: relative; list-style: none; }
+.nav-link {
+  text-decoration: none; color: #cbd5e1; font-size: 0.88rem; font-weight: 600;
+  padding: 8px 14px; border-radius: 9999px; background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(234, 179, 8, 0.22); display: inline-flex; align-items: center;
+  gap: 8px; transition: all 0.22s ease; white-space: nowrap;
+}
+.nav-link:hover {
+  color: var(--brand-gold-light); background: rgba(234, 179, 8, 0.12);
+  border-color: var(--brand-gold); transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15);
+}
+.nav-link.active {
+  color: #0f172a; background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  border-color: var(--brand-gold); font-weight: 700; box-shadow: 0 0 14px rgba(234, 179, 8, 0.35);
+}
+.nav-link.active i { color: #0f172a !important; }
+
+/* Dropdown Suspenso Nobre */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { cursor: pointer; }
+.dropdown-caret { font-size: 0.7rem; transition: transform 0.2s ease; }
+.nav-dropdown:hover .dropdown-caret,
+.nav-dropdown.open .dropdown-caret { transform: rotate(180deg); }
+
+.dropdown-menu {
+  position: absolute; top: calc(100% + 10px); left: 0; min-width: 290px;
+  background: rgba(10, 15, 29, 0.96); backdrop-filter: blur(16px);
+  border: 1px solid var(--brand-gold); border-radius: 16px; padding: 10px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65), 0 0 15px rgba(234, 179, 8, 0.2);
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1050; list-style: none;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.dropdown-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+  color: #e2e8f0; text-decoration: none; border-radius: 10px;
+  font-size: 0.85rem; font-weight: 600; transition: all 0.18s ease; border: 1px solid transparent;
+}
+.dropdown-item:hover,
+.dropdown-item.active {
+  background: rgba(234, 179, 8, 0.12); color: var(--brand-gold-light);
+  border-color: rgba(234, 179, 8, 0.3); transform: translateX(3px);
+}
+.dropdown-item-badge {
+  width: 24px; height: 24px; border-radius: 8px; display: flex;
+  align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0;
+}
+.dropdown-item-text { display: flex; flex-direction: column; }
+.dropdown-item-title { font-weight: 700; font-size: 0.86rem; line-height: 1.2; }
+.dropdown-item-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+
+.nav-badge-live {
+  background: linear-gradient(90deg, var(--brand-blue), #1e293b);
+  border: 1px solid rgba(234, 179, 8, 0.5); padding: 6px 14px; border-radius: 20px;
+  font-size: 0.78rem; font-weight: 700; color: var(--brand-gold-light);
+  display: flex; align-items: center; gap: 8px; white-space: nowrap;
+}
+.pulse-dot {
+  width: 9px; height: 9px; background: #10b981; border-radius: 50%;
+  box-shadow: 0 0 10px #10b981; animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+/* Header da Página de Aula */
+.lesson-page-header {
+  padding: 50px 0 40px 0;
+  background: linear-gradient(180deg, #090e1a 0%, var(--brand-darkblue) 100%);
+  border-bottom: 2px solid var(--brand-gold);
+}
+.breadcrumb-nav { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 0.88rem; }
+.breadcrumb-nav a { color: var(--brand-gold); text-decoration: none; font-weight: 600; }
+.breadcrumb-nav span { color: var(--text-dim); }
+.lesson-page-title {
+  font-family: 'Chakra Petch', sans-serif; font-size: 2.6rem; font-weight: 800;
+  color: #fff; margin-bottom: 12px; line-height: 1.2;
+}
+.lesson-page-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 820px; }
+
+/* Corpo da Aula */
+.lesson-body { padding: 50px 0 80px 0; }
+.content-card {
+  background: var(--surface-card); border: 1px solid var(--surface-border);
+  border-radius: 20px; padding: 36px; margin-bottom: 35px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35); position: relative;
+}
+.content-card:hover { border-color: rgba(234, 179, 8, 0.35); }
+.content-card h2 {
+  font-family: 'Chakra Petch', sans-serif; font-size: 1.7rem; color: #fff;
+  margin-bottom: 18px; display: flex; align-items: center; gap: 12px;
+}
+.content-card p { color: #cbd5e1; font-size: 1.02rem; margin-bottom: 16px; line-height: 1.7; }
+
+/* Elementos Didáticos Específicos */
+.tag-pill {
+  font-family: 'Fira Code', monospace; font-size: 0.85rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 6px; background: rgba(234, 179, 8, 0.15);
+  color: var(--brand-gold-light); border: 1px solid rgba(234, 179, 8, 0.3);
+  display: inline-block;
+}
+
+/* Simulador de Títulos H1-H6 */
+.headings-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0;
+}
+@media (max-width: 850px) { .headings-grid { grid-template-columns: 1fr; } }
+
+.headings-col {
+  background: rgba(10, 15, 29, 0.85); border: 1px solid rgba(234, 179, 8, 0.25);
+  border-radius: 16px; padding: 22px;
+}
+.headings-col-title {
+  font-family: 'Chakra Petch', sans-serif; font-size: 0.95rem; font-weight: 700;
+  color: var(--brand-gold); margin-bottom: 18px; text-transform: uppercase;
+  letter-spacing: 1px; display: flex; align-items: center; gap: 8px;
+}
+
+.heading-sample-item {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); gap: 12px;
+}
+.heading-sample-item:last-child { border-bottom: none; }
+.heading-label {
+  font-family: 'Fira Code', monospace; font-size: 0.82rem; color: var(--text-dim);
+  min-width: 65px;
+}
+
+/* Tabela Comparativa Semântica */
+.semantic-table-wrapper {
+  overflow-x: auto; margin: 24px 0; border-radius: 14px;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+.semantic-table {
+  width: 100%; border-collapse: collapse; text-align: left;
+  background: rgba(10, 15, 29, 0.8);
+}
+.semantic-table th {
+  background: rgba(234, 179, 8, 0.12); color: var(--brand-gold-light);
+  font-family: 'Chakra Petch', sans-serif; font-size: 0.92rem;
+  padding: 14px 18px; border-bottom: 2px solid var(--brand-gold);
+}
+.semantic-table td {
+  padding: 14px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.94rem; color: #cbd5e1;
+}
+.semantic-table tr:last-child td { border-bottom: none; }
+.semantic-table tr:hover td { background: rgba(234, 179, 8, 0.04); }
+
+/* Bloco Nobre W3Schools */
+.w3schools-card {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(136, 19, 55, 0.35) 50%, rgba(15, 23, 42, 0.95) 100%);
+  border: 2px solid var(--brand-gold); border-radius: 22px; padding: 36px;
+  box-shadow: 0 0 35px rgba(234, 179, 8, 0.25); margin: 35px 0; position: relative;
+}
+.w3schools-header {
+  display: flex; align-items: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.w3schools-icon {
+  width: 68px; height: 68px; border-radius: 18px;
+  background: linear-gradient(135deg, #04aa6d, #028052);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Chakra Petch', sans-serif; font-size: 2.2rem; font-weight: 800;
+  color: #fff; box-shadow: 0 0 20px rgba(4, 170, 109, 0.4); border: 2px solid var(--brand-gold);
+}
+.w3schools-title {
+  font-family: 'Chakra Petch', sans-serif; font-size: 1.8rem; font-weight: 800;
+  color: #fff; line-height: 1.2;
+}
+.w3schools-desc {
+  font-size: 1.05rem; color: #cbd5e1; margin-bottom: 24px; line-height: 1.7;
+}
+.w3schools-quote {
+  background: rgba(10, 15, 29, 0.7); border-left: 4px solid var(--brand-gold);
+  padding: 16px 20px; border-radius: 0 12px 12px 0; font-style: italic;
+  color: var(--brand-gold-light); margin-bottom: 26px; font-size: 1.05rem;
+}
+
+/* Botão de Destaque Dourado */
+.btn-w3schools {
+  background: linear-gradient(135deg, var(--brand-gold) 0%, #f59e0b 100%);
+  color: #0f172a; font-family: 'Chakra Petch', sans-serif; font-size: 1.08rem;
+  font-weight: 800; padding: 18px 32px; border-radius: 14px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 14px;
+  box-shadow: 0 6px 25px rgba(234, 179, 8, 0.45); transition: all 0.25s ease;
+  border: 2px solid #fff;
+}
+.btn-w3schools:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(234, 179, 8, 0.65); color: #090e1a;
+}
+
+/* Bloco de Código de Exemplo */
+.code-box {
+  background: #090e1a; border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: 14px; margin: 20px 0; overflow: hidden;
+}
+.code-box-header {
+  background: #111827; padding: 10px 18px; display: flex;
+  justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.code-box-dots { display: flex; gap: 6px; }
+.code-dot { width: 10px; height: 10px; border-radius: 50%; }
+.code-dot-red { background: #ef4444; }
+.code-dot-yellow { background: #f59e0b; }
+.code-dot-green { background: #10b981; }
+.code-box-title { font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--brand-gold); }
+.code-box pre {
+  padding: 18px; font-family: 'Fira Code', monospace; font-size: 0.9rem;
+  color: #e2e8f0; overflow-x: auto; line-height: 1.6;
+}
+
+/* Botões de Ação Geral */
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-accent) 100%);
+  color: #0f172a; font-weight: 700; padding: 14px 26px; border-radius: 12px;
+  text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center;
+  gap: 10px; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.35); transition: all 0.2s ease;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(234, 179, 8, 0.5); color: #090e1a; }
+.btn-outline {
+  background: rgba(19, 29, 49, 0.7); color: var(--text-main); border: 1px solid var(--brand-gold);
+  font-weight: 600; padding: 14px 24px; border-radius: 12px; text-decoration: none;
+  font-size: 0.95rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s ease;
+}
+.btn-outline:hover { background: rgba(234, 179, 8, 0.15); border-color: var(--brand-gold-light); transform: translateY(-2px); }
+
+/* Modal Customizado */
+.custom-modal {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px); display: none; align-items: center;
+  justify-content: center; z-index: 2000; padding: 20px;
+}
+.custom-modal.active { display: flex; }
+.modal-content {
+  background: #0f172a; border: 2px solid var(--brand-gold); border-radius: 20px;
+  padding: 30px; max-width: 480px; width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(234, 179, 8, 0.3);
+  animation: modalScale 0.25s ease-out;
+}
+@keyframes modalScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+.modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.modal-title { font-family: 'Chakra Petch', sans-serif; font-size: 1.35rem; color: var(--brand-gold); }
+.modal-body { color: #cbd5e1; font-size: 0.98rem; margin-bottom: 24px; line-height: 1.6; }
+.modal-icon { font-size: 1.6rem; color: #10b981; }
+
+/* Rodapé */
+.footer { background: #090e1a; border-top: 2px solid var(--brand-gold); padding: 40px 0; margin-top: auto; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: 'Chakra Petch', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--brand-gold); }
+.footer-text { font-size: 0.85rem; color: var(--text-dim); }
+
+/* Responsividade Mobile */
+.mobile-toggle {
+  display: none; background: rgba(234, 179, 8, 0.15); border: 1px solid var(--brand-gold);
+  color: var(--brand-gold); font-size: 1.3rem; width: 44px; height: 44px;
+  border-radius: 10px; cursor: pointer; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.mobile-toggle:hover { background: var(--brand-gold); color: #0f172a; }
+
+@media (max-width: 990px) {
+  .mobile-toggle { display: flex; }
+  .nav-menu {
+    display: none; position: absolute; top: 76px; left: 0; right: 0;
+    background: rgba(9, 14, 26, 0.98); backdrop-filter: blur(16px);
+    border-bottom: 2px solid var(--brand-gold); flex-direction: column;
+    padding: 20px; gap: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    max-height: calc(100vh - 80px); overflow-y: auto;
+  }
+  .nav-menu.active { display: flex; animation: slideDownNav 0.25s ease-out; }
+  .nav-item { width: 100%; }
+  .nav-link { width: 100%; justify-content: center; padding: 12px 16px; font-size: 0.95rem; border-radius: 12px; }
+  .nav-dropdown { width: 100%; }
+  .nav-dropdown .dropdown-menu {
+    position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none;
+    background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(234, 179, 8, 0.3);
+    margin-top: 8px; width: 100%; display: none;
+  }
+  .nav-dropdown.open .dropdown-menu,
+  .nav-dropdown:hover .dropdown-menu { display: block; }
+  .dropdown-item { padding: 12px 14px; }
+  .nav-badge-live { width: 100%; justify-content: center; padding: 10px; border-radius: 12px; }
+  .logo-text h1 { font-size: 1.25rem; }
+  .logo-text span { font-size: 0.62rem; }
+  .escudo-badge { width: 40px; height: 40px; font-size: 1.2rem; }
+  .lesson-page-title { font-size: 2rem; }
+}
+
+@keyframes slideDownNav {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar / Cabeçalho Principal Oficial -->
+  <header class="header-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        
+        <!-- Logo / Brasão Oficial LiraCode -->
+        <a href="index.html" class="logo-escudo">
+          <img src="brasao-liracode.png" alt="Brasão Oficial LiraCode" style="width: 46px; height: 46px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.45));">
+          <div class="logo-text">
+            <h1>LIRACODE</h1>
+            <span>AULAS & CIBERSEGURANÇA</span>
+          </div>
+        </a>
+
+        <!-- Botão Hambúrguer Mobile -->
+        <button id="mobileMenuBtn" class="mobile-toggle" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Menu de Navegação Nobre em Pílulas -->
+        <nav>
+          <ul id="navMenu" class="nav-menu">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Início
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#trilha" class="nav-link">
+                <i class="fa-solid fa-shoe-prints"></i> Trilha da Estrada
+              </a>
+            </li>
+            <li class="nav-item nav-dropdown" id="aulasDropdown">
+              <a href="javascript:void(0)" class="nav-link active nav-dropdown-toggle" id="aulasDropdownBtn">
+                <i class="fa-solid fa-book-open"></i> Aulas <i class="fa-solid fa-chevron-down dropdown-caret"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="aula01.html" class="dropdown-item">
+                    <span class="dropdown-item-badge" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">🟢</span>
+                    <span class="dropdown-item-text">
+                      <span class="dropdown-item-title">Aula 01: Dominando Pastas</span>
+                      <span class="dropdown-item-sub">Arquivos, caminhos e ciclo CRUD</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="aula02.html" class="dropdown-item">
+                    <span class="dropdown-item-badge" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">🟡</span>
+                    <span class="dropdown-item-text">
+                      <span class="dropdown-item-title">Aula 02: O Crachá dos Arquivos</span>
+                      <span class="dropdown-item-sub">Extensões ocultas e cibersegurança</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="aula03.html" class="dropdown-item">
+                    <span class="dropdown-item-badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8;">🚀</span>
+                    <span class="dropdown-item-text">
+                      <span class="dropdown-item-title">Aula 03: A Ficha Vira Web</span>
+                      <span class="dropdown-item-sub">HTML Puro no Bloco de Notas</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="aula04.html" class="dropdown-item active">
+                    <span class="dropdown-item-badge" style="background: rgba(234, 179, 8, 0.2); color: #eab308;">✨</span>
+                    <span class="dropdown-item-text">
+                      <span class="dropdown-item-title">Aula 04: Tags de Texto & W3Schools</span>
+                      <span class="dropdown-item-sub">Hierarquia h1-h6 e enciclopédia web</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#alunos" class="nav-link">
+                <i class="fa-solid fa-graduation-cap"></i> Vitrine dos Alunos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="biblioteca.html" class="nav-link">
+                <i class="fa-solid fa-book-bookmark"></i> Biblioteca
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://liracode.com.br" target="_blank" rel="noopener noreferrer" class="nav-link">
+                <i class="fa-solid fa-people-roof"></i> Portal dos Pais <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem; opacity: 0.8;"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="nav-badge-live">
+                <span class="pulse-dot"></span>
+                Aulas aos Sábados
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho da Aula 04 -->
+  <section class="lesson-page-header">
+    <div class="container">
+      <div class="breadcrumb-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <span>/</span>
+        <a href="index.html#trilha">Trilha da Estrada</a>
+        <span>/</span>
+        <span style="color: var(--brand-gold);">Marco 04</span>
+      </div>
+
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(234, 179, 8, 0.2); color: var(--brand-gold-light); border: 1px solid var(--brand-gold); padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase;">
+        <span class="pulse-dot"></span> Marco Atual da Estrada (Aula da Semana)
+      </div>
+
+      <h1 class="lesson-page-title">Aula 04 • O Poder das Palavras: Dominando Tags de Texto no HTML</h1>
+      <p class="lesson-page-subtitle">
+        Como transformar textos simples em títulos marcantes, parágrafos bem organizados e destaques nobres — e o segredo de ouro: consultar a enciclopédia oficial do desenvolvedor no W3Schools!
+      </p>
+    </div>
+  </section>
+
+  <!-- Corpo Principal da Aula 04 -->
+  <main class="lesson-body container">
+
+    <!-- Card 1: A Hierarquia de Títulos (h1 a h6) -->
+    <article class="content-card">
+      <h2>
+        <i class="fa-solid fa-heading" style="color: var(--brand-gold);"></i> 
+        1. A Hierarquia de Títulos: Do &lt;h1&gt; ao &lt;h6&gt;
+      </h2>
+      <p>
+        Imagine um jornal diário: a primeira coisa que salta aos olhos é a <strong>grande manchete na capa</strong>. Depois vêm os títulos das matérias, os subtítulos e os pequenos detalhes. No HTML funciona exatamente da mesma maneira através dos <span class="tag-pill">&lt;h1&gt;</span> até <span class="tag-pill">&lt;h6&gt;</span> (a letra <strong>H</strong> vem de <em>Heading</em>, que significa título ou cabeçalho).
+      </p>
+      <p>
+        <strong style="color: var(--brand-gold-light);"><i class="fa-solid fa-shield-halved"></i> A Regra de Ouro da Web:</strong> 
+        O navegador e o Google leem o seu código de cima para baixo. Cada página deve possuir <strong>apenas um &lt;h1&gt;</strong> (o tema principal da página). Os subtítulos seguintes usam <span class="tag-pill">&lt;h2&gt;</span>, e as divisões menores usam <span class="tag-pill">&lt;h3&gt;</span>.
+      </p>
+
+      <!-- Comparativo Visual H1 a H6 -->
+      <div class="headings-grid">
+        
+        <!-- Coluna de Código -->
+        <div class="headings-col">
+          <div class="headings-col-title">
+            <i class="fa-solid fa-code"></i> Código no Bloco de Notas
+          </div>
+          <div class="code-box" style="margin: 0;">
+            <pre><code>&lt;h1&gt;Título Nível 1 - Manchete Principal&lt;/h1&gt;
+&lt;h2&gt;Título Nível 2 - Seção Importante&lt;/h2&gt;
+&lt;h3&gt;Título Nível 3 - Subseção do Tema&lt;/h3&gt;
+&lt;h4&gt;Título Nível 4 - Tópico Específico&lt;/h4&gt;
+&lt;h5&gt;Título Nível 5 - Detalhe Menor&lt;/h5&gt;
+&lt;h6&gt;Título Nível 6 - Menor Título Possível&lt;/h6&gt;</code></pre>
+          </div>
+        </div>
+
+        <!-- Coluna de Renderização Visual -->
+        <div class="headings-col">
+          <div class="headings-col-title">
+            <i class="fa-solid fa-eye"></i> Como o Navegador Exibe na Tela
+          </div>
+          <div style="background: #0f172a; padding: 18px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08);">
+            <div class="heading-sample-item">
+              <span class="heading-label">&lt;h1&gt;</span>
+              <h1 style="font-size: 1.85rem; color: #fff; margin: 0; line-height: 1.2;">Título Nível 1</h1>
+            </div>
+            <div class="heading-sample-item">
+              <span class="heading-label">&lt;h2&gt;</span>
+              <h2 style="font-size: 1.5rem; color: var(--brand-gold-light); margin: 0; line-height: 1.2;">Título Nível 2</h2>
+            </div>
+            <div class="heading-sample-item">
+              <span class="heading-label">&lt;h3&gt;</span>
+              <h3 style="font-size: 1.25rem; color: #38bdf8; margin: 0; line-height: 1.2;">Título Nível 3</h3>
+            </div>
+            <div class="heading-sample-item">
+              <span class="heading-label">&lt;h4&gt;</span>
+              <h4 style="font-size: 1.05rem; color: #cbd5e1; margin: 0; line-height: 1.2;">Título Nível 4</h4>
+            </div>
+            <div class="heading-sample-item">
+              <span class="heading-label">&lt;h5&gt;</span>
+              <h5 style="font-size: 0.9rem; color: #94a3b8; margin: 0; line-height: 1.2;">Título Nível 5</h5>
+            </div>
+            <div class="heading-sample-item">
+              <span class="heading-label">&lt;h6&gt;</span>
+              <h6 style="font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.2;">Título Nível 6</h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Card 2: Parágrafos (<p>) -->
+    <article class="content-card">
+      <h2>
+        <i class="fa-solid fa-paragraph" style="color: #38bdf8;"></i> 
+        2. Parágrafos: A Tag &lt;p&gt; e o Segredo do Enter
+      </h2>
+      <p>
+        Para escrever textos, explicações e histórias na web, usamos a tag <span class="tag-pill">&lt;p&gt;</span> (do inglês <em>Paragraph</em>). Sempre que abrimos um <span class="tag-pill">&lt;p&gt;</span> e fechamos com <span class="tag-pill">&lt;/p&gt;</span>, o navegador automaticamente adiciona um espaçamento antes e depois, criando um bloco de leitura limpo e confortável.
+      </p>
+
+      <div style="background: rgba(185, 28, 28, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 14px; padding: 20px; margin: 20px 0;">
+        <h4 style="color: #fca5a5; font-family: 'Chakra Petch', sans-serif; font-size: 1.1rem; margin-bottom: 8px;">
+          <i class="fa-solid fa-triangle-exclamation"></i> O Mistério que Todo Iniciante Enfrenta:
+        </h4>
+        <p style="margin-bottom: 0; color: #fecaca; font-size: 0.95rem;">
+          Se você abrir o Bloco de Notas e apertar <strong>Enter 10 vezes</strong> entre duas linhas de texto simples, quando abrir no navegador, <strong>o texto aparecerá todo colado na mesma linha!</strong> O navegador ignora quebras de linha normais no arquivo. Para separar parágrafos de verdade na internet, <strong>você é obrigado a colocar cada bloco dentro de sua própria tag &lt;p&gt; e &lt;/p&gt;</strong>.
+        </p>
+      </div>
+
+      <div class="code-box">
+        <div class="code-box-header">
+          <div class="code-box-dots">
+            <span class="code-dot code-dot-red"></span>
+            <span class="code-dot code-dot-yellow"></span>
+            <span class="code-dot code-dot-green"></span>
+          </div>
+          <span class="code-box-title">exemplo-paragrafos.html</span>
+        </div>
+        <pre><code>&lt;p&gt;Este é o meu primeiro parágrafo. Aqui eu conto quem eu sou e o que estou construindo.&lt;/p&gt;
+
+&lt;p&gt;Este é o meu segundo parágrafo. O navegador dá um espaço perfeito entre eles!&lt;/p&gt;</code></pre>
+      </div>
+    </article>
+
+    <!-- Card 3: Destaques Semânticos: <b> vs <strong> e <i> vs <em> -->
+    <article class="content-card">
+      <h2>
+        <i class="fa-solid fa-bold" style="color: var(--brand-gold);"></i> 
+        3. Destaques Nobres: Visual vs. Significado Real (Semântica)
+      </h2>
+      <p>
+        No início da internet, as pessoas usavam tags apenas para "mudar a aparência". Mas a web moderna é <strong>semântica</strong>: o computador e as tecnologias assistivas (como leitores de tela para pessoas com deficiência visual) precisam entender o <em>sentido</em> daquilo que está escrito.
+      </p>
+
+      <div class="semantic-table-wrapper">
+        <table class="semantic-table">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Nome Oficial</th>
+              <th>Efeito na Tela</th>
+              <th>Propósito Semântico Real</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag-pill">&lt;b&gt;</span></td>
+              <td>Bold (Negrito)</td>
+              <td><strong>Texto em negrito</strong></td>
+              <td>Destaca visualmente sem atribuir importância maior.</td>
+            </tr>
+            <tr>
+              <td><span class="tag-pill">&lt;strong&gt;</span></td>
+              <td>Strong Importance</td>
+              <td><strong style="color: var(--brand-gold-light);">Texto em negrito nobre</strong></td>
+              <td><strong>Alerta ao navegador e ao Google:</strong> esta palavra é de suma importância ou urgência!</td>
+            </tr>
+            <tr>
+              <td><span class="tag-pill">&lt;i&gt;</span></td>
+              <td>Idiomatic / Italic</td>
+              <td><em>Texto inclinado</em></td>
+              <td>Aplica itálico para termos estrangeiros, gírias ou títulos de obras.</td>
+            </tr>
+            <tr>
+              <td><span class="tag-pill">&lt;em&gt;</span></td>
+              <td>Emphasis (Ênfase)</td>
+              <td><em style="color: #38bdf8;">Texto com ênfase</em></td>
+              <td><strong>Muda a entonação da voz:</strong> indica que a palavra deve ser lida com ênfase auditiva.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 14px; padding: 20px; margin-top: 20px;">
+        <h4 style="font-family: 'Chakra Petch', sans-serif; color: var(--brand-gold); margin-bottom: 8px;">
+          <i class="fa-solid fa-lightbulb"></i> Exemplo Prático em Frases Reais:
+        </h4>
+        <p style="margin-bottom: 8px;">
+          <code>&lt;p&gt;Atenção: &lt;strong&gt;NUNCA execute&lt;/strong&gt; arquivos com extensão &lt;i&gt;.exe&lt;/i&gt; desconhecidos!&lt;/p&gt;</code>
+        </p>
+        <p style="color: #cbd5e1; margin-bottom: 0; font-size: 0.95rem;">
+          &rarr; O navegador renderiza: <em>Atenção: <strong>NUNCA execute</strong> arquivos com extensão <i>.exe</i> desconhecidos!</em>
+        </p>
+      </div>
+    </article>
+
+    <!-- Card 4: O Arsenal do Desenvolvedor (A Enciclopédia W3Schools) -->
+    <article class="w3schools-card">
+      <div class="w3schools-header">
+        <div class="w3schools-icon">W3</div>
+        <div>
+          <h2 class="w3schools-title">4. O Arsenal do Desenvolvedor: A Enciclopédia W3Schools</h2>
+          <span style="font-family: 'Fira Code', monospace; color: var(--brand-gold-light); font-size: 0.85rem;">
+            DOCUMENTAÇÃO DE REFERÊNCIA OFICIAL EM TECNOLOGIA WEB
+          </span>
+        </div>
+      </div>
+
+      <div class="w3schools-quote">
+        <i class="fa-solid fa-quote-left" style="opacity: 0.5; margin-right: 8px;"></i>
+        "Nenhum programador do mundo decora centenas de tags. O verdadeiro profissional sabe onde e como consultar a documentação oficial para resolver qualquer desafio!"
+      </div>
+
+      <p class="w3schools-desc">
+        O <strong>W3Schools</strong> é a maior e mais respeitada plataforma educacional de documentação web do planeta. Fundada para acompanhar os padrões mundiais do consórcio W3C, ela lista <strong>todas as tags HTML existentes no mundo</strong>, com explicações práticas e exemplos testáveis na hora.
+      </p>
+
+      <p class="w3schools-desc">
+        A partir da Aula 04, você ganha a sua maior superforça: a <strong>autonomia de pesquisa</strong>. Quando quiser criar uma tabela, inserir um vídeo, fazer um link ou colocar um botão, basta abrir a enciclopédia oficial!
+      </p>
+
+      <div style="margin-top: 30px; text-align: center;">
+        <a href="https://www-w3schools-com.translate.goog/TAGS/default.ASP?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn-w3schools">
+          <i class="fa-solid fa-book-bookmark"></i>
+          <span>📖 Consultar Lista Completa de Tags HTML no W3Schools (Traduzido) ↗</span>
+        </a>
+        <div style="margin-top: 14px; font-size: 0.82rem; color: var(--text-dim);">
+          <i class="fa-solid fa-earth-americas"></i> Link oficial traduzido para Português em nova aba para facilitar o estudo da turma.
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5: Desafio de Laboratório de Hoje -->
+    <article class="content-card">
+      <h2>
+        <i class="fa-solid fa-laptop-code" style="color: #10b981;"></i> 
+        5. Mini-Desafio de Laboratório: Criando seu `aula04-texto.html`
+      </h2>
+      <p>
+        Agora é a sua vez de praticar no Bloco de Notas como um verdadeiro desenvolvedor! Siga os passos abaixo para criar a sua página de treino hoje:
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0;">
+        <div style="background: rgba(10, 15, 29, 0.8); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Chakra Petch', sans-serif; font-size: 1.1rem; color: var(--brand-gold); margin-bottom: 8px;">
+            <i class="fa-solid fa-1"></i> Abrir o Bloco de Notas
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">
+            Pressione as teclas <code>Win + R</code>, digite <code>notepad</code> e dê Enter.
+          </p>
+        </div>
+
+        <div style="background: rgba(10, 15, 29, 0.8); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Chakra Petch', sans-serif; font-size: 1.1rem; color: #38bdf8; margin-bottom: 8px;">
+            <i class="fa-solid fa-2"></i> Digitar as Tags
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">
+            Use pelo menos um <code>&lt;h1&gt;</code>, um <code>&lt;h2&gt;</code>, dois <code>&lt;p&gt;</code>, além de <code>&lt;strong&gt;</code> e <code>&lt;i&gt;</code>.
+          </p>
+        </div>
+
+        <div style="background: rgba(10, 15, 29, 0.8); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 14px; padding: 20px;">
+          <div style="font-family: 'Chakra Petch', sans-serif; font-size: 1.1rem; color: #10b981; margin-bottom: 8px;">
+            <i class="fa-solid fa-3"></i> Salvar com Extensão .html
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">
+            Salve como <strong>aula04-texto.html</strong> (mudando "Tipo" para <em>Todos os arquivos</em>).
+          </p>
+        </div>
+      </div>
+
+      <!-- Caixa de Código do Desafio -->
+      <div class="code-box">
+        <div class="code-box-header">
+          <div class="code-box-dots">
+            <span class="code-dot code-dot-red"></span>
+            <span class="code-dot code-dot-yellow"></span>
+            <span class="code-dot code-dot-green"></span>
+          </div>
+          <span class="code-box-title">aula04-texto.html</span>
+          <button id="btnCopiar" onclick="copiarCodigoDesafio()" class="btn-primary" style="padding: 6px 14px; font-size: 0.78rem; border-radius: 8px;">
+            <i class="fa-solid fa-copy"></i> <span>Copiar Código</span>
+          </button>
+        </div>
+        <pre><code id="codigoDesafioTexto">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Aula 04 - O Poder das Palavras | LiraCode&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;O Poder das Tags de Texto no HTML&lt;/h1&gt;
+  
+  &lt;h2&gt;Por que a hierarquia de títulos é importante?&lt;/h2&gt;
+  &lt;p&gt;
+    Quando organizamos nosso texto com &lt;strong&gt;títulos corretos&lt;/strong&gt; e parágrafos bem divididos,
+    qualquer pessoa e qualquer computador consegue ler o conteúdo com clareza.
+  &lt;/p&gt;
+
+  &lt;h2&gt;A Enciclopédia Oficial do Desenvolvedor&lt;/h2&gt;
+  &lt;p&gt;
+    Aprendi na Aula 04 que &lt;i&gt;nenhum programador precisa decorar tudo&lt;/i&gt;.
+    O verdadeiro segredo é saber consultar a documentação no &lt;strong&gt;W3Schools&lt;/strong&gt;!
+  &lt;/p&gt;
+
+  &lt;p&gt;&lt;em&gt;🚀 Arquivo criado com sucesso no Bloco de Notas para o laboratório LiraCode!&lt;/em&gt;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <!-- Ações do Desafio -->
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 20px;">
+        <button onclick="baixarTemplateAula04()" class="btn-primary">
+          <i class="fa-solid fa-download"></i> Baixar Arquivo `aula04-texto.html`
+        </button>
+        <a href="https://www-w3schools-com.translate.goog/TAGS/default.ASP?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          <i class="fa-solid fa-magnifying-glass"></i> Abrir Enciclopédia W3Schools ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- Navegação entre Aulas na Estrada -->
+    <div style="background: rgba(15, 23, 42, 0.85); border: 2px solid var(--brand-gold); border-radius: 18px; padding: 26px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; box-shadow: 0 0 25px rgba(234, 179, 8, 0.2);">
+      <div>
+        <span style="color: var(--brand-gold-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">
+          <i class="fa-solid fa-shoe-prints"></i> Você concluiu este marco da estrada!
+        </span>
+        <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 1.3rem; color: #fff; margin-top: 4px;">
+          Marco 04 • Tags de Texto & W3Schools
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Volte para rever a Aula 03 ou explore guias em PDF na nossa Biblioteca Digital!
+        </p>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="aula03.html" class="btn-outline">
+          <i class="fa-solid fa-arrow-left"></i> Rever Aula 03
+        </a>
+        <a href="biblioteca.html" class="btn-primary">
+          <i class="fa-solid fa-book-bookmark"></i> Biblioteca Digital <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal Customizado -->
+  <div id="modalAviso" class="custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <i id="modalIcone" class="fa-solid fa-circle-check modal-icon"></i>
+        <h4 id="modalTitulo" class="modal-title">Operação Realizada</h4>
+      </div>
+      <p id="modalMensagem" class="modal-body">Mensagem do sistema.</p>
+      <div style="text-align: right;">
+        <button onclick="fecharModal()" class="btn-primary" style="padding: 8px 18px; font-size: 0.85rem;">
+          Excelente!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé Oficial Padronizado -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-logo">PROJETO LIRACODE</div>
+          <div class="footer-text">Educação Tecnológica, Lógica & Cibersegurança &copy; 2026</div>
+        </div>
+        <div class="footer-text">
+          <a href="index.html#trilha" style="color: var(--brand-gold); text-decoration: none;">&larr; Voltar para a Trilha da Estrada</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts Interativos Vanilla -->
+  <script>
+    // Sistema de Modal
+    function abrirModal(titulo, mensagem, tipo = 'sucesso') {
+      const modal = document.getElementById('modalAviso');
+      const tituloEl = document.getElementById('modalTitulo');
+      const msgEl = document.getElementById('modalMensagem');
+      const iconeEl = document.getElementById('modalIcone');
+
+      tituloEl.innerText = titulo;
+      msgEl.innerText = mensagem;
+
+      if (tipo === 'alerta') {
+        iconeEl.className = 'fa-solid fa-triangle-exclamation modal-icon';
+        iconeEl.style.color = 'var(--brand-red-light)';
+      } else {
+        iconeEl.className = 'fa-solid fa-circle-check modal-icon';
+        iconeEl.style.color = '#34d399';
+      }
+
+      modal.classList.add('active');
+    }
+
+    function fecharModal() {
+      document.getElementById('modalAviso').classList.remove('active');
+    }
+
+    document.getElementById('modalAviso').addEventListener('click', (e) => {
+      if (e.target.id === 'modalAviso') fecharModal();
+    });
+
+    // Copiar Código do Desafio
+    function copiarCodigoDesafio() {
+      const codigoLimpo = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 04 - O Poder das Palavras | LiraCode</title>
+</head>
+<body>
+
+  <h1>O Poder das Tags de Texto no HTML</h1>
+  
+  <h2>Por que a hierarquia de títulos é importante?</h2>
+  <p>
+    Quando organizamos nosso texto com <strong>títulos corretos</strong> e parágrafos bem divididos,
+    qualquer pessoa e qualquer computador consegue ler o conteúdo com clareza.
+  </p>
+
+  <h2>A Enciclopédia Oficial do Desenvolvedor</h2>
+  <p>
+    Aprendi na Aula 04 que <i>nenhum programador precisa decorar tudo</i>.
+    O verdadeiro segredo é saber consultar a documentação no <strong>W3Schools</strong>!
+  </p>
+
+  <p><em>🚀 Arquivo criado com sucesso no Bloco de Notas para o laboratório LiraCode!</em></p>
+
+</body>
+</html>`;
+
+      navigator.clipboard.writeText(codigoLimpo).then(() => {
+        const btn = document.getElementById('btnCopiar');
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> <span>Copiado!</span>`;
+        abrirModal("Código Copiado!", "O código do desafio da Aula 04 foi copiado para sua área de transferência. Agora basta colar no Bloco de Notas (Ctrl + V)!");
+        setTimeout(() => {
+          btn.innerHTML = `<i class="fa-solid fa-copy"></i> <span>Copiar Código</span>`;
+        }, 3000);
+      }).catch(() => {
+        abrirModal("Atenção", "Selecione o código manualmente e use Ctrl + C para copiar.", "alerta");
+      });
+    }
+
+    // Baixar Template aula04-texto.html
+    function baixarTemplateAula04() {
+      const conteudo = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 04 - O Poder das Palavras | LiraCode</title>
+</head>
+<body>
+
+  <h1>O Poder das Tags de Texto no HTML</h1>
+  
+  <h2>Por que a hierarquia de títulos é importante?</h2>
+  <p>
+    Quando organizamos nosso texto com <strong>títulos corretos</strong> e parágrafos bem divididos,
+    qualquer pessoa e qualquer computador consegue ler o conteúdo com clareza.
+  </p>
+
+  <h2>A Enciclopédia Oficial do Desenvolvedor</h2>
+  <p>
+    Aprendi na Aula 04 que <i>nenhum programador precisa decorar tudo</i>.
+    O verdadeiro segredo é saber consultar a documentação no <strong>W3Schools</strong>!
+  </p>
+
+  <p><em>🚀 Arquivo criado com sucesso no Bloco de Notas para o laboratório LiraCode!</em></p>
+
+</body>
+</html>`;
+
+      const blob = new Blob([conteudo], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'aula04-texto.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      abrirModal("Download Iniciado!", "O arquivo 'aula04-texto.html' foi baixado com sucesso. Abra-o no Bloco de Notas para exercitar as tags de texto!");
+    }
+
+    // Menu Mobile e Dropdown
+    window.addEventListener('DOMContentLoaded', () => {
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const navMenu = document.getElementById('navMenu');
+      const aulasDropdown = document.getElementById('aulasDropdown');
+      const aulasDropdownBtn = document.getElementById('aulasDropdownBtn');
+
+      if (mobileBtn && navMenu) {
+        mobileBtn.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          const icon = mobileBtn.querySelector('i');
+          if (navMenu.classList.contains('active')) {
+            icon.className = 'fa-solid fa-xmark';
+          } else {
+            icon.className = 'fa-solid fa-bars';
+            if (aulasDropdown) aulasDropdown.classList.remove('open');
+          }
+        });
+      }
+
+      if (aulasDropdownBtn && aulasDropdown) {
+        aulasDropdownBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          aulasDropdown.classList.toggle('open');
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        if (aulasDropdown && !aulasDropdown.contains(e.target)) {
+          aulasDropdown.classList.remove('open');
+        }
+      });
+
+      if (navMenu) {
+        navMenu.querySelectorAll('a').forEach(link => {
+          if (link.id !== 'aulasDropdownBtn') {
+            link.addEventListener('click', () => {
+              if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                const icon = mobileBtn ? mobileBtn.querySelector('i') : null;
+                if (icon) icon.className = 'fa-solid fa-bars';
+                if (aulasDropdown) aulasDropdown.classList.remove('open');
+              }
+            });
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
