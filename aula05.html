@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aula 05: Interatividade na Web • Atributos, Listas e Formulários | Projeto LiraCode</title>
+  <title>Aula 05: Caixas (DIV), Tabelas e Formulários • Interatividade Web | Projeto LiraCode</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -230,6 +230,66 @@ body {
   font-size: 0.85rem; font-weight: 700; color: #0f172a; background: #eab308;
 }
 
+/* Caixas Organizadoras (DIV) */
+.div-box-demo {
+  border: 2px dashed var(--brand-gold);
+  background: rgba(234, 179, 8, 0.05);
+  border-radius: 14px;
+  padding: 22px;
+  position: relative;
+  margin: 16px 0;
+}
+.div-box-badge {
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  background: var(--brand-darkblue);
+  border: 1px solid var(--brand-gold);
+  color: var(--brand-gold-light);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+}
+
+/* Tabelas de Dados Nobres */
+.table-responsive-wrapper {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: 14px;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+.lira-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+  background: #090e1a;
+}
+.lira-table th {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+  color: var(--brand-gold-light);
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--brand-gold);
+}
+.lira-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+}
+.lira-table tr:last-child td {
+  border-bottom: none;
+}
+.lira-table tr:hover td {
+  background: rgba(234, 179, 8, 0.06);
+}
+
 /* Botões */
 .btn-primary {
   background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-accent) 100%);
@@ -396,8 +456,8 @@ body {
                   <a href="aula05.html" class="dropdown-item active">
                     <span class="dropdown-item-badge" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">⚡</span>
                     <span class="dropdown-item-text">
-                      <span class="dropdown-item-title">Aula 05: Atributos, Listas & Formulários</span>
-                      <span class="dropdown-item-sub">Interatividade, inputs e listas</span>
+                      <span class="dropdown-item-title">Aula 05: DIV, Tabelas & Formulários</span>
+                      <span class="dropdown-item-sub">Caixas, tabelas, listas e inputs</span>
                     </span>
                   </a>
                 </li>
@@ -445,9 +505,9 @@ body {
         <span class="pulse-dot" style="background: #ef4444; box-shadow: 0 0 10px #ef4444;"></span> Salto de Interatividade na Web
       </div>
 
-      <h1 class="lesson-page-title">Aula 05 • Interatividade na Web: Atributos, Listas e Formulários</h1>
+      <h1 class="lesson-page-title">Aula 05 • Caixas, Tabelas, Atributos e Formulários na Web</h1>
       <p class="lesson-page-subtitle">
-        O momento em que suas páginas ganham vida, recebem cliques que levam a outros mundos, organizam itens e escutam o que o usuário digita na tela!
+        O salto em que suas páginas ganham vida e organização: caixas &lt;div&gt; para blocos de layout, tabelas &lt;table&gt; para organizar dados em grade, listas estruturadas e campos interativos!
       </p>
     </div>
   </section>
@@ -514,11 +574,86 @@ body {
       </div>
     </article>
 
-    <!-- Card 2: Listas Estruturadas (ul vs ol) -->
+    <!-- Card 2: Caixas Organizadoras (<div> - Division) -->
+    <article class="content-card">
+      <h2>
+        <i class="fa-solid fa-box-archive" style="color: var(--brand-gold);"></i> 
+        2. Caixas Organizadoras (&lt;div&gt; - Agrupando Blocos no Layout)
+      </h2>
+      <p>
+        Quando você organiza seu quarto, você não joga meias, cadernos e ferramentas espalhados no chão: você guarda cada categoria na sua respectiva <strong>gaveta ou caixa organizadora</strong>. Na web, é exatamente isso que a tag <span class="tag-pill">&lt;div&gt;</span> (do inglês <em>Division</em>, divisão) faz!
+      </p>
+      <p>
+        A <span class="tag-pill">&lt;div&gt;</span> é como uma <strong>caixa transparente invisível</strong>. Ela não altera o texto da tela, mas serve para <strong>embalar e agrupar vários elementos juntos</strong> (um título, um parágrafo, listas, botões ou imagens) para que eles formem um bloco único e estruturado no layout da página.
+      </p>
+
+      <div class="interactive-grid">
+        
+        <!-- Bloco Exemplo de Código -->
+        <div class="interactive-col">
+          <div class="interactive-col-header">
+            <i class="fa-solid fa-code" style="color: #38bdf8;"></i> 
+            Como Você Digita no Bloco de Notas:
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 12px;">
+            Envolvemos os elementos dentro da abertura <code>&lt;div&gt;</code> e do fechamento <code>&lt;/div&gt;</code>:
+          </p>
+          <div class="code-box" style="margin: 0 0 14px 0;">
+            <pre><code>&lt;div&gt;
+  &lt;h2&gt;Meus Games Favoritos&lt;/h2&gt;
+  &lt;p&gt;Estes são os jogos que mais curto jogar:&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Roblox&lt;/li&gt;
+    &lt;li&gt;Minecraft&lt;/li&gt;
+    &lt;li&gt;Fortnite&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+          <div style="background: rgba(30, 58, 138, 0.2); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 10px; padding: 12px; font-size: 0.85rem; color: #94a3b8;">
+            <i class="fa-solid fa-lightbulb" style="color: var(--brand-gold);"></i> <strong>Dica de Ouro:</strong> No HTML puro, a &lt;div&gt; é invisível a olho nu. Mas no futuro, quando estilizarmos com CSS, você poderá pintar o fundo, colocar borda ou mover essa caixa inteira com uma única regra!
+          </div>
+        </div>
+
+        <!-- Bloco Ilustração Visual da Caixa -->
+        <div class="interactive-col">
+          <div class="interactive-col-header">
+            <i class="fa-solid fa-boxes-stacked" style="color: var(--brand-gold);"></i> 
+            Como o Navegador Enxerga a Caixa:
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 12px;">
+            A linha tracejada dourada abaixo representa a <strong>caixa invisível</strong> que protege e agrupa o conteúdo:
+          </p>
+          
+          <div class="div-box-demo">
+            <span class="div-box-badge">&lt;div&gt; Gaveta de Games &lt;/div&gt;</span>
+            <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 1.15rem; color: #fff; margin-top: 6px; margin-bottom: 8px;">
+              🎮 Meus Games Favoritos
+            </h3>
+            <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 10px;">
+              Estes são os jogos que mais curto jogar no computador:
+            </p>
+            <ul style="padding-left: 20px; color: var(--brand-gold-light); font-size: 0.9rem;">
+              <li style="margin-bottom: 4px;"><span style="color: #cbd5e1;">Roblox</span></li>
+              <li style="margin-bottom: 4px;"><span style="color: #cbd5e1;">Minecraft</span></li>
+              <li><span style="color: #cbd5e1;">Fortnite</span></li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 10px;">
+            <a href="https://www-w3schools-com.translate.goog/html/html_blocks.asp?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" style="color: var(--brand-gold); font-size: 0.85rem; text-decoration: underline; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-book-open"></i> Explorar &lt;div&gt; no W3Schools ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Card 3: Listas Estruturadas (ul vs ol) -->
     <article class="content-card">
       <h2>
         <i class="fa-solid fa-list-check" style="color: #38bdf8;"></i> 
-        2. Listas: Organizando Informações (&lt;ul&gt; vs &lt;ol&gt;)
+        3. Listas: Organizando Informações (&lt;ul&gt; vs &lt;ol&gt;)
       </h2>
       <p>
         Na programação, quase tudo que construímos é uma lista: lista de usuários, lista de compras, inventário de itens num jogo ou ranking de pontuações. No HTML, cada item individual da lista é embalado pela tag <span class="tag-pill">&lt;li&gt;</span> (<em>List Item</em>).
@@ -579,11 +714,136 @@ body {
       </div>
     </article>
 
-    <!-- Card 3: Formulários Interativos (O Site Escuta o Usuário) -->
+    <!-- Card 4: Tabelas de Dados (<table>, <tr>, <th>, <td>) -->
+    <article class="content-card">
+      <h2>
+        <i class="fa-solid fa-table" style="color: #10b981;"></i> 
+        4. Tabelas de Dados (&lt;table&gt; - Organizando em Linhas e Colunas)
+      </h2>
+      <p>
+        Imagine uma <strong>planilha do Excel, uma tabela de classificação ou um boletim escolar</strong>. Sempre que precisamos apresentar informações lado a lado, em formato de grade (linhas e colunas), usamos a tag <span class="tag-pill">&lt;table&gt;</span>!
+      </p>
+
+      <p>
+        Construir uma tabela no HTML é como encaixar 4 blocos de montar fundamentais:
+      </p>
+
+      <!-- Anatomia das Tags da Tabela -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 20px 0;">
+        <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid rgba(234, 179, 8, 0.3); border-radius: 12px; padding: 16px;">
+          <span class="tag-pill" style="font-size: 0.95rem;">&lt;table&gt;</span>
+          <h4 style="font-family: 'Chakra Petch', sans-serif; font-size: 1rem; color: #fff; margin: 8px 0 4px 0;">A Moldura da Tabela</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Abre e fecha a tabela inteira, servindo como a moldura externa.</p>
+        </div>
+
+        <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 16px;">
+          <span class="tag-pill" style="font-size: 0.95rem; color: #38bdf8; border-color: rgba(56, 189, 248, 0.4);">&lt;tr&gt;</span>
+          <h4 style="font-family: 'Chakra Petch', sans-serif; font-size: 1rem; color: #fff; margin: 8px 0 4px 0;">Table Row (Linha)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Cria cada andar horizontal da tabela (uma linha de cada vez).</p>
+        </div>
+
+        <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 16px;">
+          <span class="tag-pill" style="font-size: 0.95rem; color: #f59e0b; border-color: rgba(245, 158, 11, 0.4);">&lt;th&gt;</span>
+          <h4 style="font-family: 'Chakra Petch', sans-serif; font-size: 1rem; color: #fff; margin: 8px 0 4px 0;">Table Header (Título)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Cabeçalho da coluna. O navegador já coloca automaticamente em <strong>negrito</strong> e centralizado.</p>
+        </div>
+
+        <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 16px;">
+          <span class="tag-pill" style="font-size: 0.95rem; color: #34d399; border-color: rgba(16, 185, 129, 0.4);">&lt;td&gt;</span>
+          <h4 style="font-family: 'Chakra Petch', sans-serif; font-size: 1rem; color: #fff; margin: 8px 0 4px 0;">Table Data (Dado)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">O dado real da célula (o texto, número ou informação de cada caixinha).</p>
+        </div>
+      </div>
+
+      <div class="interactive-grid">
+        
+        <!-- Código no Bloco de Notas -->
+        <div class="interactive-col">
+          <div class="interactive-col-header">
+            <i class="fa-solid fa-code" style="color: var(--brand-gold);"></i> 
+            Código no Bloco de Notas:
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 12px;">
+            Usamos o atributo <span class="tag-pill">border="1"</span> para que as grades fiquem visíveis no HTML puro:
+          </p>
+          <div class="code-box" style="margin: 0 0 14px 0;">
+            <pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Estudante&lt;/th&gt;
+    &lt;th&gt;Especialidade&lt;/th&gt;
+    &lt;th&gt;Status&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Enzo&lt;/td&gt;
+    &lt;td&gt;HTML Puro &amp; CRUD&lt;/td&gt;
+    &lt;td&gt;Avançado&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Jennifer&lt;/td&gt;
+    &lt;td&gt;Cibersegurança&lt;/td&gt;
+    &lt;td&gt;Avançado&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 12px; font-size: 0.85rem; color: #cbd5e1;">
+            <i class="fa-solid fa-shield-halved" style="color: #34d399;"></i> <strong>Segredo dos Veteranos:</strong> Cada <code>&lt;tr&gt;</code> representa uma linha inteira na horizontal. Dentro de cada linha, as tags <code>&lt;td&gt;</code> preenchem as colunas lado a lado!
+          </div>
+        </div>
+
+        <!-- Visualização Renderizada Nobre -->
+        <div class="interactive-col">
+          <div class="interactive-col-header">
+            <i class="fa-solid fa-eye" style="color: #34d399;"></i> 
+            Como Fica Renderizado na Tela:
+          </div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 12px;">
+            Veja a mesma tabela renderizada com o estilo nobre do LiraCode:
+          </p>
+
+          <div class="table-responsive-wrapper">
+            <table class="lira-table">
+              <thead>
+                <tr>
+                  <th>Estudante</th>
+                  <th>Especialidade</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>🌟 <strong>Enzo</strong></td>
+                  <td>HTML Puro &amp; CRUD</td>
+                  <td><span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 2px 8px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;">Avançado</span></td>
+                </tr>
+                <tr>
+                  <td>🌟 <strong>Jennifer</strong></td>
+                  <td>Cibersegurança</td>
+                  <td><span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 2px 8px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;">Avançado</span></td>
+                </tr>
+                <tr>
+                  <td>🌟 <strong>Paulo Henrique</strong></td>
+                  <td>Estrutura Web</td>
+                  <td><span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 2px 8px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;">Em Ação</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <a href="https://www-w3schools-com.translate.goog/html/html_tables.asp?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" style="color: var(--brand-gold); font-size: 0.85rem; text-decoration: underline; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-book-open"></i> Ver Tutorial de Tabelas no W3Schools ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Card 5: Formulários Interativos (O Site Escuta o Usuário) -->
     <article class="content-card">
       <h2>
         <i class="fa-solid fa-keyboard" style="color: #f59e0b;"></i> 
-        3. Formulários Interativos: O Site Agora Escuta Você!
+        5. Formulários Interativos: O Site Agora Escuta Você!
       </h2>
       <p>
         Até agora, nossas páginas só falavam com quem as lia. Mas a verdadeira mágica da internet acontece quando o usuário pode <strong>responder, digitar e interagir</strong>.
@@ -659,14 +919,14 @@ body {
       </div>
     </article>
 
-    <!-- Card 4: Mini-Desafio de Laboratório -->
+    <!-- Card 6: Mini-Desafio de Laboratório -->
     <article class="content-card">
       <h2>
         <i class="fa-solid fa-code" style="color: #10b981;"></i> 
-        4. Mini-Desafio de Laboratório: Sua Primeira `ficha-interativa.html`
+        6. Mini-Desafio de Laboratório: Sua Primeira `ficha-interativa.html`
       </h2>
       <p>
-        Chegou a hora de juntar tudo no seu Bloco de Notas: um título, uma lista de interesses, um link externo e o seu primeiro campo de digitação!
+        Chegou a hora de juntar todos os superpoderes no seu Bloco de Notas: caixas organizadoras com <code>&lt;div&gt;</code>, tabelas de dados com <code>&lt;table&gt;</code>, listas estruturadas com <code>&lt;ul&gt;</code>, links externos e seu primeiro formulário interativo!
       </p>
 
       <div class="code-box">
@@ -689,44 +949,83 @@ body {
 &lt;/head&gt;
 &lt;body&gt;
 
-  &lt;h1&gt;Minha Primeira Ficha Interativa&lt;/h1&gt;
-  &lt;p&gt;Esta página foi criada no Bloco de Notas e já recebe comandos do usuário!&lt;/p&gt;
+  &lt;!-- Caixa Organizadora: Apresentação --&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Minha Primeira Ficha Interativa&lt;/h1&gt;
+    &lt;p&gt;Esta página foi criada no Bloco de Notas e reúne caixas, tabelas, listas e formulários!&lt;/p&gt;
+  &lt;/div&gt;
 
-  &lt;h2&gt;🎯 Meus Interesses Tecnológicos:&lt;/h2&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Aprender Cibersegurança e Programação&lt;/li&gt;
-    &lt;li&gt;Criar jogos e páginas interativas&lt;/li&gt;
-    &lt;li&gt;Desvendar como os computadores funcionam&lt;/li&gt;
-  &lt;/ul&gt;
+  &lt;!-- Caixa Organizadora: Interesses (Lista) --&gt;
+  &lt;div&gt;
+    &lt;h2&gt;🎯 Meus Interesses Tecnológicos:&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Aprender Cibersegurança e Programação&lt;/li&gt;
+      &lt;li&gt;Criar jogos e páginas interativas&lt;/li&gt;
+      &lt;li&gt;Desvendar como os computadores funcionam&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
 
-  &lt;h2&gt;🌐 Meu Link Favorito:&lt;/h2&gt;
-  &lt;p&gt;
-    Conheça o &lt;a href="https://liracode.com.br" target="_blank"&gt;Portal Oficial LiraCode&lt;/a&gt;!
-  &lt;/p&gt;
+  &lt;!-- Caixa Organizadora: Tabela de Missões --&gt;
+  &lt;div&gt;
+    &lt;h2&gt;📊 Minhas Missões no LiraCode:&lt;/h2&gt;
+    &lt;table border="1"&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Missão&lt;/th&gt;
+        &lt;th&gt;Tecnologia&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Anatomia de Pastas &amp;amp; CRUD&lt;/td&gt;
+        &lt;td&gt;Windows e Bloco de Notas&lt;/td&gt;
+        &lt;td&gt;Dominado 🚀&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Extensões &amp;amp; Cibersegurança&lt;/td&gt;
+        &lt;td&gt;Arquivos .txt, .json, .bat&lt;/td&gt;
+        &lt;td&gt;Dominado 🛡️&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Estrutura e Interatividade&lt;/td&gt;
+        &lt;td&gt;DIV, Tabelas, Listas e Form&lt;/td&gt;
+        &lt;td&gt;Em Evolução ⚡&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
 
-  &lt;h2&gt;⚡ Teste de Formulário:&lt;/h2&gt;
-  &lt;form&gt;
+  &lt;!-- Caixa Organizadora: Link Favorito --&gt;
+  &lt;div&gt;
+    &lt;h2&gt;🌐 Meu Link Favorito:&lt;/h2&gt;
     &lt;p&gt;
-      Nome do Usuário:&lt;br&gt;
-      &lt;input type="text" placeholder="Digite seu nome..."&gt;
+      Conheça o &lt;a href="https://liracode.com.br" target="_blank"&gt;Portal Oficial LiraCode&lt;/a&gt;!
     &lt;/p&gt;
-    
-    &lt;p&gt;
-      Senha de Proteção:&lt;br&gt;
-      &lt;input type="password" placeholder="Digite sua senha..."&gt;
-    &lt;/p&gt;
+  &lt;/div&gt;
 
-    &lt;p&gt;
-      Sua Cor Favorita:&lt;br&gt;
-      &lt;input type="color" value="#eab308"&gt;
-    &lt;/p&gt;
+  &lt;!-- Caixa Organizadora: Formulário Interativo --&gt;
+  &lt;div&gt;
+    &lt;h2&gt;⚡ Teste de Formulário:&lt;/h2&gt;
+    &lt;form&gt;
+      &lt;p&gt;
+        Nome do Usuário:&lt;br&gt;
+        &lt;input type="text" placeholder="Digite seu nome..."&gt;
+      &lt;/p&gt;
+      
+      &lt;p&gt;
+        Senha de Proteção:&lt;br&gt;
+        &lt;input type="password" placeholder="Digite sua senha..."&gt;
+      &lt;/p&gt;
 
-    &lt;p&gt;
-      &lt;button type="button" onclick="alert('Formulário enviado com sucesso no LiraCode!')"&gt;
-        Enviar Dados
-      &lt;/button&gt;
-    &lt;/p&gt;
-  &lt;/form&gt;
+      &lt;p&gt;
+        Sua Cor Favorita:&lt;br&gt;
+        &lt;input type="color" value="#eab308"&gt;
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        &lt;button type="button" onclick="alert('Formulário enviado com sucesso no LiraCode!')"&gt;
+          Enviar Dados
+        &lt;/button&gt;
+      &lt;/p&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
 
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -739,6 +1038,9 @@ body {
         <a href="https://www-w3schools-com.translate.goog/html/html_forms.asp?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="btn-outline">
           <i class="fa-solid fa-book-open"></i> Ver Guia de Formulários no W3Schools ↗
         </a>
+        <a href="https://www-w3schools-com.translate.goog/html/html_tables.asp?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          <i class="fa-solid fa-table"></i> Ver Guia de Tabelas no W3Schools ↗
+        </a>
       </div>
     </article>
 
@@ -749,7 +1051,7 @@ body {
           <i class="fa-solid fa-shoe-prints"></i> Você está no Marco 05 da estrada!
         </span>
         <h3 style="font-family: 'Chakra Petch', sans-serif; font-size: 1.3rem; color: #fff; margin-top: 4px;">
-          Marco 05 • Interatividade, Atributos & Formulários
+          Marco 05 • Caixas (DIV), Tabelas, Listas & Formulários
         </h3>
         <p style="font-size: 0.88rem; color: var(--text-muted);">
           Volte para rever a Aula 04 ou explore manuais completos em PDF na Biblioteca Digital!
@@ -869,44 +1171,83 @@ body {
 </head>
 <body>
 
-  <h1>Minha Primeira Ficha Interativa</h1>
-  <p>Esta página foi criada no Bloco de Notas e já recebe comandos do usuário!</p>
+  <!-- Caixa Organizadora: Apresentação -->
+  <div>
+    <h1>Minha Primeira Ficha Interativa</h1>
+    <p>Esta página foi criada no Bloco de Notas e reúne caixas, tabelas, listas e formulários!</p>
+  </div>
 
-  <h2>🎯 Meus Interesses Tecnológicos:</h2>
-  <ul>
-    <li>Aprender Cibersegurança e Programação</li>
-    <li>Criar jogos e páginas interativas</li>
-    <li>Desvendar como os computadores funcionam</li>
-  </ul>
+  <!-- Caixa Organizadora: Interesses (Lista) -->
+  <div>
+    <h2>🎯 Meus Interesses Tecnológicos:</h2>
+    <ul>
+      <li>Aprender Cibersegurança e Programação</li>
+      <li>Criar jogos e páginas interativas</li>
+      <li>Desvendar como os computadores funcionam</li>
+    </ul>
+  </div>
 
-  <h2>🌐 Meu Link Favorito:</h2>
-  <p>
-    Conheça o <a href="https://liracode.com.br" target="_blank">Portal Oficial LiraCode</a>!
-  </p>
+  <!-- Caixa Organizadora: Tabela de Missões -->
+  <div>
+    <h2>📊 Minhas Missões no LiraCode:</h2>
+    <table border="1">
+      <tr>
+        <th>Missão</th>
+        <th>Tecnologia</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>Anatomia de Pastas &amp; CRUD</td>
+        <td>Windows e Bloco de Notas</td>
+        <td>Dominado 🚀</td>
+      </tr>
+      <tr>
+        <td>Extensões &amp; Cibersegurança</td>
+        <td>Arquivos .txt, .json, .bat</td>
+        <td>Dominado 🛡️</td>
+      </tr>
+      <tr>
+        <td>Estrutura e Interatividade</td>
+        <td>DIV, Tabelas, Listas e Form</td>
+        <td>Em Evolução ⚡</td>
+      </tr>
+    </table>
+  </div>
 
-  <h2>⚡ Teste de Formulário:</h2>
-  <form>
+  <!-- Caixa Organizadora: Link Favorito -->
+  <div>
+    <h2>🌐 Meu Link Favorito:</h2>
     <p>
-      Nome do Usuário:<br>
-      <input type="text" placeholder="Digite seu nome...">
+      Conheça o <a href="https://liracode.com.br" target="_blank">Portal Oficial LiraCode</a>!
     </p>
-    
-    <p>
-      Senha de Proteção:<br>
-      <input type="password" placeholder="Digite sua senha...">
-    </p>
+  </div>
 
-    <p>
-      Sua Cor Favorita:<br>
-      <input type="color" value="#eab308">
-    </p>
+  <!-- Caixa Organizadora: Formulário Interativo -->
+  <div>
+    <h2>⚡ Teste de Formulário:</h2>
+    <form>
+      <p>
+        Nome do Usuário:<br>
+        <input type="text" placeholder="Digite seu nome...">
+      </p>
+      
+      <p>
+        Senha de Proteção:<br>
+        <input type="password" placeholder="Digite sua senha...">
+      </p>
 
-    <p>
-      <button type="button" onclick="alert('Formulário enviado com sucesso no LiraCode!')">
-        Enviar Dados
-      </button>
-    </p>
-  </form>
+      <p>
+        Sua Cor Favorita:<br>
+        <input type="color" value="#eab308">
+      </p>
+
+      <p>
+        <button type="button" onclick="alert('Formulário enviado com sucesso no LiraCode!')">
+          Enviar Dados
+        </button>
+      </p>
+    </form>
+  </div>
 
 </body>
 </html>`;
@@ -933,44 +1274,83 @@ body {
 </head>
 <body>
 
-  <h1>Minha Primeira Ficha Interativa</h1>
-  <p>Esta página foi criada no Bloco de Notas e já recebe comandos do usuário!</p>
+  <!-- Caixa Organizadora: Apresentação -->
+  <div>
+    <h1>Minha Primeira Ficha Interativa</h1>
+    <p>Esta página foi criada no Bloco de Notas e reúne caixas, tabelas, listas e formulários!</p>
+  </div>
 
-  <h2>🎯 Meus Interesses Tecnológicos:</h2>
-  <ul>
-    <li>Aprender Cibersegurança e Programação</li>
-    <li>Criar jogos e páginas interativas</li>
-    <li>Desvendar como os computadores funcionam</li>
-  </ul>
+  <!-- Caixa Organizadora: Interesses (Lista) -->
+  <div>
+    <h2>🎯 Meus Interesses Tecnológicos:</h2>
+    <ul>
+      <li>Aprender Cibersegurança e Programação</li>
+      <li>Criar jogos e páginas interativas</li>
+      <li>Desvendar como os computadores funcionam</li>
+    </ul>
+  </div>
 
-  <h2>🌐 Meu Link Favorito:</h2>
-  <p>
-    Conheça o <a href="https://liracode.com.br" target="_blank">Portal Oficial LiraCode</a>!
-  </p>
+  <!-- Caixa Organizadora: Tabela de Missões -->
+  <div>
+    <h2>📊 Minhas Missões no LiraCode:</h2>
+    <table border="1">
+      <tr>
+        <th>Missão</th>
+        <th>Tecnologia</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>Anatomia de Pastas &amp; CRUD</td>
+        <td>Windows e Bloco de Notas</td>
+        <td>Dominado 🚀</td>
+      </tr>
+      <tr>
+        <td>Extensões &amp; Cibersegurança</td>
+        <td>Arquivos .txt, .json, .bat</td>
+        <td>Dominado 🛡️</td>
+      </tr>
+      <tr>
+        <td>Estrutura e Interatividade</td>
+        <td>DIV, Tabelas, Listas e Form</td>
+        <td>Em Evolução ⚡</td>
+      </tr>
+    </table>
+  </div>
 
-  <h2>⚡ Teste de Formulário:</h2>
-  <form>
+  <!-- Caixa Organizadora: Link Favorito -->
+  <div>
+    <h2>🌐 Meu Link Favorito:</h2>
     <p>
-      Nome do Usuário:<br>
-      <input type="text" placeholder="Digite seu nome...">
+      Conheça o <a href="https://liracode.com.br" target="_blank">Portal Oficial LiraCode</a>!
     </p>
-    
-    <p>
-      Senha de Proteção:<br>
-      <input type="password" placeholder="Digite sua senha...">
-    </p>
+  </div>
 
-    <p>
-      Sua Cor Favorita:<br>
-      <input type="color" value="#eab308">
-    </p>
+  <!-- Caixa Organizadora: Formulário Interativo -->
+  <div>
+    <h2>⚡ Teste de Formulário:</h2>
+    <form>
+      <p>
+        Nome do Usuário:<br>
+        <input type="text" placeholder="Digite seu nome...">
+      </p>
+      
+      <p>
+        Senha de Proteção:<br>
+        <input type="password" placeholder="Digite sua senha...">
+      </p>
 
-    <p>
-      <button type="button" onclick="alert('Formulário enviado com sucesso no LiraCode!')">
-        Enviar Dados
-      </button>
-    </p>
-  </form>
+      <p>
+        Sua Cor Favorita:<br>
+        <input type="color" value="#eab308">
+      </p>
+
+      <p>
+        <button type="button" onclick="alert('Formulário enviado com sucesso no LiraCode!')">
+          Enviar Dados
+        </button>
+      </p>
+    </form>
+  </div>
 
 </body>
 </html>`;
