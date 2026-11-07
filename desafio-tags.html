@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="aba-titulo" name="aba-titulo" class="titulo-aba">Meu Primeiro Site - Desafio das Tags</title>
+</head>
+<body id="corpo-pagina" name="corpo-pagina" class="pagina-aluno">
+
+    <!-- SEÇÃO 1: TÍTULO PRINCIPAL -->
+    <div id="secao-titulo" name="secao-titulo" class="bloco-titulo">
+        <h1 id="titulo-principal" name="titulo-principal" class="titulo-destaque">
+            [ALUNO: Digite aqui o título principal da sua página]
+        </h1>
+    </div>
+
+    <hr id="linha-separadora-1" name="linha-separadora-1" class="linha-divisoria">
+
+    <!-- SEÇÃO 2: OS 3 PARÁGRAFOS -->
+    <div id="secao-paragrafos" name="secao-paragrafos" class="bloco-textos">
+        
+        <p id="paragrafo-apresentacao" name="paragrafo-apresentacao" class="texto-paragrafo">
+            [ALUNO: Primeiro Parágrafo - Escreva uma frase se apresentando]
+        </p>
+
+        <p id="paragrafo-hobbies" name="paragrafo-hobbies" class="texto-paragrafo">
+            [ALUNO: Segundo Parágrafo - Escreva o que você mais gosta de fazer no dia a dia]
+        </p>
+
+        <p id="paragrafo-futuro" name="paragrafo-futuro" class="texto-paragrafo">
+            [ALUNO: Terceiro Parágrafo - Escreva qual superpoder ou profissão você quer ter no futuro]
+        </p>
+
+    </div>
+
+    <hr id="linha-separadora-2" name="linha-separadora-2" class="linha-divisoria">
+
+    <!-- SEÇÃO 3: LISTA -->
+    <div id="secao-lista" name="secao-lista" class="bloco-lista">
+        
+        <h2 id="titulo-lista" name="titulo-lista" class="subtitulo-secao">
+            [ALUNO: Título da sua Lista favorita (Ex: Minhas Comidas, Jogos ou Coisas Favoritas)]
+        </h2>
+
+        <ul id="lista-favoritos" name="lista-favoritos" class="lista-itens">
+            <li id="item-lista-1" name="item-lista-1" class="item-linha">[ALUNO: Primeiro item da lista]</li>
+            <li id="item-lista-2" name="item-lista-2" class="item-linha">[ALUNO: Segundo item da lista]</li>
+            <li id="item-lista-3" name="item-lista-3" class="item-linha">[ALUNO: Terceiro item da lista]</li>
+        </ul>
+
+    </div>
+
+    <hr id="linha-separadora-3" name="linha-separadora-3" class="linha-divisoria">
+
+    <!-- SEÇÃO 4: TABELA -->
+    <div id="secao-tabela" name="secao-tabela" class="bloco-tabela">
+        
+        <h2 id="titulo-tabela" name="titulo-tabela" class="subtitulo-secao">
+            [ALUNO: Título da Tabela (Ex: Tabela de Personagens ou Matérias)]
+        </h2>
+
+        <table id="tabela-conteudo" name="tabela-conteudo" border="1" class="tabela-dados">
+            <tr id="linha-topo" name="linha-topo" class="linha-cabecalho">
+                <th id="coluna-topo-1" name="coluna-topo-1" class="cabecalho-coluna">[ALUNO: Coluna 1 (Ex: Personagem / Matéria)]</th>
+                <th id="coluna-topo-2" name="coluna-topo-2" class="cabecalho-coluna">[ALUNO: Coluna 2 (Ex: Poder / Nota)]</th>
+            </tr>
+            <tr id="linha-dados-1" name="linha-dados-1" class="linha-corpo">
+                <td id="celula-1-1" name="celula-1-1" class="dado-tabela">[ALUNO: Informação Linha 1, Coluna 1]</td>
+                <td id="celula-1-2" name="celula-1-2" class="dado-tabela">[ALUNO: Informação Linha 1, Coluna 2]</td>
+            </tr>
+            <tr id="linha-dados-2" name="linha-dados-2" class="linha-corpo">
+                <td id="celula-2-1" name="celula-2-1" class="dado-tabela">[ALUNO: Informação Linha 2, Coluna 1]</td>
+                <td id="celula-2-2" name="celula-2-2" class="dado-tabela">[ALUNO: Informação Linha 2, Coluna 2]</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <hr id="linha-separadora-4" name="linha-separadora-4" class="linha-divisoria">
+
+    <!-- SEÇÃO 5: FORMULÁRIO -->
+    <div id="secao-formulario" name="secao-formulario" class="bloco-formulario">
+        
+        <h2 id="titulo-formulario" name="titulo-formulario" class="subtitulo-secao">
+            [ALUNO: Título do Formulário (Ex: Envie uma Mensagem Secreta)]
+        </h2>
+        
+        <form id="formulario-aluno" name="formulario-aluno" action="#" method="get" class="form-principal">
+            
+            <div id="grupo-campo-nome" name="grupo-campo-nome" class="campo-form">
+                <label id="rotulo-nome" name="rotulo-nome" for="campo-nome" class="rotulo-texto">
+                    [ALUNO: Texto da pergunta (Ex: Qual é o seu nome?)]
+                </label>
+                <br>
+                <input id="campo-nome" name="nome_aluno" type="text" placeholder="Digite seu nome aqui" class="campo-entrada">
+            </div>
+            
+            <br>
+
+            <div id="grupo-campo-mensagem" name="grupo-campo-mensagem" class="campo-form">
+                <label id="rotulo-mensagem" name="rotulo-mensagem" for="campo-mensagem" class="rotulo-texto">
+                    [ALUNO: Texto da pergunta (Ex: Deixe um recado:)]
+                </label>
+                <br>
+                <input id="campo-mensagem" name="mensagem_aluno" type="text" placeholder="Digite sua mensagem aqui" class="campo-entrada">
+            </div>
+
+            <br>
+
+            <div id="grupo-botao-enviar" name="grupo-botao-enviar" class="campo-botao">
+                <button id="botao-enviar" name="botao-enviar" type="submit" class="botao-acao">
+                    [ALUNO: Texto do Botão (Ex: Enviar Mensagem)]
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
